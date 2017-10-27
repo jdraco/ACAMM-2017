@@ -1,0 +1,24 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Network\authentication_Manager.cs">
+    <Files>
+      <File FileName="Assets\Allson\NewScanner\NewScanManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Network\authentication_Manager.cs" Line="150" Column="31" />
+      <File FileName="Assets\Scripts\ChildContentSizeFitter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Schedule\ScheduleLoader.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Start\SetName.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MainMenu\mMenuScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\back.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\quitApp.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Assets\Scripts\Network\authentication_Manager.cs" line="113" column="1" />
+      <Breakpoint file="C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Assets\Scripts\Network\authentication_Manager.cs" line="117" column="1" />
+      <Breakpoint file="C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Assets\Scripts\Network\authentication_Manager.cs" line="116" column="1" />
+      <Breakpoint file="C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Assets\Scripts\Network\authentication_Manager.cs" line="111" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

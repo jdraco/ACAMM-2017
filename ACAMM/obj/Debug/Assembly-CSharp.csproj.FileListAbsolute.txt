@@ -1,0 +1,105 @@
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\nunit.framework.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEditor.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.Analytics.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.HoloLens.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.TestRunner.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.xml
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEditor.xml
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.TestRunner.xml
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\nunit.framework.xml
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.Analytics.xml
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.HoloLens.xml
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\obj\Debug\Assembly-CSharp.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\obj\Debug\Assembly-CSharp.pdb
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\Mono.Data.Sqlite.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\System.Data.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.Timeline.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\ExCSS.Unity.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\Unity.Legacy.NRefactory.dll
+C:\Users\meow meow\Desktop\Work\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.Timeline.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\Mono.Data.Sqlite.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\nunit.framework.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\System.Data.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEditor.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEngine.Analytics.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEngine.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEngine.HoloLens.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEngine.TestRunner.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEngine.Timeline.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\ExCSS.Unity.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\Unity.Legacy.NRefactory.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEngine.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEditor.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEngine.TestRunner.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\nunit.framework.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEngine.Timeline.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEngine.Analytics.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\Temp\bin\Debug\UnityEngine.HoloLens.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\obj\Debug\Assembly-CSharp.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM_android\obj\Debug\Assembly-CSharp.pdb
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\Mono.Data.Sqlite.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\nunit.framework.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\System.Data.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEditor.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.Analytics.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.HoloLens.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.TestRunner.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.Timeline.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\ExCSS.Unity.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\Unity.Legacy.NRefactory.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEditor.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.TestRunner.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\nunit.framework.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.Timeline.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.Analytics.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.HoloLens.xml
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\obj\Debug\Assembly-CSharp.dll
+C:\Users\meow meow\Desktop\Work\Documents\ACAMM\obj\Debug\Assembly-CSharp.pdb

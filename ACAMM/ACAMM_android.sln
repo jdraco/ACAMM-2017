@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACAMM_android", "Assembly-CSharp.csproj", "{DCF23BB8-376C-8222-513A-D25A0312D553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACAMM_android", "Assembly-CSharp-firstpass.csproj", "{89065DE5-ED1F-6B34-5F16-E214A2AFF221}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACAMM_android", "Assembly-CSharp-Editor.csproj", "{DF207B02-73E9-3EB8-435B-3A3446D3D27B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCF23BB8-376C-8222-513A-D25A0312D553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCF23BB8-376C-8222-513A-D25A0312D553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCF23BB8-376C-8222-513A-D25A0312D553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCF23BB8-376C-8222-513A-D25A0312D553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89065DE5-ED1F-6B34-5F16-E214A2AFF221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89065DE5-ED1F-6B34-5F16-E214A2AFF221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89065DE5-ED1F-6B34-5F16-E214A2AFF221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89065DE5-ED1F-6B34-5F16-E214A2AFF221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF207B02-73E9-3EB8-435B-3A3446D3D27B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF207B02-73E9-3EB8-435B-3A3446D3D27B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF207B02-73E9-3EB8-435B-3A3446D3D27B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF207B02-73E9-3EB8-435B-3A3446D3D27B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

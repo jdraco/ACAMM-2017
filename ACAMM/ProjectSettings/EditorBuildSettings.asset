@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: 
+    guid: c84ddf59972f3694a84e65a1c33fa294
+  - enabled: 0
+    path: Assets/Scenes/client test.unity
+    guid: 74a410429b4893b4db57e673f2d03473
+  - enabled: 1
+    path: Assets/Scenes/server test.unity
+    guid: 30c00d463041efe46991084c9e063d26
+  - enabled: 0
+    path: Assets/Scenes/aarm.unity
+    guid: 226dea883db2315408139a0d504d41b8
+  - enabled: 0
+    path: Assets/Scenes/Start.unity
+    guid: c0c2a7768d03f4c46bbbd1c43f5501d6
+  - enabled: 0
+    path: Assets/Scenes/mainmenu.unity
+    guid: 45d8d957f2ac7044ca34088db90193ae
+  - enabled: 0
+    path: Assets/Scenes/profileselector.unity
+    guid: 05feaa4fbad973846b7f54dd5c355b65
+  - enabled: 0
+    path: Assets/Allson/Scene/NewScanner.unity
+    guid: 609520dbc2898284dabe63e2584abdd9
+  - enabled: 0
+    path: Assets/Scenes/profile.unity
+    guid: c683f621c2438e84e8565580758c7066
+  - enabled: 0
+    path: Assets/Scenes/placesofinterest.unity
+    guid: 084c46c7c2b58b44ba86f507f3530438
+  - enabled: 0
+    path: Assets/Scenes/sgarmy.unity
+    guid: 0aa356054dc397a43af05734ae37200d
+  - enabled: 0
+    path: Assets/Scenes/schedule.unity
+    guid: c5297557d863fa742ab917f5b2ac1afc
+  - enabled: 0
+    path: Assets/Scenes/directory.unity
+    guid: b69f35dff8d5c5d44bd2aaf9595168e6
+  - enabled: 0
+    path: Assets/Scenes/PDFReader.unity
+    guid: 847574118253adc4889fb089424c5f2a
+  - enabled: 0
+    path: Assets/Scenes/Android/mainmenu_and.unity
+    guid: 735ff67c1cb0ccf4e9e86173fb049fb6
+  - enabled: 0
+    path: Assets/Scenes/Android/directory_and.unity
+    guid: 8611b376d9219f540ab96383ac09bf4b
+  - enabled: 0
+    path: Assets/Scenes/Android/PDFReader_and.unity
+    guid: 94dae43e0dc810e4295a99f7dcf0beee
+  - enabled: 0
+    path: Assets/Scenes/Android/placesofinterest_and.unity
+    guid: 6b0929b61434653488ca2c2d737f4b48
+  - enabled: 0
+    path: Assets/Scenes/Android/profile_and.unity
+    guid: 71b7dcf66085bd64e962d57279b609e2
+  - enabled: 0
+    path: Assets/Scenes/Android/profileselector_and.unity
+    guid: 35fe487cefc09cc418c307e84ffb6d62
+  - enabled: 0
+    path: Assets/Scenes/Android/schedule_and.unity
+    guid: 13d7fd4bb9ab50849ab3885d3b27c650
+  - enabled: 0
+    path: Assets/Scenes/Android/sgarmy_and.unity
+    guid: afa56611a6ec8444ba1eeefeedede576
+  - enabled: 0
+    path: Assets/Allson/Scene/NewScanner_and.unity
+    guid: 5e9becd06911e0448bb25032865f2528
