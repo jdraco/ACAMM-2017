@@ -88,7 +88,7 @@ public class Signing : MonoBehaviour
             }
             else
             {
-
+                WithPenUpdate();
             }
         }
         else
@@ -117,9 +117,6 @@ public class Signing : MonoBehaviour
         //If there is a pen
         if (PenID != -1)
         {
-
-           
-
             Ray ray = Camera.main.ScreenPointToRay(UsedTouch.position);
             RaycastHit hit;
             if (PlaneCollider.Raycast(ray, out hit, Mathf.Infinity))
@@ -139,7 +136,48 @@ public class Signing : MonoBehaviour
 
     void WithPenUpdate()
     {
+        bool PenStillExist = false;
+        Touch UsedTouch = new Touch();
+        foreach (Touch ThisTouch in Input.touches)
+        {
+            if (ThisTouch.type == TouchType.Stylus && ThisTouch.phase == TouchPhase.Moved)
+            {
+                UsedTouch = ThisTouch;
+                PenStillExist = true;
 
+                break;
+            }
+        }
+
+        if (PenStillExist)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(UsedTouch.position);
+            RaycastHit hit;
+            if (PlaneCollider.Raycast(ray, out hit, Mathf.Infinity))
+            {
+                if (CurrentLine != null)
+                {
+                    CurrentLine.positionCount++;
+                    CurrentLine.SetPosition(CurrentLine.positionCount - 1, hit.point + new Vector3(0, 0, -0.01f));
+                }
+                else
+                {
+                    CurrentLine = Instantiate(SignaturePrefab).GetComponent<LineRenderer>();
+                    CurrentLine.positionCount = 2;
+                    CurrentLine.SetPosition(0, hit.point + new Vector3(0, 0, -0.01f));
+                    CurrentLine.SetPosition(1, hit.point + new Vector3(0, 0, -0.01f));
+                }
+            }
+            else
+            {
+                CurrentLine = null;
+            }
+        }
+        else
+        {
+            CurrentLine = null;
+            PenID = -1;
+        }
     }
 
 }
