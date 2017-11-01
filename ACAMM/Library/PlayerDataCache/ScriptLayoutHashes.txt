@@ -1,7 +1,7 @@
 WindowsStandalone
 922dde826533f20a40eadb188df86725 Assembly-CSharp.dll:.TestReporter
 12a3c6fe9d372d133cb7a8a0902b3660 Assembly-CSharp.dll:.SetName
-401f15af0857f1bb6fc0090eb3c04487 Assembly-CSharp.dll:.s_NetworkManager
+4982bd6b78eb370ca6fd64835990e911 Assembly-CSharp.dll:.s_NetworkManager
 62ca858d97201d71765774ba1874955d Assembly-CSharp.dll:.ScheduleLoader
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ReporterGUI
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ReporterMessageReceiver
@@ -130,6 +130,7 @@ a44ea4a0edc60d58b05c2a9df88053d3 Assembly-CSharp.dll:.authentication_Manager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.quitApp
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScanHand
 18b69bad66a0d9c15d853f90bda0d839 Assembly-CSharp.dll:.pTab
+17023851d954656c4afebe0988ec92cd Assembly-CSharp.dll:.Signing
 81c52bbf85589a3cf562457911370d07 Assembly-CSharp.dll:.openThirdParty
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.disableGameObject
 4390878f037361a83505b646d467afe7 Assembly-CSharp.dll:.ProfileLoader

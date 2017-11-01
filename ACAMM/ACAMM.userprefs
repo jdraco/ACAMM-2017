@@ -1,11 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Network\authentication_Manager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Allson\Scripts\Signing.cs">
     <Files>
       <File FileName="Assets\Scripts\openThirdParty.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Network\authentication_Manager.cs" Line="169" Column="6" />
-      <File FileName="Assets\Scripts\MainMenu\mMenuScript.cs" Line="110" Column="3" />
+      <File FileName="Assets\Scripts\Network\authentication_Manager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MainMenu\mMenuScript.cs" Line="95" Column="3" />
       <File FileName="Assets\Scripts\Start\SetName.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Network\s_NetworkManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Allson\Scripts\Signing.cs" Line="41" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

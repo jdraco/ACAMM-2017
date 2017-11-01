@@ -38,7 +38,7 @@ public class Signing : MonoBehaviour
 
     void SigningUpdate()
     {
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -79,23 +79,23 @@ public class Signing : MonoBehaviour
         {
             //this is usless tbh
         }
-#else
-        if (Input.touchCount > 0)
-        {
-            if (PenID == -1)
-            {
-                NoPenUpdate();
-            }
-            else
-            {
-                WithPenUpdate();
-            }
-        }
-        else
-        {
-            PenID = -1;
-        }
-#endif
+//#else
+//        if (Input.touchCount > 0)
+//        {
+//            if (PenID == -1)
+//            {
+//                NoPenUpdate();
+//            }
+//            else
+//            {
+//                WithPenUpdate();
+//            }
+//        }
+//        else
+//        {
+//            PenID = -1;
+//        }
+//#endif
     }
 
     void NoPenUpdate()

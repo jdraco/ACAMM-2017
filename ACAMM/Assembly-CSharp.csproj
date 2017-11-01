@@ -58,6 +58,7 @@
      <Compile Include="Assets\Allson\Scripts\LineScript.cs" />
      <Compile Include="Assets\Allson\Scripts\ScanHand.cs" />
      <Compile Include="Assets\Allson\Scripts\ScanManager.cs" />
+     <Compile Include="Assets\Allson\Scripts\Signing.cs" />
      <Compile Include="Assets\Scripts\AspectRatio.cs" />
      <Compile Include="Assets\Scripts\back.cs" />
      <Compile Include="Assets\Scripts\ChildContentSizeFitter.cs" />
@@ -118,10 +119,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.Sqlite">
- <HintPath>C:/Users/meow meow/Desktop/Work/Documents/ACAMM/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+ <HintPath>D:/Work/GitHub/ACAMM/ACAMM/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>C:/Users/meow meow/Desktop/Work/Documents/ACAMM/Assets/Plugins/System.Data.dll</HintPath>
+ <HintPath>D:/Work/GitHub/ACAMM/ACAMM/Assets/Plugins/System.Data.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
