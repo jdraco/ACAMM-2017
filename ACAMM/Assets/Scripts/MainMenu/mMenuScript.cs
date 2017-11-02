@@ -10,6 +10,7 @@ public class mMenuScript : MonoBehaviour {
 	public authentication_Manager cManager;
 	public GameObject serverButton;
 	public bool serverButtonActive = false;
+	public string url;
 //	public RectTransform chatBox;
 //	public float chatEnterSpeed = 1;
 //	public Vector3 dChatPos = new Vector3(144,0,0), eChatPos = new Vector3(-127,0,0);
@@ -57,12 +58,26 @@ public class mMenuScript : MonoBehaviour {
 
 	//connect to chat server when app init
 	void Start () {
+		updateIpCfgfromWeb(url);
 		LoadIPfromFile(Application.dataPath + "/serverip.cfg");
 		cManager.UpdateJoinAddress (chatIPaddr);
 //		//cManager.InitNetworkTransport ();
 		cManager.JoinLocalGame ();
 	}
 
+	private void updateIpCfgfromWeb(string url)
+	{
+		WWW loadIP = new WWW(url);
+		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
+		while(!loadIP.isDone) {
+			Debug.Log("trying to loadIP");
+		}
+		if(loadIP.size != 0)
+		{
+			File.WriteAllBytes(Application.dataPath + "/serverip.cfg", loadIP.bytes);
+			Debug.Log("wrote file to loadIP from server");
+		}
+	}
 	private bool LoadIPfromFile(string fileName)
 	{
 

@@ -21,4 +21,5 @@ public static class GlobalValues {
 		ACAMMSP
 	}
 	public static SS ss = SS.ACAMM;
+	public static authentication_Manager authManager;
 }

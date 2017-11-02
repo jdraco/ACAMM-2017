@@ -27,7 +27,14 @@ public class s_NetworkManager : NetworkManager {
 
 		RefreshIP ();
 	}
-		
+
+	void Update(){
+		if (Input.GetKeyDown("enter"))
+		{
+			LogMessage ();
+		}
+	}
+
 	public string GetIP()
 	{
 		string strHostName = "";

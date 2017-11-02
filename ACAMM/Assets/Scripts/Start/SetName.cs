@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Text;
+using System.IO;
 
 public class SetName : MonoBehaviour {
 	//public SaveData data;
@@ -13,6 +15,7 @@ public class SetName : MonoBehaviour {
 		QualitySettings.vSyncCount = 0;
 		Application.targetFrameRate = 30;
 		Debug.Log (PlayerPrefs.GetString ("name"));
+		LoadNamefromFile(Application.dataPath + "/serverid.cfg");
 		if (PlayerPrefs.GetString ("name") != "") {
 			input.text = PlayerPrefs.GetString ("name");
 			#if UNITY_ANDROID
@@ -25,7 +28,34 @@ public class SetName : MonoBehaviour {
 			input.text = currName;
 		}
 	}
-	
+
+	private bool LoadNamefromFile(string fileName)
+	{
+
+		string line;
+
+		StreamReader theReader = new StreamReader(fileName, Encoding.Default);
+
+		using (theReader)
+		{
+			// While there's lines left in the text file, do this:
+			do
+			{
+				line = theReader.ReadLine();
+
+				if (line != null)
+				{
+					currName = line;
+					PlayerPrefs.SetString ("name", currName);
+				}
+			}
+			while (line != null);
+  
+			theReader.Close();
+			return true;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		
