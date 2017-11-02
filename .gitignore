@@ -32,4 +32,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+<<<<<<< HEAD
 ACAMM/Assets/StreamingAssets/build_info.txt
+=======
+>>>>>>> 2dad821fae8dc80289b648c02b5c75df738e7b2f
