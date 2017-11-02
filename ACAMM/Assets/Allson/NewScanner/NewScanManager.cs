@@ -15,10 +15,24 @@ enum ScanningState
     BLACKOUT_STATE
 }
 
+enum ThumbState
+{
+    NONE_STATE,
+    START_STATE,
+    THUMBSCAN_STATE,
+    LASER_STATE
+}
+
+enum ThumbSubState
+{
+    THUMB_BACKGROUNDBLINK
+}
+
+
 public class NewScanManager : MonoBehaviour
 {
 
-    ScanningState CurrentState;
+    //ScanningState CurrentState;
 
     public SpriteRenderer Handprint = null;
     public Text CircleText = null;
@@ -67,13 +81,33 @@ public class NewScanManager : MonoBehaviour
 
     public SpriteRenderer Screenshot;
 
-	public float textSpeed = 0.05f;
+    public float textSpeed = 0.05f;
 
-	public List<GameObject> ListOfFingerPoints;
+    public List<GameObject> ListOfFingerPoints;
+
+    public GameObject ThumnprintStart;
+    public GameObject PanelMask, ThumbPrint, LASERPEWPEW;
+    ThumbState CurrentState;
+
+    public Image ThumbBackground;
+    Vector3 PanelStartScale = new Vector3(), ThumbStartScale = new Vector3();
+    Vector3 ThumbStartPos = new Vector3();
+    Vector3 LaserStartPos = new Vector3();
+    Vector3 BottomOfFingerPrint = new Vector3();
+
+    Dictionary<ThumbState, Dictionary<ThumbSubState, int>> DictionaryOfTriggers = new Dictionary<ThumbState, Dictionary<ThumbSubState, int>>
+    {
+        {
+            ThumbState.THUMBSCAN_STATE, new Dictionary<ThumbSubState, int>
+            {
+                {ThumbSubState.THUMB_BACKGROUNDBLINK, 0}
+            }
+        }
+    };
     // Use this for initialization
     void Start()
     {
-        CurrentState = ScanningState.START_STATE;
+        CurrentState = ThumbState.START_STATE;
 
         ScanningText.gameObject.SetActive(false);
         PercentageText.gameObject.SetActive(false);
@@ -88,160 +122,301 @@ public class NewScanManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StateUpdate();
+        //StateUpdate();
+        ThumbStateUpdate();
     }
 
-    void StateUpdate()
+    //  void StateUpdate()
+    //  {
+    //      switch (CurrentState)
+    //      {
+    //          case ScanningState.NONE_STATE:
+    //              Debug.Log("Error, State at none");
+    //              break;
+
+    //          case ScanningState.START_STATE:
+    //              StateStartUpdate();
+    //              break;
+
+    //          case ScanningState.JUSTHANDPLACE_STATE:
+    //              HandplaceUpdate();
+    //              break;
+
+    //          case ScanningState.COMPLETED_STATE:
+    //              CompletedStateUpdate();
+    //              break;
+    //          case ScanningState.WELCOME_STATE:
+    //              WelcomeUpdate();
+    //              break;
+    //case ScanningState.WELCOMEDONE_STATE:
+    //		StartCoroutine ("LoadAppAfterDelay");
+    //              CurrentState = ScanningState.BLACKOUT_STATE;
+
+    //              break;
+    //          case ScanningState.BLACKOUT_STATE:
+    //		//SceneManager.LoadSceneAsync ("Start");
+    //              break;
+    //      }
+    //  }
+
+    void ThumbStateUpdate()
     {
         switch (CurrentState)
         {
-            case ScanningState.NONE_STATE:
+            case ThumbState.NONE_STATE:
                 Debug.Log("Error, State at none");
                 break;
-
-            case ScanningState.START_STATE:
+            case ThumbState.START_STATE:
                 StateStartUpdate();
                 break;
 
-            case ScanningState.JUSTHANDPLACE_STATE:
-                HandplaceUpdate();
+            case ThumbState.THUMBSCAN_STATE:
+                ThumbPlaceUpdate();
                 break;
-
-            case ScanningState.COMPLETED_STATE:
-                CompletedStateUpdate();
-                break;
-            case ScanningState.WELCOME_STATE:
-                WelcomeUpdate();
-                break;
-		case ScanningState.WELCOMEDONE_STATE:
-				StartCoroutine ("LoadAppAfterDelay");
-                CurrentState = ScanningState.BLACKOUT_STATE;
-
-                break;
-            case ScanningState.BLACKOUT_STATE:
-				//SceneManager.LoadSceneAsync ("Start");
+            case ThumbState.LASER_STATE:
+                LaserUpdate();
                 break;
         }
+
     }
-	
-	IEnumerator LoadAppAfterDelay()		
-	{
-		yield return new WaitForSeconds(2);
-		SceneManager.LoadSceneAsync ("Start");
-	}
 
-	bool FiveFingersTouch()
-	{
-		int NumberOfFingerTouched = 0;
-		foreach (GameObject FingerEnd in ListOfFingerPoints)
-		{
-			bool ThisFingerTouch = false;
-			foreach (Touch EachTouch in Input.touches)
-			{
-				Ray ray = Camera.main.ScreenPointToRay(EachTouch.position);
-				RaycastHit hit;
-				if (FingerEnd.GetComponent<Collider>().Raycast(ray,out hit, Mathf.Infinity))
-				{
-					ThisFingerTouch = true;
-					NumberOfFingerTouched++;
-					break;
-				}
-			}
+    IEnumerator LoadAppAfterDelay()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadSceneAsync("Start");
+    }
 
-			if (!ThisFingerTouch)
-			{
-				FingerEnd.transform.Rotate(new Vector3(0,0,10*Time.deltaTime));
-			}
-		}
+    bool FiveFingersTouch()
+    {
+        int NumberOfFingerTouched = 0;
+        foreach (GameObject FingerEnd in ListOfFingerPoints)
+        {
+            bool ThisFingerTouch = false;
+            foreach (Touch EachTouch in Input.touches)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(EachTouch.position);
+                RaycastHit hit;
+                if (FingerEnd.GetComponent<Collider>().Raycast(ray, out hit, Mathf.Infinity))
+                {
+                    ThisFingerTouch = true;
+                    NumberOfFingerTouched++;
+                    break;
+                }
+            }
 
-		if (NumberOfFingerTouched == 5)
-			return true;
+            if (!ThisFingerTouch)
+            {
+                FingerEnd.transform.Rotate(new Vector3(0, 0, 10 * Time.deltaTime));
+            }
+        }
 
-		return false;
-	}
+        if (NumberOfFingerTouched == 5)
+            return true;
 
-	bool ThreePointTouch()
-	{
-		if (Input.touchCount >= 3)
-		{
-			int NumberOfTouch = 0;
-			foreach (Touch EachTouch in Input.touches)
-			{
-				Ray ray = Camera.main.ScreenPointToRay(EachTouch.position);
-				RaycastHit hit;
+        return false;
+    }
 
-				Debug.DrawLine(ray.origin, ray.direction);
+    bool ThreePointTouch()
+    {
+        if (Input.touchCount >= 3)
+        {
+            int NumberOfTouch = 0;
+            foreach (Touch EachTouch in Input.touches)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(EachTouch.position);
+                RaycastHit hit;
 
-				if (Physics.Raycast(ray, out hit))
-				{
-					if (hit.collider.tag == "DottedCircle")
-					{
-						NumberOfTouch++;
-						if (NumberOfTouch == 3)
-							return true;
-					}
-				}
-			}
-		}
+                Debug.DrawLine(ray.origin, ray.direction);
 
-		return false;
-	}
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider.tag == "DottedCircle")
+                    {
+                        NumberOfTouch++;
+                        if (NumberOfTouch == 3)
+                            return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
 
     void StateStartUpdate()
     {
-		#if UNITY_EDITOR
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		RaycastHit hit;
+        //#if UNITY_EDITOR
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //RaycastHit hit;
 
-		Debug.DrawLine(ray.origin, ray.direction);
+        //Debug.DrawLine(ray.origin, ray.direction);
 
-		if (Physics.Raycast(ray, out hit))
-		{
-			if (hit.collider.tag == "DottedCircle")
-			{
-				Cursor.SetCursor(CursorTexture, new Vector2(24, 24), CursorMode.Auto);
+        //if (Physics.Raycast(ray, out hit))
+        //{
+        //	if (hit.collider.tag == "DottedCircle")
+        //	{
+        //		Cursor.SetCursor(CursorTexture, new Vector2(24, 24), CursorMode.Auto);
 
-				if (Input.GetMouseButtonDown(0))
-				{
-					ClickTimes++;
-					NumberCounter.text = ClickTimes.ToString();
+        //		if (Input.GetMouseButtonDown(0))
+        //		{
+        //			ClickTimes++;
+        //			NumberCounter.text = ClickTimes.ToString();
 
-					if (ClickTimes == 3)
-					{
-						Destroy(NumberCounter.gameObject);
-						CurrentState = ScanningState.JUSTHANDPLACE_STATE;
-						Debug.Log("Enter Placed");
-						Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-						PopUpTime = Random.Range(PopUpMin, PopUpMax);
+        //			if (ClickTimes == 3)
+        //			{
+        //				Destroy(NumberCounter.gameObject);
+        //				CurrentState = ScanningState.JUSTHANDPLACE_STATE;
+        //				Debug.Log("Enter Placed");
+        //				Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        //				PopUpTime = Random.Range(PopUpMin, PopUpMax);
 
-						GridMaster.ScanningStart();
-					}
-				}
+        //				GridMaster.ScanningStart();
+        //			}
+        //		}
 
-			}
-		}
-		else
-		{
-			Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-		}
-		#else
-		if (FiveFingersTouch()) {
-			Destroy(NumberCounter.gameObject);
-			CurrentState = ScanningState.JUSTHANDPLACE_STATE;
-			Debug.Log("Enter Placed");
-			Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-			PopUpTime = Random.Range(PopUpMin, PopUpMax);
+        //	}
+        //}
+        //else
+        //{
+        //	Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        //}
+        //#else
+        //if (FiveFingersTouch()) {
+        //	Destroy(NumberCounter.gameObject);
+        //	CurrentState = ScanningState.JUSTHANDPLACE_STATE;
+        //	Debug.Log("Enter Placed");
+        //	Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        //	PopUpTime = Random.Range(PopUpMin, PopUpMax);
 
-			GridMaster.ScanningStart();
-		}
-       
-		#endif
+        //	GridMaster.ScanningStart();
+        //}
+
+        //#endif
+#if UNITY_EDITOR
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (ThumnprintStart.GetComponent<Collider>().Raycast(ray, out hit, Mathf.Infinity))
+            {
+                CurrentState = ThumbState.THUMBSCAN_STATE;
+            }
+        }
+#else
+        foreach (Touch EachTouch in Input.touches)
+         {
+            Ray ray = Camera.main.ScreenPointToRay(EachTouch.position);
+            RaycastHit hit;
+            if (ThumnprintStart.GetComponent<Collider>().Raycast(ray, out hit, Mathf.Infinity))
+            {
+                    CurrentState = ThumbState.THUMBSCAN_STATE;
+                    break;
+            }
+        }
+#endif
+
     }
 
+    void ThumbPlaceUpdate()
+    {
+        if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 0)
+        {
+            Color CurrentColor = ThumbBackground.color;
+            CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0.7f, Time.deltaTime * 3.5f);
+            ThumbBackground.color = CurrentColor;
+
+            if (CurrentColor.a == 0.7f)
+                DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
+        }
+        else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 1)
+        {
+            Color CurrentColor = ThumbBackground.color;
+            CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0, Time.deltaTime * 4);
+            ThumbBackground.color = CurrentColor;
+
+            if (CurrentColor.a == 0)
+                DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
+        }
+        else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 2)
+        {
+            Color CurrentColor = ThumbBackground.color;
+            CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0.7f, Time.deltaTime * 4);
+            ThumbBackground.color = CurrentColor;
+
+            if (CurrentColor.a == 0.7f)
+                DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
+        }
+        else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 3)
+        {
+            Color CurrentColor = ThumbBackground.color;
+            CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0, Time.deltaTime * 4);
+            ThumbBackground.color = CurrentColor;
+
+            if (CurrentColor.a == 0)
+                DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
+        }
+        else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 4)
+        {
+            Color CurrentColor = ThumbBackground.color;
+            CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0.7f, Time.deltaTime * 4);
+            ThumbBackground.color = CurrentColor;
+
+            if (CurrentColor.a == 0.7f)
+                DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
+        }
+        else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 5)
+        {
+            Color CurrentColor = ThumbBackground.color;
+            CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0, Time.deltaTime * 10);
+            ThumbBackground.color = CurrentColor;
+
+            if (CurrentColor.a == 0)
+                DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
+        }
+        else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 6)
+        {
+            Color CurrentColor = ThumbBackground.color;
+            CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0.7f, Time.deltaTime * 10);
+            ThumbBackground.color = CurrentColor;
+
+            if (CurrentColor.a == 0.7f)
+                DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
+        }
+
+        if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 7)
+        {
+            LASERPEWPEW.transform.position = ThumbPrint.transform.position + new Vector3(0, (ThumbPrint.transform.lossyScale.y * ThumbPrint.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
+            LASERPEWPEW.SetActive(true);
+            PanelMask.SetActive(true);
+            ThumbPrint.SetActive(true);
+
+            PanelStartScale = PanelMask.transform.localScale;
+            ThumbStartScale = ThumbPrint.transform.localScale;
+            ThumbStartPos = ThumbPrint.transform.position;
+            LaserStartPos = LASERPEWPEW.transform.position;
+
+            BottomOfFingerPrint = ThumbPrint.transform.position - new Vector3(0, (ThumbPrint.transform.lossyScale.y * ThumbPrint.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
+            PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, 0, PanelMask.transform.localScale.z);
+            PanelMask.transform.position = LASERPEWPEW.transform.position - ((LASERPEWPEW.transform.position - LaserStartPos) * 0.5f);
+            ThumbPrint.transform.position = ThumbStartPos;
+
+
+            CurrentState = ThumbState.LASER_STATE;
+        }
+    }
+        
+    void LaserUpdate()
+    {
+        Vector3 SizeBetweenTopAndLaser = LASERPEWPEW.transform.position - LaserStartPos;
+        PanelMask.transform.position = LASERPEWPEW.transform.position - (SizeBetweenTopAndLaser * 0.5f);
+        PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, (SizeBetweenTopAndLaser.y/(BottomOfFingerPrint-LaserStartPos).y)*PanelStartScale.y, PanelMask.transform.localScale.z);
+
+    }
     void HandplaceUpdate()
     {
         Color TextCurrentColor = CircleText.color;
-		ScanningText.gameObject.SetActive(true);
+        ScanningText.gameObject.SetActive(true);
         if (TextCurrentColor.a > 0)
         {
             TextCurrentColor.a -= Time.deltaTime * 2f;
@@ -306,44 +481,47 @@ public class NewScanManager : MonoBehaviour
 
         if (BeamGoingDown)
         {
-			if (FingerPrintCounter >= 0) {
-				FingerInterval -= Time.deltaTime;
-				if (FingerInterval <= 0.0f) {
-					FingerInterval = 0.35f;
-					FingerPrints [FingerPrintCounter].StartTheEffect ();
-					FingerPrints [FingerPrintCounter].OppositeDirection (true);
-					FingerPrintCounter--;
-				}
-			} 
+            if (FingerPrintCounter >= 0)
+            {
+                FingerInterval -= Time.deltaTime;
+                if (FingerInterval <= 0.0f)
+                {
+                    FingerInterval = 0.35f;
+                    FingerPrints[FingerPrintCounter].StartTheEffect();
+                    FingerPrints[FingerPrintCounter].OppositeDirection(true);
+                    FingerPrintCounter--;
+                }
+            }
             Vector3 CurrentPosition = Beam.transform.localPosition;
 
-            CurrentPosition += new Vector3(-400,0, 0) * Time.deltaTime;
+            CurrentPosition += new Vector3(-400, 0, 0) * Time.deltaTime;
 
             Beam.transform.localPosition = CurrentPosition;
 
-			if (CurrentPosition.x <= -BeamYPosition) {
-				BeamGoingDown = !BeamGoingDown;
-				FingerPrintCounter++;
-				FingerInterval = 0f;
-			}
+            if (CurrentPosition.x <= -BeamYPosition)
+            {
+                BeamGoingDown = !BeamGoingDown;
+                FingerPrintCounter++;
+                FingerInterval = 0f;
+            }
         }
         else if (Beam.transform.localPosition.x < BeamYPosition)
         {
             Vector3 CurrentPosition = Beam.transform.localPosition;
 
-            CurrentPosition += new Vector3(400,0, 0) * Time.deltaTime;
+            CurrentPosition += new Vector3(400, 0, 0) * Time.deltaTime;
 
             Beam.transform.localPosition = CurrentPosition;
         }
         //else if (FingerPrintCounter < 5)
-        if(!BeamGoingDown && FingerPrintCounter < 5)
+        if (!BeamGoingDown && FingerPrintCounter < 5)
         {
             FingerInterval -= Time.deltaTime;
             if (FingerInterval <= 0.0f)
             {
                 FingerInterval = 0.35f;
                 FingerPrints[FingerPrintCounter].StartTheEffect();
-				FingerPrints [FingerPrintCounter].OppositeDirection (false);
+                FingerPrints[FingerPrintCounter].OppositeDirection(false);
                 FingerPrintCounter++;
             }
         }
@@ -371,9 +549,9 @@ public class NewScanManager : MonoBehaviour
 
 
         //if (PercentageAmount >= 100.0f && TextBoxDis == 5 && (Beam.transform.localPosition.x >= BeamYPosition && !BeamGoingDown))
-		if (PercentageAmount >= 100.0f && (Beam.transform.localPosition.x >= BeamYPosition && !BeamGoingDown))
+        if (PercentageAmount >= 100.0f && (Beam.transform.localPosition.x >= BeamYPosition && !BeamGoingDown))
         {
-            CurrentState = ScanningState.COMPLETED_STATE;
+            //CurrentState = ScanningState.COMPLETED_STATE;
             ScanningText.text = "SCAN COMPLETED";
 
             TextInterval = 0;
@@ -434,7 +612,7 @@ public class NewScanManager : MonoBehaviour
 
         if (ScanningText.text.Length == 0 && PercentageText.text.Length == 0 /*&& GridMaster.FinishEnding*/ && CircleGone)
         {
-            CurrentState = ScanningState.WELCOME_STATE;
+            //CurrentState = ScanningState.WELCOME_STATE;
             TextInterval = 0;
         }
     }
@@ -448,15 +626,15 @@ public class NewScanManager : MonoBehaviour
     {
         TextInterval += Time.deltaTime;
 
-        float Alpha = Mathf.Lerp(0.0f, 1.0f, TextInterval/1);
-        WelcomeText.color = new Color(WelcomeText.color.r, WelcomeText.color.g, WelcomeText.color.b ,Alpha);
+        float Alpha = Mathf.Lerp(0.0f, 1.0f, TextInterval / 1);
+        WelcomeText.color = new Color(WelcomeText.color.r, WelcomeText.color.g, WelcomeText.color.b, Alpha);
         SingaporeFlag.color = new Color(SingaporeFlag.color.r, SingaporeFlag.color.g, SingaporeFlag.color.b, Alpha);
         COAPhoto.color = new Color(COAPhoto.color.r, COAPhoto.color.g, COAPhoto.color.b, Alpha);
         Logo.color = new Color(Logo.color.r, Logo.color.g, Logo.color.b, Alpha);
 
         if (Alpha >= 1.0f)
         {
-            CurrentState = ScanningState.WELCOMEDONE_STATE;
+            //CurrentState = ScanningState.WELCOMEDONE_STATE;
             TextInterval = 0;
         }
     }
