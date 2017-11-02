@@ -21,6 +21,7 @@ public class authentication_Manager : NetworkManager {
 	public Signing signLocal;
 
 	List<GameObject> palmDetector;// = new List<GameObject>();
+    GameObject ThumbDetector;
 
 	void Start () {
 		Clients = new List<NetworkConnection> ();
@@ -123,6 +124,19 @@ public class authentication_Manager : NetworkManager {
 				finger.GetComponent<Collider> ().enabled = false;
 			}
 		}
+
+        if (ThumbDetector != null)
+        {
+            ThumbDetector = null;
+        }
+        if (ThumbDetector == null)
+        {
+            ThumbDetector = GameObject.Find("ScanManager").GetComponent<NewScanManager>().ThumnprintStart;
+        }
+        if (ThumbDetector != null)
+        {
+            ThumbDetector.GetComponent<Collider>().enabled = false;
+        }
 	}
 
 	//client receives message from server/message from clients that is relayed to server
@@ -150,7 +164,16 @@ public class authentication_Manager : NetworkManager {
 				foreach (GameObject finger in palmDetector) {
 					finger.GetComponent<Collider> ().enabled = false;
 				}
-			}
+
+                    if (ThumbDetector == null)
+                    {
+                        ThumbDetector = GameObject.Find("ScanManager").GetComponent<NewScanManager>().ThumnprintStart;
+                    }
+                    if (ThumbDetector != null)
+                    {
+                        ThumbDetector.GetComponent<Collider>().enabled = false;
+                    }
+                }
 			break;
 		case "palmul":
 			if (palmDetector == null) {
@@ -161,7 +184,16 @@ public class authentication_Manager : NetworkManager {
 				foreach (GameObject finger in palmDetector) {
 					finger.GetComponent<Collider> ().enabled = true;
 				}
-			}
+
+                    if (ThumbDetector == null)
+                    {
+                        ThumbDetector = GameObject.Find("ScanManager").GetComponent<NewScanManager>().ThumnprintStart;
+                    }
+                    if (ThumbDetector != null)
+                    {
+                        ThumbDetector.GetComponent<Collider>().enabled = true;
+                    }
+                }
 			break;
 		case "sign":
 			otp.openBatFile ();
