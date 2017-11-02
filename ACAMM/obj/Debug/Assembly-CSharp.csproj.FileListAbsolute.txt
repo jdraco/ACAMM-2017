@@ -103,3 +103,38 @@ C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Temp\bin\Debug\UnityEngine.HoloL
 C:\Users\meow meow\Desktop\Work\Documents\ACAMM\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\meow meow\Desktop\Work\Documents\ACAMM\obj\Debug\Assembly-CSharp.dll
 C:\Users\meow meow\Desktop\Work\Documents\ACAMM\obj\Debug\Assembly-CSharp.pdb
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\Assembly-CSharp.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\Assembly-CSharp.pdb
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\Mono.Data.Sqlite.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\nunit.framework.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\System.Data.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEditor.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEngine.Analytics.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEngine.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEngine.HoloLens.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEngine.Networking.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEngine.TestRunner.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEngine.Timeline.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEngine.UI.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\Mono.Cecil.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\Unity.SerializationLogic.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\Unity.DataContract.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\ExCSS.Unity.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\Unity.Legacy.NRefactory.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\Unity.UNetWeaver.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\Unity.CecilTools.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEngine.xml
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEditor.xml
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEngine.UI.xml
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEngine.Networking.xml
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEngine.TestRunner.xml
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\nunit.framework.xml
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEngine.Timeline.xml
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEngine.Analytics.xml
+D:\Work\GitHub\ACAMM\ACAMM\Temp\bin\Debug\UnityEngine.HoloLens.xml
+D:\Work\GitHub\ACAMM\ACAMM\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+D:\Work\GitHub\ACAMM\ACAMM\obj\Debug\Assembly-CSharp.dll
+D:\Work\GitHub\ACAMM\ACAMM\obj\Debug\Assembly-CSharp.pdb

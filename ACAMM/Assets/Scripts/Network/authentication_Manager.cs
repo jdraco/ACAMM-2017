@@ -18,6 +18,7 @@ public class authentication_Manager : NetworkManager {
 	bool loadFinish = false;
 	public Image onlineStatus;
 	public openThirdParty otp;
+	public Signing signLocal;
 
 	List<GameObject> palmDetector;// = new List<GameObject>();
 
@@ -26,6 +27,7 @@ public class authentication_Manager : NetworkManager {
 		RefreshIP ();
 		//get the user name from save and set it as name
 		userName = PlayerPrefs.GetString ("name");
+		GlobalValues.authManager = this;
 	}
 
 	void Update() {
@@ -167,6 +169,26 @@ public class authentication_Manager : NetworkManager {
 		case "close":
 			Application.Quit();
 			break;
+		case "signlocal":
+			UnityEngine.SceneManagement.SceneManager.LoadSceneAsync ("Signing");
+			break;
+		case "signliftup":
+			if(nmsg.coor == true && signLocal != null && nmsg.sender != userName)
+			{
+				signLocal.SignLiftupNetwork(nmsg.sender);
+			}
+			break;
+		default :
+			if(nmsg.coor == true && signLocal != null && nmsg.sender != userName)
+			{
+				nmsg.msg = nmsg.msg.Substring(1, nmsg.msg.Length - 2);
+				string[] vecstring = nmsg.msg.Split(',');
+				Vector3 position = new Vector3(float.Parse(vecstring[0]),float.Parse(vecstring[1]),float.Parse(vecstring[2]));
+				position.x = position.x;
+				signLocal.SigningUpdateNetwork( position, nmsg.sender);
+			}
+
+			break;
 		}
 		#endif
 		//var nmsg = netMsg.ReadMessage<MasterMsgTypes.UCMsg> ();
@@ -233,6 +255,22 @@ public class authentication_Manager : NetworkManager {
 		msg.sender = userName;
 		thisClient.Send (MasterMsgTypes.ucMsg, msg);
 		inputMessage = "";
+	}
+
+	public void SendSigningCoordinates(Vector3 input){
+		var msg = new MasterMsgTypes.UCMsg ();
+		msg.msg = input.ToString();
+		msg.sender = userName;
+		msg.coor = true;
+		thisClient.Send (MasterMsgTypes.ucMsg, msg);
+	}
+
+	public void SendPenLiftup(){
+		var msg = new MasterMsgTypes.UCMsg ();
+		msg.msg = "signliftup";
+		msg.sender = userName;
+		msg.coor = true;
+		thisClient.Send (MasterMsgTypes.ucMsg, msg);
 	}
 
 	public void sysMessage(string msg) {

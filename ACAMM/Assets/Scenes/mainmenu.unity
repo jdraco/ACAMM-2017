@@ -805,7 +805,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 210938581c215e94f9970d849a4c1c83, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e23f8a9d754b934083f4d2b9c6ede8e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1672,6 +1672,7 @@ MonoBehaviour:
   myExtIP: 
   onlineStatus: {fileID: 1590771912}
   otp: {fileID: 0}
+  signLocal: {fileID: 0}
 --- !u!1 &774882319
 GameObject:
   m_ObjectHideFlags: 0
@@ -2830,6 +2831,7 @@ MonoBehaviour:
   cManager: {fileID: 713525275}
   serverButton: {fileID: 1729770084}
   serverButtonActive: 0
+  url: https://s3-ap-southeast-1.amazonaws.com/acamm/serverip.cfg
 --- !u!4 &1255595598
 Transform:
   m_ObjectHideFlags: 0
