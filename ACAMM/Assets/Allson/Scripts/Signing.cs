@@ -35,6 +35,11 @@ public class Signing : MonoBehaviour
 			authManager.signLocal = this;
 			country = authManager.userName;
 		}
+		if (country == "Brunei" || country == "Cambodia" || country == "Indonesia" || country == "Laos") {
+		} else {
+			JDScrollBar.value = 1;
+			ScrollPage (JDScrollBar);
+		}
 		int i = 0;
         foreach (Transform Countries in CountryParent.transform)
         {
@@ -49,6 +54,14 @@ public class Signing : MonoBehaviour
     {
 		//mousepos = Input.mousePosition;
 		//Debug.Log(DictionaryOfEmptyCountries["Singapore"].name);
+		if (Input.GetMouseButtonDown(0)){
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+			if (PlaneCollider.Raycast (ray, out hit, Mathf.Infinity))
+				SigningBool = true;
+			else
+				SigningBool = false;
+		}
 		if (SigningBool && Input.GetMouseButton (0)) {
 			SigningUpdate (Input.mousePosition);
 			if (authManager != null) {

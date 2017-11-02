@@ -18,7 +18,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 7b848b7feaa524953d09fc1851efa6da UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 7b848b7feaa524953d09fc1851efa6da UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 c24a21b131bfa67be1162db2cba4b52b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-8739acd860a5c1682e6b57b580e1be9a Assembly-CSharp.dll:.NewScanManager
+84e94926ccc9bc7f2b358df0bb5a0f47 Assembly-CSharp.dll:.NewScanManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:.SampleInfo
 5ca2d6a9a71472b0a99a75029d2956be Assembly-CSharp.dll:.ClearUIText
 609883ba9b3462e00c79080cdb51d119 Assembly-CSharp-firstpass.dll:.iTween
