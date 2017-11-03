@@ -216,6 +216,7 @@ public class Signing : MonoBehaviour
             {
                 CurrentLine = Instantiate(SignaturePrefab).GetComponent<LineRenderer>();
                 CurrentLine.positionCount = 2;
+				CurrentLine.gameObject.transform.SetParent (DictionaryOfEmptyCountries [country].gameObject.transform);
                 CurrentLine.SetPosition(0, hit.point + new Vector3(0, 0, -0.01f));
                 CurrentLine.SetPosition(1, hit.point + new Vector3(0, 0, -0.01f));
             }
@@ -257,6 +258,7 @@ public class Signing : MonoBehaviour
                 {
                     CurrentLine = Instantiate(SignaturePrefab).GetComponent<LineRenderer>();
                     CurrentLine.positionCount = 2;
+					CurrentLine.gameObject.transform.SetParent (DictionaryOfEmptyCountries [country].gameObject.transform);
                     CurrentLine.SetPosition(0, hit.point + new Vector3(0, 0, -0.01f));
                     CurrentLine.SetPosition(1, hit.point + new Vector3(0, 0, -0.01f));
                 }
