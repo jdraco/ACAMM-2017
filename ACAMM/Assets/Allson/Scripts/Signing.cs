@@ -27,6 +27,11 @@ public class Signing : MonoBehaviour
 	//public Vector3 mousepos = new Vector3();
 	public Scrollbar JDScrollBar;
 	public float mPosMaxOffset = 423;
+
+    public GameObject MC, SSCamOne, SSCamTwo;
+
+    public List<GameObject> ThingsToSet = new List<GameObject>();
+
     void Start()
 	{
 		jdFolderDfX = JDFolder.position.x;
@@ -268,4 +273,44 @@ public class Signing : MonoBehaviour
         }
     }
 
+
+    public void TakeSS()
+    {
+        StartCoroutine(SSCouroutine());
+    }
+
+
+    IEnumerator SSCouroutine()
+    {
+        foreach (GameObject ToSet in ThingsToSet)
+        {
+            ToSet.SetActive(false);
+        }
+
+        MC.SetActive(false);
+        
+        SSCamOne.SetActive(true);
+        ScreenCapture.CaptureScreenshot("Picture1.png");
+
+        yield return new WaitForSeconds(2);
+
+        SSCamOne.SetActive(false);
+        SSCamTwo.SetActive(true);
+
+        ScreenCapture.CaptureScreenshot("Picture2.png");
+
+        yield return new WaitForSeconds(2);//
+
+
+        SSCamOne.SetActive(false);
+        SSCamTwo.SetActive(false);
+        MC.SetActive(true);
+        foreach (GameObject ToSet in ThingsToSet)
+        {
+            ToSet.SetActive(true);
+        }
+        yield return null ;
+    }
+
+  
 }
