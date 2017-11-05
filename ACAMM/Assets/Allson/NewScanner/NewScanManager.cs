@@ -98,6 +98,7 @@ public class NewScanManager : MonoBehaviour
     Vector3 ThumbStartPos = new Vector3();
     Vector3 LaserStartPos = new Vector3();
     Vector3 BottomOfFingerPrint = new Vector3();
+    public GameObject PanelOfText;
 
     public Text NewScanningText;
     string Scanning = "S C A N N I N G";
@@ -690,6 +691,13 @@ public class NewScanManager : MonoBehaviour
                 if (NewScanningText.text == Scanning || NewScanningText.text == "")
                 {
                     NewScanningText.text = "";
+                    LASERPEWPEW.SetActive(false);
+                    ThumbBackground.gameObject.SetActive(false);
+                    PanelOfText.SetActive(false);
+
+                    DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
+
+                    CurrentState = ThumbState.SCANCOMPLETE_STATE;
                 }
                 else if (NewScanningText.text.Length + 1 < Scanning.Length)
                 {
@@ -701,15 +709,8 @@ public class NewScanManager : MonoBehaviour
                     NewScanningText.text = Scanning;
                 }
 
-                if (LASERPEWPEW.transform.position == BottomOfFingerPrint)
-                {
-                    LASERPEWPEW.SetActive(false);
-                    ThumbBackground.gameObject.SetActive(false);
 
-                    DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
 
-                    CurrentState = ThumbState.SCANCOMPLETE_STATE;
-                }
             }
         }
 
