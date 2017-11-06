@@ -24,11 +24,11 @@ EditorBuildSettings:
     path: Assets/Scenes/mainmenu.unity
     guid: 45d8d957f2ac7044ca34088db90193ae
   - enabled: 1
-    path: Assets/Allson/Scene/Signing.unity
-    guid: 59053e81ee7213b4a9726f77a028b212
-  - enabled: 1
     path: Assets/Scenes/profileselector.unity
     guid: 05feaa4fbad973846b7f54dd5c355b65
+  - enabled: 1
+    path: Assets/Allson/Scene/Signing.unity
+    guid: 59053e81ee7213b4a9726f77a028b212
   - enabled: 1
     path: Assets/Allson/Scene/NewScanner.unity
     guid: 609520dbc2898284dabe63e2584abdd9

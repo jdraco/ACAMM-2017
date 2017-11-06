@@ -24,7 +24,7 @@ public class Signing : MonoBehaviour
 	public authentication_Manager authManager;
 	public string country = "Singapore";
     // Use this for initialization
-	//public Vector3 mousepos = new Vector3();
+	public Vector3 mousepos = new Vector3();
 	public Scrollbar JDScrollBar;
 	public float mPosMaxOffset = 423;
 
@@ -57,8 +57,8 @@ public class Signing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		//mousepos = Input.mousePosition;
-		//Debug.Log(DictionaryOfEmptyCountries["Singapore"].name);
+		mousepos = Input.mousePosition;
+		Debug.Log(Input.mousePosition);
 		if (Input.GetMouseButtonDown(0)){
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
@@ -68,11 +68,13 @@ public class Signing : MonoBehaviour
 				SigningBool = false;
 		}
 		if (SigningBool && Input.GetMouseButton (0)) {
-			SigningUpdate (Input.mousePosition);
+			Vector3 VecOffset;
+			SigningUpdate (Input.mousePosition, out VecOffset);
 			if (authManager != null) {
 				Vector3 networkPosition = Input.mousePosition;
 				networkPosition.x = networkPosition.x + (mPosMaxOffset * JDScrollBar.value);
 				authManager.SendSigningCoordinates (networkPosition);
+				authManager.SendSigningCoordinates(networkPosition);
 			}
 		} else if (Input.GetMouseButtonUp (0)) {
 			if (authManager != null)
@@ -88,13 +90,13 @@ public class Signing : MonoBehaviour
 		JDFolder.position = new Vector3 (jdFolderDfX - (scrollValue * sbar.value), JDFolder.position.y, JDFolder.position.z);
 	}
 
-	void SigningUpdate(Vector3 position)
+	void SigningUpdate(Vector3 position, out Vector3 Offset)
     {
 //#if UNITY_EDITOR
 
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		Ray ray = Camera.main.ScreenPointToRay(position);
-        RaycastHit hit;
+		RaycastHit hit = new RaycastHit();
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -130,6 +132,8 @@ public class Signing : MonoBehaviour
 	            CurrentLine = null;
 	        }
         }
+
+		Offset = PlaneCollider.transform.position - hit.point;
 //        else if (Input.GetMouseButtonUp(0))
 //        {
 //            //this is usless tbh
@@ -183,6 +187,25 @@ public class Signing : MonoBehaviour
 				NetworkLine[DictionaryOfCountryInt[name]] = null;
 			}
 		}
+
+//		if (DictionaryOfCountryInt [name] != null) 
+//		{
+//			if (NetworkLine [DictionaryOfCountryInt [name]] != null)
+//			{
+//				NetworkLine[DictionaryOfCountryInt[name]].positionCount++;
+//				NetworkLine [DictionaryOfCountryInt [name]].SetPosition (NetworkLine [DictionaryOfCountryInt [name]].positionCount - 1, PlaneCollider.transform.position + position);
+//								
+//			}
+//			else
+//			{
+//				NetworkLine[DictionaryOfCountryInt[name]] = Instantiate(SignaturePrefab).GetComponent<LineRenderer>();
+//									NetworkLine[DictionaryOfCountryInt[name]].gameObject.name = name;
+//									NetworkLine[DictionaryOfCountryInt[name]].gameObject.transform.SetParent (DictionaryOfEmptyCountries [name].gameObject.transform);
+//									NetworkLine[DictionaryOfCountryInt[name]].positionCount = 2;
+//				NetworkLine[DictionaryOfCountryInt[name]].SetPosition(0, PlaneCollider.transform.position + position + new Vector3(0, 0, -0.01f));
+//				NetworkLine[DictionaryOfCountryInt[name]].SetPosition(1, PlaneCollider.transform.position + position+ new Vector3(0, 0, -0.01f));
+//			}
+//		}
 
 	}
 	public void SignLiftupNetwork(string name)

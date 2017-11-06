@@ -13,7 +13,7 @@ public class SetName : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		QualitySettings.vSyncCount = 0;
-		Application.targetFrameRate = 30;
+		Application.targetFrameRate = 60;
 		Debug.Log (PlayerPrefs.GetString ("name"));
 		LoadNamefromFile(Application.dataPath + "/serverid.cfg");
 		if (PlayerPrefs.GetString ("name") != "") {

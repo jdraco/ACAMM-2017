@@ -201,7 +201,7 @@ MonoBehaviour:
   m_UseSimulator: 0
   m_SimulatedLatency: 1
   m_PacketLossPercentage: 0
-  m_MaxBufferedPackets: 16
+  m_MaxBufferedPackets: 128
   m_AllowFragmentation: 1
   m_MatchHost: localhost
   m_MatchPort: 7776
@@ -879,7 +879,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1751582461}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.0066599995
+  m_Size: 0.00666
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
