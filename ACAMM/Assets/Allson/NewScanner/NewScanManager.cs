@@ -346,6 +346,7 @@ public class NewScanManager : MonoBehaviour
          {
             Ray ray = Camera.main.ScreenPointToRay(EachTouch.position);
             RaycastHit hit;
+            Debug.Log("Touch Detected");
             if (ThumnprintStart.GetComponent<Collider>().Raycast(ray, out hit, Mathf.Infinity))
             {
                     CurrentState = ThumbState.THUMBSCAN_STATE;
