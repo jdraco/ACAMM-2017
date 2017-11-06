@@ -57,8 +57,8 @@ public class Signing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		mousepos = Input.mousePosition;
-		Debug.Log(Input.mousePosition);
+		//mousepos = Input.mousePosition;
+		//Debug.Log(Input.mousePosition);
 		if (Input.GetMouseButtonDown(0)){
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
@@ -70,12 +70,6 @@ public class Signing : MonoBehaviour
 		if (SigningBool && Input.GetMouseButton (0)) {
 			Vector3 VecOffset;
 			SigningUpdate (Input.mousePosition, out VecOffset);
-			if (authManager != null) {
-				Vector3 networkPosition = Input.mousePosition;
-				networkPosition.x = networkPosition.x + (mPosMaxOffset * JDScrollBar.value);
-				authManager.SendSigningCoordinates (networkPosition);
-				authManager.SendSigningCoordinates(networkPosition);
-			}
 		} else if (Input.GetMouseButtonUp (0)) {
 			if (authManager != null)
 				authManager.SendPenLiftup ();
@@ -87,6 +81,7 @@ public class Signing : MonoBehaviour
     }
 
 	public void ScrollPage(Scrollbar sbar){
+		Debug.Log(Input.mousePosition);
 		JDFolder.position = new Vector3 (jdFolderDfX - (scrollValue * sbar.value), JDFolder.position.y, JDFolder.position.z);
 	}
 
@@ -107,12 +102,24 @@ public class Signing : MonoBehaviour
 				CurrentLine.gameObject.transform.SetParent (DictionaryOfEmptyCountries [country].gameObject.transform);
                 CurrentLine.SetPosition(0, hit.point + new Vector3(0, 0, -0.01f));
                 CurrentLine.SetPosition(1, hit.point + new Vector3(0, 0, -0.01f));
+				if (authManager != null) {
+					Vector3 networkPosition = Input.mousePosition;
+					networkPosition.x = networkPosition.x;// + (mPosMaxOffset * JDScrollBar.value);
+					//authManager.SendSigningCoordinates (networkPosition);
+					authManager.SendSigningCoordinates(networkPosition ,JDScrollBar.value);
+				}
             }
         }
         else if (Input.GetMouseButton(0))
         {
 	        if (PlaneCollider.Raycast(ray, out hit, Mathf.Infinity))
 	        {
+				if (authManager != null) {
+					Vector3 networkPosition = Input.mousePosition;
+					networkPosition.x = networkPosition.x;// + (mPosMaxOffset * JDScrollBar.value);
+					//authManager.SendSigningCoordinates (networkPosition);
+					authManager.SendSigningCoordinates(networkPosition ,JDScrollBar.value);
+				}
 	            if (CurrentLine != null)
 	            {
 	                CurrentLine.positionCount++;
@@ -157,10 +164,10 @@ public class Signing : MonoBehaviour
 //#endif
     }
 
-	public void SigningUpdateNetwork(Vector3 position, string name)
+	public void SigningUpdateNetwork(Vector3 position, string name, float offset)
 	{
-		Debug.Log (DictionaryOfCountryInt [name]);
-		position.x = position.x -(mPosMaxOffset * JDScrollBar.value);
+		//Debug.Log (DictionaryOfCountryInt [name]);
+		position.x = position.x +(mPosMaxOffset * (JDScrollBar.value-offset));
 		Ray ray = Camera.main.ScreenPointToRay(position);
 		RaycastHit hit;
 		if(DictionaryOfCountryInt[name] != null)

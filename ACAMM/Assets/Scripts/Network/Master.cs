@@ -16,7 +16,7 @@ public class MasterMsgTypes
 	{
 		public string sender;
 		public string msg;
-		public bool coor = false;
+		public float coor = -1;
 	}
 
 	public class VCMsg : MessageBase
