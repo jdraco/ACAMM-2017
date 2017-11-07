@@ -771,32 +771,32 @@ public class NewScanManager : MonoBehaviour
                 float PercentageAmount = ((SizeOfScan / (TopOfFinger.y - BottomOfFingerPrint.y)) * 50);
                 if (PercentageAmount > 50)
                     PercentageAmount = 50;
-                TopText.text = "Percentage: " + PercentageAmount.ToString("F2") + "%" ;
+                BottomText.text = "Scanning " + ((int)PercentageAmount).ToString("D") + "%" ;
             }
             else
             {
-                TopText.text = "Percentage: 0%"; 
+                BottomText.text = "Scanning 0%"; 
             }
 
-            TextInterval += Time.deltaTime;
-            if (TextInterval >= 0.15f)
-            {
-                TextInterval = 0.0f;
+            //TextInterval += Time.deltaTime;
+            //if (TextInterval >= 0.15f)
+            //{
+            //    TextInterval = 0.0f;
 
-                if (BottomText.text == Scanning)
-                {
-                    BottomText.text = "";
-                }
-                else if (BottomText.text.Length + 1 < Scanning.Length)
-                {
-                    BottomText.text += Scanning[BottomText.text.Length];
-                    BottomText.text += Scanning[BottomText.text.Length];
-                }
-                else
-                {
-                    BottomText.text = Scanning;
-                }
-            }
+            //    if (BottomText.text == Scanning)
+            //    {
+            //        BottomText.text = "";
+            //    }
+            //    else if (BottomText.text.Length + 1 < Scanning.Length)
+            //    {
+            //        BottomText.text += Scanning[BottomText.text.Length];
+            //        BottomText.text += Scanning[BottomText.text.Length];
+            //    }
+            //    else
+            //    {
+            //        BottomText.text = Scanning;
+            //    }
+            //}
 
             if (LASERPEWPEW.transform.position == TopOfRoundBackground)
             {
@@ -836,32 +836,32 @@ public class NewScanManager : MonoBehaviour
                 float PercentageAmount = ((SizeOfScan / (TopOfFinger.y - BottomOfFingerPrint.y)) * 50);
                 if (PercentageAmount > 50)
                     PercentageAmount = 50;
-                TopText.text = "Percentage: " + (PercentageAmount+50).ToString("F2") + "%";
+                BottomText.text = "Scanning " + ((int)(PercentageAmount+50)).ToString() + "%";
             }
             else
             {
-                TopText.text = "Percentage: 50.00%";
+                BottomText.text = "Scanning 50%";
             }
 
-            TextInterval += Time.deltaTime;
-            if (TextInterval >= 0.15f)
-            {
-                TextInterval = 0.0f;
+            //TextInterval += Time.deltaTime;
+            //if (TextInterval >= 0.15f)
+            //{
+            //    TextInterval = 0.0f;
 
-                if (BottomText.text == Scanning)
-                {
-                    BottomText.text = "";
-                }
-                else if (BottomText.text.Length + 1 < Scanning.Length)
-                {
-                    BottomText.text += Scanning[BottomText.text.Length];
-                    BottomText.text += Scanning[BottomText.text.Length];
-                }
-                else
-                {
-                    BottomText.text = Scanning;
-                }
-            }
+            //    if (BottomText.text == Scanning)
+            //    {
+            //        BottomText.text = "";
+            //    }
+            //    else if (BottomText.text.Length + 1 < Scanning.Length)
+            //    {
+            //        BottomText.text += Scanning[BottomText.text.Length];
+            //        BottomText.text += Scanning[BottomText.text.Length];
+            //    }
+            //    else
+            //    {
+            //        BottomText.text = Scanning;
+            //    }
+            //}
 
             if (LASERPEWPEW.transform.position == BottomOfRoundBackground)
             {
