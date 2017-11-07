@@ -98,12 +98,20 @@ public class NewScanManager : MonoBehaviour
     Vector3 ThumbStartPos = new Vector3();
     Vector3 LaserStartPos = new Vector3();
     Vector3 BottomOfFingerPrint = new Vector3();
+    Vector3 TopOfingerPrint = new Vector3();
+
     public GameObject PanelOfText;
 
     public Text NewScanningText;
     string Scanning = "S C A N N I N G";
 
     public GameObject Point1, Point2;
+    public GameObject RoundBackground;
+
+    public Text TopText, BottomText;
+
+    public List<GameObject> ListOfThingsToTurnOff;
+
     Dictionary<string, Vector3> DictionaryOfVectors = new Dictionary<string, Vector3>()
     {
         {"Point1StartPoint", new Vector3()},
@@ -359,73 +367,94 @@ public class NewScanManager : MonoBehaviour
 
     void ThumbPlaceUpdate()
     {
-        if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 0)
-        {
-            Color CurrentColor = ThumbBackground.color;
-            CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0.7f, Time.deltaTime * 3.5f);
-            ThumbBackground.color = CurrentColor;
+        //if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 0)
+        //{
+        //    Color CurrentColor = ThumbBackground.color;
+        //    CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0.7f, Time.deltaTime * 3.5f);
+        //    ThumbBackground.color = CurrentColor;
 
-            if (CurrentColor.a == 0.7f)
-                DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
-        }
-        else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 1)
-        {
-            Color CurrentColor = ThumbBackground.color;
-            CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0, Time.deltaTime * 4);
-            ThumbBackground.color = CurrentColor;
+        //    if (CurrentColor.a == 0.7f)
+        //        DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
+        //}
+        //else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 1)
+        //{
+        //    Color CurrentColor = ThumbBackground.color;
+        //    CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0, Time.deltaTime * 4);
+        //    ThumbBackground.color = CurrentColor;
 
-            if (CurrentColor.a == 0)
-                DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
-        }
-        else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 2)
-        {
-            Color CurrentColor = ThumbBackground.color;
-            CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0.7f, Time.deltaTime * 4);
-            ThumbBackground.color = CurrentColor;
+        //    if (CurrentColor.a == 0)
+        //        DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
+        //}
+        //else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 2)
+        //{
+        //    Color CurrentColor = ThumbBackground.color;
+        //    CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0.7f, Time.deltaTime * 4);
+        //    ThumbBackground.color = CurrentColor;
 
-            if (CurrentColor.a == 0.7f)
-                DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
-        }
-        else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 3)
-        {
-            Color CurrentColor = ThumbBackground.color;
-            CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0, Time.deltaTime * 4);
-            ThumbBackground.color = CurrentColor;
+        //    if (CurrentColor.a == 0.7f)
+        //        DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
+        //}
+        //else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 3)
+        //{
+        //    Color CurrentColor = ThumbBackground.color;
+        //    CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0, Time.deltaTime * 4);
+        //    ThumbBackground.color = CurrentColor;
 
-            if (CurrentColor.a == 0)
-                DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
-        }
-        else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 4)
-        {
-            Color CurrentColor = ThumbBackground.color;
-            CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0.7f, Time.deltaTime * 4);
-            ThumbBackground.color = CurrentColor;
+        //    if (CurrentColor.a == 0)
+        //        DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
+        //}
+        //else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 4)
+        //{
+        //    Color CurrentColor = ThumbBackground.color;
+        //    CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0.7f, Time.deltaTime * 4);
+        //    ThumbBackground.color = CurrentColor;
 
-            if (CurrentColor.a == 0.7f)
-                DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
-        }
-        else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 5)
-        {
-            Color CurrentColor = ThumbBackground.color;
-            CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0, Time.deltaTime * 10);
-            ThumbBackground.color = CurrentColor;
+        //    if (CurrentColor.a == 0.7f)
+        //        DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
+        //}
+        //else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 5)
+        //{
+        //    Color CurrentColor = ThumbBackground.color;
+        //    CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0, Time.deltaTime * 10);
+        //    ThumbBackground.color = CurrentColor;
 
-            if (CurrentColor.a == 0)
-                DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
-        }
-        else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 6)
-        {
-            Color CurrentColor = ThumbBackground.color;
-            CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0.7f, Time.deltaTime * 10);
-            ThumbBackground.color = CurrentColor;
+        //    if (CurrentColor.a == 0)
+        //        DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
+        //}
+        //else if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 6)
+        //{
+        //    Color CurrentColor = ThumbBackground.color;
+        //    CurrentColor.a = Mathf.MoveTowards(CurrentColor.a, 0.7f, Time.deltaTime * 10);
+        //    ThumbBackground.color = CurrentColor;
 
-            if (CurrentColor.a == 0.7f)
-                DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
-        }
+        //    if (CurrentColor.a == 0.7f)
+        //        DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK]++;
+        //}
 
-        if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 7)
+        //if (DictionaryOfTriggers[ThumbState.THUMBSCAN_STATE][ThumbSubState.THUMB_BACKGROUNDBLINK] == 7)
         {
-            LASERPEWPEW.transform.position = ThumbPrint.transform.position + new Vector3(0, (ThumbPrint.transform.lossyScale.y * ThumbPrint.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
+            //LASERPEWPEW.transform.position = ThumbPrint.transform.position + new Vector3(0, (ThumbPrint.transform.lossyScale.y * ThumbPrint.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
+            //LASERPEWPEW.SetActive(true);
+            //PanelMask.SetActive(true);
+            //ThumbPrint.SetActive(true);
+
+            //PanelStartScale = PanelMask.transform.localScale;
+            //ThumbStartScale = ThumbPrint.transform.localScale;
+            //ThumbStartPos = ThumbPrint.transform.position;
+            //LaserStartPos = LASERPEWPEW.transform.position;
+
+            //DictionaryOfVectors["Point1StartPoint"] = Point1.transform.position;
+            //DictionaryOfVectors["Point2StartPoint"] = Point2.transform.position;
+
+            //DictionaryOfVectors["Point1StartScale"] = Point1.transform.localScale;
+            //DictionaryOfVectors["Point2StartScale"] = Point2.transform.localScale;
+
+            //BottomOfFingerPrint = ThumbPrint.transform.position - new Vector3(0, (ThumbPrint.transform.lossyScale.y * ThumbPrint.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
+            //PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, 0, PanelMask.transform.localScale.z);
+            //PanelMask.transform.position = LASERPEWPEW.transform.position - ((LASERPEWPEW.transform.position - LaserStartPos) * 0.5f);
+            //ThumbPrint.transform.position = ThumbStartPos;
+
+            LASERPEWPEW.transform.position = RoundBackground.transform.position - new Vector3(0, (RoundBackground.transform.lossyScale.y * RoundBackground.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
             LASERPEWPEW.SetActive(true);
             PanelMask.SetActive(true);
             ThumbPrint.SetActive(true);
@@ -435,29 +464,297 @@ public class NewScanManager : MonoBehaviour
             ThumbStartPos = ThumbPrint.transform.position;
             LaserStartPos = LASERPEWPEW.transform.position;
 
-            DictionaryOfVectors["Point1StartPoint"] = Point1.transform.position;
-            DictionaryOfVectors["Point2StartPoint"] = Point2.transform.position;
-
-            DictionaryOfVectors["Point1StartScale"] = Point1.transform.localScale;
-            DictionaryOfVectors["Point2StartScale"] = Point2.transform.localScale;
-
             BottomOfFingerPrint = ThumbPrint.transform.position - new Vector3(0, (ThumbPrint.transform.lossyScale.y * ThumbPrint.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
             PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, 0, PanelMask.transform.localScale.z);
-            PanelMask.transform.position = LASERPEWPEW.transform.position - ((LASERPEWPEW.transform.position - LaserStartPos) * 0.5f);
+            PanelMask.transform.position = LASERPEWPEW.transform.position - ((ThumbPrint.transform.position + new Vector3(0, (ThumbPrint.transform.lossyScale.y * ThumbPrint.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0)) * 0.5f);
             ThumbPrint.transform.position = ThumbStartPos;
 
-           CurrentState = ThumbState.LASER_STATE;
+            CurrentState = ThumbState.LASER_STATE;
+
+
+
+
+            TopText.text = "";
+            BottomText.text = "";
         }
     }
         
     void LaserUpdate()
     {
+        //if (DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN] == 0)
+        //{
+        //    LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, BottomOfFingerPrint, Time.deltaTime * 0.3f);
+
+        //    Vector3 SizeBetweenTopAndLaser = LASERPEWPEW.transform.position - LaserStartPos;
+        //    float ChangeInPercent = (SizeBetweenTopAndLaser.y / (BottomOfFingerPrint - LaserStartPos).y);
+
+        //    PanelMask.transform.position = LASERPEWPEW.transform.position - (SizeBetweenTopAndLaser * 0.5f);
+        //    PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, ChangeInPercent * PanelStartScale.y, PanelMask.transform.localScale.z);
+
+        //    if (ChangeInPercent != 0.0f)
+        //        ThumbPrint.transform.localScale = new Vector3(ThumbPrint.transform.localScale.x, ThumbStartScale.y / ChangeInPercent, ThumbPrint.transform.localScale.z);
+
+        //    ThumbPrint.transform.position = ThumbStartPos;
+
+        //    TextInterval += Time.deltaTime;
+        //    if (TextInterval >= 0.2f)
+        //    {
+        //        TextInterval = 0.0f;
+
+        //        if (NewScanningText.text == Scanning)
+        //        {
+        //            NewScanningText.text = "";
+        //        }
+        //        else if (NewScanningText.text.Length + 1 < Scanning.Length)
+        //        {
+        //            NewScanningText.text += Scanning[NewScanningText.text.Length];
+        //            NewScanningText.text += Scanning[NewScanningText.text.Length];
+        //        }
+        //        else
+        //        {
+        //            NewScanningText.text = Scanning;
+        //        }
+        //    }
+
+
+        //    if (LASERPEWPEW.transform.position == BottomOfFingerPrint)
+        //    {
+        //        DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
+        //    }
+        //}
+        //else if (DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN] == 1)
+        //{
+        //    LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, LaserStartPos, Time.deltaTime * 0.3f);
+
+        //    Vector3 SizeBetweenTopAndLaser = LASERPEWPEW.transform.position - LaserStartPos;
+        //    float ChangeInPercent = (SizeBetweenTopAndLaser.y / (BottomOfFingerPrint - LaserStartPos).y);
+
+        //    PanelMask.transform.position = LASERPEWPEW.transform.position - (SizeBetweenTopAndLaser * 0.5f);
+        //    PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, ChangeInPercent * PanelStartScale.y, PanelMask.transform.localScale.z);
+
+        //    if (ChangeInPercent != 0.0f)
+        //        ThumbPrint.transform.localScale = new Vector3(ThumbPrint.transform.localScale.x, ThumbStartScale.y / ChangeInPercent, ThumbPrint.transform.localScale.z);
+
+        //    ThumbPrint.transform.position = ThumbStartPos;
+
+        //    TextInterval += Time.deltaTime;
+        //    if (TextInterval >= 0.2f)
+        //    {
+        //        TextInterval = 0.0f;
+
+        //        if (NewScanningText.text == Scanning)
+        //        {
+        //            NewScanningText.text = "";
+        //        }
+        //        else if (NewScanningText.text.Length + 1 < Scanning.Length)
+        //        {
+        //            NewScanningText.text += Scanning[NewScanningText.text.Length];
+        //            NewScanningText.text += Scanning[NewScanningText.text.Length];
+        //        }
+        //        else
+        //        {
+        //            NewScanningText.text = Scanning;
+        //        }
+        //    }
+
+        //    if (LASERPEWPEW.transform.position == LaserStartPos)
+        //    {
+        //        DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
+
+        //        Point1.SetActive(true);
+        //    }
+        //}
+        //else if (DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN] == 2)
+        //{
+        //    LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, BottomOfFingerPrint, Time.deltaTime * 0.3f);
+
+        //    Vector3 SizeBetweenTopAndLaser = LASERPEWPEW.transform.position - LaserStartPos;
+        //    float ChangeInPercent = (SizeBetweenTopAndLaser.y / (BottomOfFingerPrint - LaserStartPos).y);
+
+        //    PanelMask.transform.position = LASERPEWPEW.transform.position - (SizeBetweenTopAndLaser * 0.5f);
+        //    PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, ChangeInPercent * PanelStartScale.y, PanelMask.transform.localScale.z);
+
+        //    if (ChangeInPercent != 0.0f)
+        //    {
+        //        ThumbPrint.transform.localScale = new Vector3(ThumbPrint.transform.localScale.x, ThumbStartScale.y / ChangeInPercent, ThumbPrint.transform.localScale.z);
+        //        Point1.transform.localScale = new Vector3(Point1.transform.localScale.x, DictionaryOfVectors["Point1StartScale"].y / ChangeInPercent, Point1.transform.localScale.z);
+        //    }
+
+        //    ThumbPrint.transform.position = ThumbStartPos;
+        //    Point1.transform.position = DictionaryOfVectors["Point1StartPoint"];
+
+        //    TextInterval += Time.deltaTime;
+        //    if (TextInterval >= 0.2f)
+        //    {
+        //        TextInterval = 0.0f;
+
+        //        if (NewScanningText.text == Scanning)
+        //        {
+        //            NewScanningText.text = "";
+        //        }
+        //        else if (NewScanningText.text.Length + 1 < Scanning.Length)
+        //        {
+        //            NewScanningText.text += Scanning[NewScanningText.text.Length];
+        //            NewScanningText.text += Scanning[NewScanningText.text.Length];
+        //        }
+        //        else
+        //        {
+        //            NewScanningText.text = Scanning;
+        //        }
+        //    }
+
+        //    if (LASERPEWPEW.transform.position == BottomOfFingerPrint)
+        //    {
+        //        ThumbPrint.transform.SetParent(PanelMask.transform.parent);
+        //        Point1.transform.SetParent(PanelMask.transform.parent);
+
+        //        ThumbPrint.transform.SetSiblingIndex(PanelMask.transform.GetSiblingIndex());
+        //        Point1.transform.SetSiblingIndex(PanelMask.transform.GetSiblingIndex());
+
+        //        Point2.SetActive(true);
+
+        //        PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, 0, PanelMask.transform.localScale.z);
+        //        PanelMask.transform.position = LASERPEWPEW.transform.position - ((LASERPEWPEW.transform.position - BottomOfFingerPrint) * 0.5f);
+
+        //        DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
+        //    }
+        //}
+        //else if (DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN] == 3)
+        //{
+        //    LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, LaserStartPos, Time.deltaTime * 0.3f);
+
+        //    Vector3 SizeBetweenBottomAndLaser = LASERPEWPEW.transform.position - BottomOfFingerPrint;
+        //    float ChangeInPercent = (SizeBetweenBottomAndLaser.y / (BottomOfFingerPrint - LaserStartPos).y);
+
+        //    PanelMask.transform.position = LASERPEWPEW.transform.position - (SizeBetweenBottomAndLaser * 0.5f);
+        //    PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, ChangeInPercent * PanelStartScale.y, PanelMask.transform.localScale.z);
+
+        //    if (ChangeInPercent != 0.0f)
+        //    {
+        //        Point2.transform.localScale = new Vector3(Point2.transform.localScale.x, DictionaryOfVectors["Point2StartScale"].y / ChangeInPercent, Point2.transform.localScale.z);
+        //    }
+
+        //    Point2.transform.position = DictionaryOfVectors["Point2StartPoint"];
+
+        //    TextInterval += Time.deltaTime;
+        //    if (TextInterval >= 0.2f)
+        //    {
+        //        TextInterval = 0.0f;
+
+        //        if (NewScanningText.text == Scanning)
+        //        {
+        //            NewScanningText.text = "";
+        //        }
+        //        else if (NewScanningText.text.Length + 1 < Scanning.Length)
+        //        {
+        //            NewScanningText.text += Scanning[NewScanningText.text.Length];
+        //            NewScanningText.text += Scanning[NewScanningText.text.Length];
+        //        }
+        //        else
+        //        {
+        //            NewScanningText.text = Scanning;
+        //        }
+        //    }
+
+        //    if (LASERPEWPEW.transform.position == LaserStartPos)
+        //    {
+        //        ThumbPrint.transform.SetParent(PanelMask.transform);
+        //        Point1.transform.SetParent(PanelMask.transform);
+        //        Point2.transform.SetAsLastSibling();
+
+        //        DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
+        //    }
+        //}
+        //else if (DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN] == 4)
+        //{
+        //    LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, BottomOfFingerPrint, Time.deltaTime * 0.3f);
+
+        //    Vector3 SizeBetweenTopAndLaser = LASERPEWPEW.transform.position - BottomOfFingerPrint;
+        //    float ChangeInPercent = (SizeBetweenTopAndLaser.y / (BottomOfFingerPrint - LaserStartPos).y);
+
+        //    PanelMask.transform.position = LASERPEWPEW.transform.position - (SizeBetweenTopAndLaser * 0.5f);
+        //    PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, ChangeInPercent * PanelStartScale.y, PanelMask.transform.localScale.z);
+
+        //    if (ChangeInPercent != 0.0f)
+        //    {
+        //        ThumbPrint.transform.localScale = new Vector3(ThumbPrint.transform.localScale.x, ThumbStartScale.y / ChangeInPercent, ThumbPrint.transform.localScale.z);
+        //        Point1.transform.localScale = new Vector3(Point1.transform.localScale.x, DictionaryOfVectors["Point1StartScale"].y / ChangeInPercent, Point1.transform.localScale.z);
+        //        Point2.transform.localScale = new Vector3(Point2.transform.localScale.x, DictionaryOfVectors["Point2StartScale"].y / ChangeInPercent, Point2.transform.localScale.z);
+        //    }
+
+        //    ThumbPrint.transform.position = ThumbStartPos;
+        //    Point1.transform.position = DictionaryOfVectors["Point1StartPoint"];
+        //    Point2.transform.position = DictionaryOfVectors["Point2StartPoint"];
+
+        //    TextInterval += Time.deltaTime;
+        //    if (TextInterval >= 0.2f)
+        //    {
+        //        TextInterval = 0.0f;
+
+        //        if (NewScanningText.text == Scanning)
+        //        {
+        //            NewScanningText.text = "";
+        //        }
+        //        else if (NewScanningText.text.Length + 1 < Scanning.Length)
+        //        {
+        //            NewScanningText.text += Scanning[NewScanningText.text.Length];
+        //            NewScanningText.text += Scanning[NewScanningText.text.Length];
+        //        }
+        //        else
+        //        {
+        //            NewScanningText.text = Scanning;
+        //        }
+
+        //        if (LASERPEWPEW.transform.position == BottomOfFingerPrint)
+        //        {
+        //            DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
+        //        }
+        //    }
+        //}
+        //else if (DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN] == 5)
+        //{
+        //    TextInterval += Time.deltaTime;
+        //    if (TextInterval >= 0.2f)
+        //    {
+        //        TextInterval = 0.0f;
+
+        //        if (NewScanningText.text == Scanning || NewScanningText.text == "")
+        //        {
+        //            NewScanningText.text = "";
+        //            LASERPEWPEW.SetActive(false);
+        //            ThumbBackground.gameObject.SetActive(false);
+        //            PanelOfText.SetActive(false);
+
+        //            DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
+
+        //            CurrentState = ThumbState.SCANCOMPLETE_STATE;
+        //        }
+        //        else if (NewScanningText.text.Length + 1 < Scanning.Length)
+        //        {
+        //            NewScanningText.text += Scanning[NewScanningText.text.Length];
+        //            NewScanningText.text += Scanning[NewScanningText.text.Length];
+        //        }
+        //        else
+        //        {
+        //            NewScanningText.text = Scanning;
+        //        }
+
+
+
+        //    }
+        //}
+
         if (DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN] == 0)
         {
-            LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, BottomOfFingerPrint, Time.deltaTime * 0.3f);
+            Vector3 TopOfRoundBackground = RoundBackground.transform.position + new Vector3(0, (RoundBackground.transform.lossyScale.y * RoundBackground.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
 
-            Vector3 SizeBetweenTopAndLaser = LASERPEWPEW.transform.position - LaserStartPos;
-            float ChangeInPercent = (SizeBetweenTopAndLaser.y / (BottomOfFingerPrint - LaserStartPos).y);
+            LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, TopOfRoundBackground, Time.deltaTime * 1.5f);
+
+
+            Vector3 TopOfFinger = ThumbPrint.transform.position + new Vector3(0, (ThumbPrint.transform.lossyScale.y * ThumbPrint.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
+
+            Vector3 SizeBetweenTopAndLaser = LASERPEWPEW.transform.position - TopOfFinger;
+            float ChangeInPercent = (SizeBetweenTopAndLaser.y / (BottomOfFingerPrint - TopOfFinger).y);
 
             PanelMask.transform.position = LASERPEWPEW.transform.position - (SizeBetweenTopAndLaser * 0.5f);
             PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, ChangeInPercent * PanelStartScale.y, PanelMask.transform.localScale.z);
@@ -468,37 +765,41 @@ public class NewScanManager : MonoBehaviour
             ThumbPrint.transform.position = ThumbStartPos;
 
             TextInterval += Time.deltaTime;
-            if (TextInterval >= 0.2f)
+            if (TextInterval >= 0.15f)
             {
                 TextInterval = 0.0f;
 
-                if (NewScanningText.text == Scanning)
+                if (BottomText.text == Scanning)
                 {
-                    NewScanningText.text = "";
+                    BottomText.text = "";
                 }
-                else if (NewScanningText.text.Length + 1 < Scanning.Length)
+                else if (BottomText.text.Length + 1 < Scanning.Length)
                 {
-                    NewScanningText.text += Scanning[NewScanningText.text.Length];
-                    NewScanningText.text += Scanning[NewScanningText.text.Length];
+                    BottomText.text += Scanning[BottomText.text.Length];
+                    BottomText.text += Scanning[BottomText.text.Length];
                 }
                 else
                 {
-                    NewScanningText.text = Scanning;
+                    BottomText.text = Scanning;
                 }
             }
 
-
-            if (LASERPEWPEW.transform.position == BottomOfFingerPrint)
+            if (LASERPEWPEW.transform.position == TopOfRoundBackground)
             {
                 DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
             }
         }
         else if (DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN] == 1)
         {
-            LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, LaserStartPos, Time.deltaTime * 0.3f);
+            Vector3 BottomOfRoundBackground = RoundBackground.transform.position - new Vector3(0, (RoundBackground.transform.lossyScale.y * RoundBackground.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
 
-            Vector3 SizeBetweenTopAndLaser = LASERPEWPEW.transform.position - LaserStartPos;
-            float ChangeInPercent = (SizeBetweenTopAndLaser.y / (BottomOfFingerPrint - LaserStartPos).y);
+            LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, BottomOfRoundBackground, Time.deltaTime * 1.5f);
+
+
+            Vector3 TopOfFinger = ThumbPrint.transform.position + new Vector3(0, (ThumbPrint.transform.lossyScale.y * ThumbPrint.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
+
+            Vector3 SizeBetweenTopAndLaser = LASERPEWPEW.transform.position - TopOfFinger;
+            float ChangeInPercent = (SizeBetweenTopAndLaser.y / (BottomOfFingerPrint - TopOfFinger).y);
 
             PanelMask.transform.position = LASERPEWPEW.transform.position - (SizeBetweenTopAndLaser * 0.5f);
             PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, ChangeInPercent * PanelStartScale.y, PanelMask.transform.localScale.z);
@@ -509,209 +810,39 @@ public class NewScanManager : MonoBehaviour
             ThumbPrint.transform.position = ThumbStartPos;
 
             TextInterval += Time.deltaTime;
-            if (TextInterval >= 0.2f)
+            if (TextInterval >= 0.15f)
             {
                 TextInterval = 0.0f;
 
-                if (NewScanningText.text == Scanning)
+                if (BottomText.text == Scanning)
                 {
-                    NewScanningText.text = "";
+                    BottomText.text = "";
                 }
-                else if (NewScanningText.text.Length + 1 < Scanning.Length)
+                else if (BottomText.text.Length + 1 < Scanning.Length)
                 {
-                    NewScanningText.text += Scanning[NewScanningText.text.Length];
-                    NewScanningText.text += Scanning[NewScanningText.text.Length];
-                }
-                else
-                {
-                    NewScanningText.text = Scanning;
-                }
-            }
-
-            if (LASERPEWPEW.transform.position == LaserStartPos)
-            {
-                DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
-
-                Point1.SetActive(true);
-            }
-        }
-        else if (DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN] == 2)
-        {
-            LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, BottomOfFingerPrint, Time.deltaTime * 0.3f);
-
-            Vector3 SizeBetweenTopAndLaser = LASERPEWPEW.transform.position - LaserStartPos;
-            float ChangeInPercent = (SizeBetweenTopAndLaser.y / (BottomOfFingerPrint - LaserStartPos).y);
-
-            PanelMask.transform.position = LASERPEWPEW.transform.position - (SizeBetweenTopAndLaser * 0.5f);
-            PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, ChangeInPercent * PanelStartScale.y, PanelMask.transform.localScale.z);
-
-            if (ChangeInPercent != 0.0f)
-            {
-                ThumbPrint.transform.localScale = new Vector3(ThumbPrint.transform.localScale.x, ThumbStartScale.y / ChangeInPercent, ThumbPrint.transform.localScale.z);
-                Point1.transform.localScale = new Vector3(Point1.transform.localScale.x, DictionaryOfVectors["Point1StartScale"].y / ChangeInPercent, Point1.transform.localScale.z);
-            }
-
-            ThumbPrint.transform.position = ThumbStartPos;
-            Point1.transform.position = DictionaryOfVectors["Point1StartPoint"];
-
-            TextInterval += Time.deltaTime;
-            if (TextInterval >= 0.2f)
-            {
-                TextInterval = 0.0f;
-
-                if (NewScanningText.text == Scanning)
-                {
-                    NewScanningText.text = "";
-                }
-                else if (NewScanningText.text.Length + 1 < Scanning.Length)
-                {
-                    NewScanningText.text += Scanning[NewScanningText.text.Length];
-                    NewScanningText.text += Scanning[NewScanningText.text.Length];
+                    BottomText.text += Scanning[BottomText.text.Length];
+                    BottomText.text += Scanning[BottomText.text.Length];
                 }
                 else
                 {
-                    NewScanningText.text = Scanning;
+                    BottomText.text = Scanning;
                 }
             }
 
-            if (LASERPEWPEW.transform.position == BottomOfFingerPrint)
+            if (LASERPEWPEW.transform.position == BottomOfRoundBackground)
             {
-                ThumbPrint.transform.SetParent(PanelMask.transform.parent);
-                Point1.transform.SetParent(PanelMask.transform.parent);
+                foreach (GameObject TurnOff in ListOfThingsToTurnOff)
+                {
+                    TurnOff.SetActive(false);
+                }
 
-                ThumbPrint.transform.SetSiblingIndex(PanelMask.transform.GetSiblingIndex());
-                Point1.transform.SetSiblingIndex(PanelMask.transform.GetSiblingIndex());
-
-                Point2.SetActive(true);
-
-                PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, 0, PanelMask.transform.localScale.z);
-                PanelMask.transform.position = LASERPEWPEW.transform.position - ((LASERPEWPEW.transform.position - BottomOfFingerPrint) * 0.5f);
+                BottomText.text = "";
+                RoundBackground.SetActive(false);
+                PanelMask.SetActive(false);
+                LASERPEWPEW.SetActive(false);
 
                 DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
-            }
-        }
-        else if (DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN] == 3)
-        {
-            LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, LaserStartPos, Time.deltaTime * 0.3f);
-
-            Vector3 SizeBetweenBottomAndLaser = LASERPEWPEW.transform.position - BottomOfFingerPrint;
-            float ChangeInPercent = (SizeBetweenBottomAndLaser.y / (BottomOfFingerPrint - LaserStartPos).y);
-
-            PanelMask.transform.position = LASERPEWPEW.transform.position - (SizeBetweenBottomAndLaser * 0.5f);
-            PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, ChangeInPercent * PanelStartScale.y, PanelMask.transform.localScale.z);
-
-            if (ChangeInPercent != 0.0f)
-            {
-                Point2.transform.localScale = new Vector3(Point2.transform.localScale.x, DictionaryOfVectors["Point2StartScale"].y / ChangeInPercent, Point2.transform.localScale.z);
-            }
-
-            Point2.transform.position = DictionaryOfVectors["Point2StartPoint"];
-
-            TextInterval += Time.deltaTime;
-            if (TextInterval >= 0.2f)
-            {
-                TextInterval = 0.0f;
-
-                if (NewScanningText.text == Scanning)
-                {
-                    NewScanningText.text = "";
-                }
-                else if (NewScanningText.text.Length + 1 < Scanning.Length)
-                {
-                    NewScanningText.text += Scanning[NewScanningText.text.Length];
-                    NewScanningText.text += Scanning[NewScanningText.text.Length];
-                }
-                else
-                {
-                    NewScanningText.text = Scanning;
-                }
-            }
-
-            if (LASERPEWPEW.transform.position == LaserStartPos)
-            {
-                ThumbPrint.transform.SetParent(PanelMask.transform);
-                Point1.transform.SetParent(PanelMask.transform);
-                Point2.transform.SetAsLastSibling();
-
-                DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
-            }
-        }
-        else if (DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN] == 4)
-        {
-            LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, BottomOfFingerPrint, Time.deltaTime * 0.3f);
-
-            Vector3 SizeBetweenTopAndLaser = LASERPEWPEW.transform.position - BottomOfFingerPrint;
-            float ChangeInPercent = (SizeBetweenTopAndLaser.y / (BottomOfFingerPrint - LaserStartPos).y);
-
-            PanelMask.transform.position = LASERPEWPEW.transform.position - (SizeBetweenTopAndLaser * 0.5f);
-            PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, ChangeInPercent * PanelStartScale.y, PanelMask.transform.localScale.z);
-
-            if (ChangeInPercent != 0.0f)
-            {
-                ThumbPrint.transform.localScale = new Vector3(ThumbPrint.transform.localScale.x, ThumbStartScale.y / ChangeInPercent, ThumbPrint.transform.localScale.z);
-                Point1.transform.localScale = new Vector3(Point1.transform.localScale.x, DictionaryOfVectors["Point1StartScale"].y / ChangeInPercent, Point1.transform.localScale.z);
-                Point2.transform.localScale = new Vector3(Point2.transform.localScale.x, DictionaryOfVectors["Point2StartScale"].y / ChangeInPercent, Point2.transform.localScale.z);
-            }
-
-            ThumbPrint.transform.position = ThumbStartPos;
-            Point1.transform.position = DictionaryOfVectors["Point1StartPoint"];
-            Point2.transform.position = DictionaryOfVectors["Point2StartPoint"];
-
-            TextInterval += Time.deltaTime;
-            if (TextInterval >= 0.2f)
-            {
-                TextInterval = 0.0f;
-
-                if (NewScanningText.text == Scanning)
-                {
-                    NewScanningText.text = "";
-                }
-                else if (NewScanningText.text.Length + 1 < Scanning.Length)
-                {
-                    NewScanningText.text += Scanning[NewScanningText.text.Length];
-                    NewScanningText.text += Scanning[NewScanningText.text.Length];
-                }
-                else
-                {
-                    NewScanningText.text = Scanning;
-                }
-
-                if (LASERPEWPEW.transform.position == BottomOfFingerPrint)
-                {
-                    DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
-                }
-            }
-        }
-        else if (DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN] == 5)
-        {
-            TextInterval += Time.deltaTime;
-            if (TextInterval >= 0.2f)
-            {
-                TextInterval = 0.0f;
-
-                if (NewScanningText.text == Scanning || NewScanningText.text == "")
-                {
-                    NewScanningText.text = "";
-                    LASERPEWPEW.SetActive(false);
-                    ThumbBackground.gameObject.SetActive(false);
-                    PanelOfText.SetActive(false);
-
-                    DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
-
-                    CurrentState = ThumbState.SCANCOMPLETE_STATE;
-                }
-                else if (NewScanningText.text.Length + 1 < Scanning.Length)
-                {
-                    NewScanningText.text += Scanning[NewScanningText.text.Length];
-                    NewScanningText.text += Scanning[NewScanningText.text.Length];
-                }
-                else
-                {
-                    NewScanningText.text = Scanning;
-                }
-
-
-
+                CurrentState = ThumbState.SCANCOMPLETE_STATE;
             }
         }
 
