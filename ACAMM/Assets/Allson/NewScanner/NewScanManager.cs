@@ -90,7 +90,7 @@ public class NewScanManager : MonoBehaviour
     public List<GameObject> ListOfFingerPoints;
 
     public GameObject ThumnprintStart;
-    public GameObject PanelMask, ThumbPrint, LASERPEWPEW;
+    public GameObject PanelMask, ThumbPrint, LASERPEWPEW, ThumbprintTwo;
     ThumbState CurrentState;
 
     public Image ThumbBackground;
@@ -458,6 +458,7 @@ public class NewScanManager : MonoBehaviour
             LASERPEWPEW.SetActive(true);
             PanelMask.SetActive(true);
             ThumbPrint.SetActive(true);
+            ThumbprintTwo.SetActive(false);
 
             PanelStartScale = PanelMask.transform.localScale;
             ThumbStartScale = ThumbPrint.transform.localScale;
@@ -748,12 +749,12 @@ public class NewScanManager : MonoBehaviour
         {
             Vector3 TopOfRoundBackground = RoundBackground.transform.position + new Vector3(0, (RoundBackground.transform.lossyScale.y * RoundBackground.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
 
-            LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, TopOfRoundBackground, Time.deltaTime * 1.5f);
+            LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, TopOfRoundBackground, Time.deltaTime * 0.8f);
 
 
             Vector3 TopOfFinger = ThumbPrint.transform.position + new Vector3(0, (ThumbPrint.transform.lossyScale.y * ThumbPrint.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
 
-            Vector3 SizeBetweenTopAndLaser = LASERPEWPEW.transform.position - TopOfFinger;
+            Vector3 SizeBetweenTopAndLaser = LASERPEWPEW.transform.position - BottomOfFingerPrint;
             float ChangeInPercent = (SizeBetweenTopAndLaser.y / (BottomOfFingerPrint - TopOfFinger).y);
 
             PanelMask.transform.position = LASERPEWPEW.transform.position - (SizeBetweenTopAndLaser * 0.5f);
@@ -763,6 +764,19 @@ public class NewScanManager : MonoBehaviour
                 ThumbPrint.transform.localScale = new Vector3(ThumbPrint.transform.localScale.x, ThumbStartScale.y / ChangeInPercent, ThumbPrint.transform.localScale.z);
 
             ThumbPrint.transform.position = ThumbStartPos;
+
+            float SizeOfScan = LASERPEWPEW.transform.position.y - BottomOfFingerPrint.y ;
+            if (SizeOfScan >= 0)
+            {
+                float PercentageAmount = ((SizeOfScan / (TopOfFinger.y - BottomOfFingerPrint.y)) * 50);
+                if (PercentageAmount > 50)
+                    PercentageAmount = 50;
+                TopText.text = "Percentage: " + PercentageAmount.ToString("F2") + "%" ;
+            }
+            else
+            {
+                TopText.text = "Percentage: 0%"; 
+            }
 
             TextInterval += Time.deltaTime;
             if (TextInterval >= 0.15f)
@@ -786,17 +800,24 @@ public class NewScanManager : MonoBehaviour
 
             if (LASERPEWPEW.transform.position == TopOfRoundBackground)
             {
+                ThumbPrint.transform.SetParent(PanelMask.transform.parent);
+                ThumbPrint.transform.SetSiblingIndex(PanelMask.transform.GetSiblingIndex());
+
+                ThumbprintTwo.SetActive(true);
+
                 DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
+
+                ThumbprintTwo.transform.localScale = new Vector3(ThumbprintTwo.transform.localScale.x, 0, ThumbprintTwo.transform.localScale.z);
             }
         }
         else if (DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN] == 1)
         {
             Vector3 BottomOfRoundBackground = RoundBackground.transform.position - new Vector3(0, (RoundBackground.transform.lossyScale.y * RoundBackground.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
 
-            LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, BottomOfRoundBackground, Time.deltaTime * 1.5f);
+            LASERPEWPEW.transform.position = Vector3.MoveTowards(LASERPEWPEW.transform.position, BottomOfRoundBackground, Time.deltaTime * 0.8f);
 
 
-            Vector3 TopOfFinger = ThumbPrint.transform.position + new Vector3(0, (ThumbPrint.transform.lossyScale.y * ThumbPrint.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
+            Vector3 TopOfFinger = ThumbprintTwo.transform.position + new Vector3(0, (ThumbprintTwo.transform.lossyScale.y * ThumbprintTwo.GetComponent<RectTransform>().sizeDelta.y) * 0.5f, 0);
 
             Vector3 SizeBetweenTopAndLaser = LASERPEWPEW.transform.position - TopOfFinger;
             float ChangeInPercent = (SizeBetweenTopAndLaser.y / (BottomOfFingerPrint - TopOfFinger).y);
@@ -805,9 +826,22 @@ public class NewScanManager : MonoBehaviour
             PanelMask.transform.localScale = new Vector3(PanelMask.transform.localScale.x, ChangeInPercent * PanelStartScale.y, PanelMask.transform.localScale.z);
 
             if (ChangeInPercent != 0.0f)
-                ThumbPrint.transform.localScale = new Vector3(ThumbPrint.transform.localScale.x, ThumbStartScale.y / ChangeInPercent, ThumbPrint.transform.localScale.z);
+                ThumbprintTwo.transform.localScale = new Vector3(ThumbprintTwo.transform.localScale.x, ThumbStartScale.y / ChangeInPercent, ThumbprintTwo.transform.localScale.z);
 
-            ThumbPrint.transform.position = ThumbStartPos;
+            ThumbprintTwo.transform.position = ThumbStartPos;
+
+            float SizeOfScan = TopOfFinger.y - LASERPEWPEW.transform.position.y;
+            if (SizeOfScan >= 0)
+            {
+                float PercentageAmount = ((SizeOfScan / (TopOfFinger.y - BottomOfFingerPrint.y)) * 50);
+                if (PercentageAmount > 50)
+                    PercentageAmount = 50;
+                TopText.text = "Percentage: " + (PercentageAmount+50).ToString("F2") + "%";
+            }
+            else
+            {
+                TopText.text = "Percentage: 50.00%";
+            }
 
             TextInterval += Time.deltaTime;
             if (TextInterval >= 0.15f)
@@ -836,10 +870,14 @@ public class NewScanManager : MonoBehaviour
                     TurnOff.SetActive(false);
                 }
 
+                TopText.text = "";
                 BottomText.text = "";
                 RoundBackground.SetActive(false);
                 PanelMask.SetActive(false);
                 LASERPEWPEW.SetActive(false);
+
+                ThumbPrint.SetActive(false);
+                ThumbprintTwo.SetActive(false);
 
                 DictionaryOfTriggers[CurrentState][ThumbSubState.LASER_MOVEDOWN]++;
                 CurrentState = ThumbState.SCANCOMPLETE_STATE;
