@@ -70,12 +70,12 @@ public class mMenuScript : MonoBehaviour {
 		WWW loadIP = new WWW(url);
 		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
 		while(!loadIP.isDone) {
-			Debug.Log("trying to loadIP");
+			//Debug.Log("trying to loadIP");
 		}
 		if(loadIP.size != 0)
 		{
 			File.WriteAllBytes(Application.dataPath + "/serverip.cfg", loadIP.bytes);
-			Debug.Log("wrote file to loadIP from server");
+			//Debug.Log("wrote file to loadIP from server");
 		}
 	}
 	private bool LoadIPfromFile(string fileName)
