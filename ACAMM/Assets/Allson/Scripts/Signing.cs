@@ -27,6 +27,7 @@ public class Signing : MonoBehaviour
 	public Vector3 mousepos = new Vector3();
 	public Scrollbar JDScrollBar;
 	public float mPosMaxOffset = 423;
+	public float defHeight = 2736;
 
     public GameObject MC, SSCamOne, SSCamTwo;
 
@@ -34,6 +35,7 @@ public class Signing : MonoBehaviour
 
     void Start()
 	{
+		mPosMaxOffset = mPosMaxOffset * (Screen.height / defHeight);
 		jdFolderDfX = JDFolder.position.x;
 		authManager = GlobalValues.authManager;
 		if (authManager != null) {
@@ -85,6 +87,21 @@ public class Signing : MonoBehaviour
 		JDFolder.position = new Vector3 (jdFolderDfX - (scrollValue * sbar.value), JDFolder.position.y, JDFolder.position.z);
 	}
 
+	public void DeleteWritten(){
+		for(int i = 0; i < DictionaryOfEmptyCountries [country].gameObject.transform.childCount; i++)
+		{
+			Destroy (DictionaryOfEmptyCountries [country].gameObject.transform.GetChild (i).gameObject);
+		}
+		authManager.SendPenDelete ();
+	}
+
+	public void DeleteWritten(string ncountry){
+		for(int i = 0; i < DictionaryOfEmptyCountries [ncountry].gameObject.transform.childCount; i++)
+		{
+			Destroy (DictionaryOfEmptyCountries [ncountry].gameObject.transform.GetChild (i).gameObject);
+		}
+	}
+
 	void SigningUpdate(Vector3 position, out Vector3 Offset)
     {
 //#if UNITY_EDITOR
@@ -107,13 +124,16 @@ public class Signing : MonoBehaviour
 					networkPosition.x = networkPosition.x;// + (mPosMaxOffset * JDScrollBar.value);
 					//authManager.SendSigningCoordinates (networkPosition);
 					authManager.SendSigningCoordinates(networkPosition ,JDScrollBar.value);
+
 				}
+				Debug.Log ("jdscrollbar val " + JDScrollBar.value);
             }
         }
         else if (Input.GetMouseButton(0))
         {
 	        if (PlaneCollider.Raycast(ray, out hit, Mathf.Infinity))
 	        {
+				Debug.Log ("jdscrollbar val " + JDScrollBar.value);
 				if (authManager != null) {
 					Vector3 networkPosition = Input.mousePosition;
 					networkPosition.x = networkPosition.x;// + (mPosMaxOffset * JDScrollBar.value);
@@ -167,7 +187,7 @@ public class Signing : MonoBehaviour
 	public void SigningUpdateNetwork(Vector3 position, string name, float offset)
 	{
 		//Debug.Log (DictionaryOfCountryInt [name]);
-		position.x = position.x +(mPosMaxOffset * (JDScrollBar.value-offset));
+		position.x = position.x +(mPosMaxOffset * (offset-JDScrollBar.value));
 		Ray ray = Camera.main.ScreenPointToRay(position);
 		RaycastHit hit;
 		if(DictionaryOfCountryInt[name] != null)
