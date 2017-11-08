@@ -771,11 +771,11 @@ public class NewScanManager : MonoBehaviour
                 float PercentageAmount = ((SizeOfScan / (TopOfFinger.y - BottomOfFingerPrint.y)) * 50);
                 if (PercentageAmount > 50)
                     PercentageAmount = 50;
-                BottomText.text = "Scanning " + ((int)PercentageAmount).ToString("D") + "%" ;
+                BottomText.text = "Initializing " + ((int)PercentageAmount).ToString("D") + "%" ;
             }
             else
             {
-                BottomText.text = "Scanning 0%"; 
+                BottomText.text = "Initializing 0%"; 
             }
 
             //TextInterval += Time.deltaTime;
@@ -836,11 +836,11 @@ public class NewScanManager : MonoBehaviour
                 float PercentageAmount = ((SizeOfScan / (TopOfFinger.y - BottomOfFingerPrint.y)) * 50);
                 if (PercentageAmount > 50)
                     PercentageAmount = 50;
-                BottomText.text = "Scanning " + ((int)(PercentageAmount+50)).ToString() + "%";
+                BottomText.text = "Initializing " + ((int)(PercentageAmount+50)).ToString() + "%";
             }
             else
             {
-                BottomText.text = "Scanning 50%";
+                BottomText.text = "Initializing 50%";
             }
 
             //TextInterval += Time.deltaTime;
