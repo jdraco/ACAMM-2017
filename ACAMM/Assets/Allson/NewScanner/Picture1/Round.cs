@@ -9,12 +9,12 @@ public class Round : MonoBehaviour {
     float PreviousFillAmount;
     float AimFloatAmount;
     float CurrentLerpTime;
-    float TimeToLerp = 0.5f;
+    float TimeToLerp = 1f;
 	// Use this for initialization
 	void Start () {
         ThisImage = GetComponent<Image>();
         PreviousFillAmount = ThisImage.fillAmount;
-        AimFloatAmount = Random.Range(0f, 1.25f);
+        AimFloatAmount = Random.Range(0f, 1f);
 
         CurrentLerpTime = 0.0f;
 
