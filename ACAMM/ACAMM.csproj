@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="Assets\Allson\NewScanner\FingerPrint.cs" />
     <Compile Include="Assets\Allson\NewScanner\NewScanManager.cs" />
+    <Compile Include="Assets\Allson\NewScanner\Picture1\Round.cs" />
     <Compile Include="Assets\Allson\NewScanner\TextScript.cs" />
     <Compile Include="Assets\Allson\Scripts\GridManager.cs" />
     <Compile Include="Assets\Allson\Scripts\LineScript.cs" />
