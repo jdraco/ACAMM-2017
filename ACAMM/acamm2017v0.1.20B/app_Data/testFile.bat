@@ -1,1 +1,0 @@
-start microsoft-edge:https://singtelncs-my.sharepoint.com/personal/mindef06_nextgenoffice_com/_layouts/15/WopiFrame.aspx?folderid=142619e09cde3423aa1b3386e6afc495d&authkey=ASE3KtQRiQzSYNCyZSFGeR8&action=view&slrid=4e86259e-3037-4000-7680-30b86b1def95

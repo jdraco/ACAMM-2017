@@ -2,9 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Allson\Scripts\Signing.cs">
     <Files>
-      <File FileName="Assets\Scripts\Network\authentication_Manager.cs" Line="292" Column="2" />
+      <File FileName="Assets\Scripts\Network\authentication_Manager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Network\s_NetworkManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Allson\Scripts\Signing.cs" Line="181" Column="6" />
+      <File FileName="Assets\Allson\Scripts\Signing.cs" Line="201" Column="162" />
       <File FileName="Assets\Scripts\Network\c_NetworkManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Network\Master.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Global\GlobalValues.cs" Line="1" Column="1" />
@@ -14,6 +14,8 @@
       <File FileName="Assets\Allson\Scripts\ScanManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Database\dbTypes.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Database\InitDB.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\AspectRatio.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\testjd.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

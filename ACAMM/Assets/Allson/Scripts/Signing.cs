@@ -21,12 +21,14 @@ public class Signing : MonoBehaviour
     public GameObject CountryParent;
 	public Dictionary<string, GameObject> DictionaryOfEmptyCountries = new Dictionary<string, GameObject>();
 	public Dictionary<string, int> DictionaryOfCountryInt = new Dictionary<string, int>();
+	public Dictionary<string, float> DictionaryOfCountryLastKnownOffset = new Dictionary<string, float>();
 	public authentication_Manager authManager;
 	public string country = "Singapore";
     // Use this for initialization
 	public Vector3 mousepos = new Vector3();
 	public Scrollbar JDScrollBar;
 	public float mPosMaxOffset = 423;
+	public float defHeight = 2736;
 
     public GameObject MC, SSCamOne, SSCamTwo;
 
@@ -34,6 +36,7 @@ public class Signing : MonoBehaviour
 
     void Start()
 	{
+		mPosMaxOffset = mPosMaxOffset * (Screen.height / defHeight);
 		jdFolderDfX = JDFolder.position.x;
 		authManager = GlobalValues.authManager;
 		if (authManager != null) {
@@ -50,6 +53,7 @@ public class Signing : MonoBehaviour
         {
             DictionaryOfEmptyCountries.Add(Countries.name, Countries.gameObject);
 			DictionaryOfCountryInt.Add(Countries.name, i);
+			DictionaryOfCountryLastKnownOffset.Add(Countries.name, 0);
 			i++;
         }
     }
@@ -81,8 +85,23 @@ public class Signing : MonoBehaviour
     }
 
 	public void ScrollPage(Scrollbar sbar){
-		Debug.Log(Input.mousePosition);
-		JDFolder.position = new Vector3 (jdFolderDfX - (scrollValue * sbar.value), JDFolder.position.y, JDFolder.position.z);
+		//Debug.Log(Input.mousePosition);
+		JDFolder.position = new Vector3 (jdFolderDfX + (scrollValue * sbar.value), JDFolder.position.y, JDFolder.position.z);
+	}
+
+	public void DeleteWritten(){
+		for(int i = 0; i < DictionaryOfEmptyCountries [country].gameObject.transform.childCount; i++)
+		{
+			Destroy (DictionaryOfEmptyCountries [country].gameObject.transform.GetChild (i).gameObject);
+		}
+		authManager.SendPenDelete ();
+	}
+
+	public void DeleteWritten(string ncountry){
+		for(int i = 0; i < DictionaryOfEmptyCountries [ncountry].gameObject.transform.childCount; i++)
+		{
+			Destroy (DictionaryOfEmptyCountries [ncountry].gameObject.transform.GetChild (i).gameObject);
+		}
 	}
 
 	void SigningUpdate(Vector3 position, out Vector3 Offset)
@@ -107,23 +126,26 @@ public class Signing : MonoBehaviour
 					networkPosition.x = networkPosition.x;// + (mPosMaxOffset * JDScrollBar.value);
 					//authManager.SendSigningCoordinates (networkPosition);
 					authManager.SendSigningCoordinates(networkPosition ,JDScrollBar.value);
+
 				}
-            }
+				//DictionaryOfCountryLastKnownOffset [country] = JDScrollBar.value;
+			}
         }
         else if (Input.GetMouseButton(0))
         {
 	        if (PlaneCollider.Raycast(ray, out hit, Mathf.Infinity))
 	        {
+				//Debug.Log ("jdscrollbar val " + JDScrollBar.value);
 				if (authManager != null) {
 					Vector3 networkPosition = Input.mousePosition;
 					networkPosition.x = networkPosition.x;// + (mPosMaxOffset * JDScrollBar.value);
 					//authManager.SendSigningCoordinates (networkPosition);
 					authManager.SendSigningCoordinates(networkPosition ,JDScrollBar.value);
 				}
-	            if (CurrentLine != null)
+				if (CurrentLine != null)// && JDScrollBar.value == DictionaryOfCountryLastKnownOffset [country])
 	            {
-	                CurrentLine.positionCount++;
-	                CurrentLine.SetPosition(CurrentLine.positionCount - 1, hit.point + new Vector3(0, 0, -0.01f));
+					CurrentLine.positionCount++;
+					CurrentLine.SetPosition (CurrentLine.positionCount - 1, hit.point + new Vector3 (0, 0, -0.01f));
 	            }
 	            else
 	            {
@@ -132,6 +154,7 @@ public class Signing : MonoBehaviour
 					CurrentLine.gameObject.transform.SetParent (DictionaryOfEmptyCountries [country].gameObject.transform);
 	                CurrentLine.SetPosition(0, hit.point + new Vector3(0, 0, -0.01f));
 	                CurrentLine.SetPosition(1, hit.point + new Vector3(0, 0, -0.01f));
+					//DictionaryOfCountryLastKnownOffset [country] = JDScrollBar.value;
 	            }
 	        }
 	        else
@@ -166,15 +189,16 @@ public class Signing : MonoBehaviour
 
 	public void SigningUpdateNetwork(Vector3 position, string name, float offset)
 	{
+		//Debug.Log (offset + " " + JDScrollBar.value);
 		//Debug.Log (DictionaryOfCountryInt [name]);
-		position.x = position.x +(mPosMaxOffset * (JDScrollBar.value-offset));
+		position.x = position.x +(mPosMaxOffset * (offset-JDScrollBar.value));
 		Ray ray = Camera.main.ScreenPointToRay(position);
 		RaycastHit hit;
 		if(DictionaryOfCountryInt[name] != null)
 		{
 			if (PlaneCollider.Raycast(ray, out hit, Mathf.Infinity))
 			{
-				if (NetworkLine[DictionaryOfCountryInt[name]] != null)
+				if (NetworkLine[DictionaryOfCountryInt[name]] != null)// && DictionaryOfCountryLastKnownOffset[name] == offset && DictionaryOfCountryLastKnownOffset [country] == JDScrollBar.value)
 				{
 					NetworkLine[DictionaryOfCountryInt[name]].positionCount++;
 					NetworkLine[DictionaryOfCountryInt[name]].SetPosition(NetworkLine[DictionaryOfCountryInt[name]].positionCount - 1, hit.point + new Vector3(0, 0, -0.01f));
@@ -187,6 +211,8 @@ public class Signing : MonoBehaviour
 					NetworkLine[DictionaryOfCountryInt[name]].positionCount = 2;
 					NetworkLine[DictionaryOfCountryInt[name]].SetPosition(0, hit.point + new Vector3(0, 0, -0.01f));
 					NetworkLine[DictionaryOfCountryInt[name]].SetPosition(1, hit.point + new Vector3(0, 0, -0.01f));
+					//DictionaryOfCountryLastKnownOffset [name] = offset;
+					//DictionaryOfCountryLastKnownOffset [country] = JDScrollBar.value;
 				}
 			}
 			else

@@ -18,7 +18,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 7b848b7feaa524953d09fc1851efa6da UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 7b848b7feaa524953d09fc1851efa6da UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 c24a21b131bfa67be1162db2cba4b52b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-b17d915ade9e9149b56233f3778d4c44 Assembly-CSharp.dll:.NewScanManager
+0667a2c635caf2031e715ebabb55d433 Assembly-CSharp.dll:.NewScanManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:.SampleInfo
 5ca2d6a9a71472b0a99a75029d2956be Assembly-CSharp.dll:.ClearUIText
 609883ba9b3462e00c79080cdb51d119 Assembly-CSharp-firstpass.dll:.iTween
@@ -101,6 +101,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 7b848b7feaa524953d09fc1851efa6da UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 7b848b7feaa524953d09fc1851efa6da UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 c24a21b131bfa67be1162db2cba4b52b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
+0fad5b17aae9ad3a26d7bc533b1ceb76 Assembly-CSharp.dll:.testjd
 de8ff77305b1b0c5567b893b119a88cf Assembly-CSharp.dll:.ChildContentSizeFitter
 e5f46b8a3204a812c51a5f3e80f28c05 Assembly-CSharp.dll:.InitDB
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -130,7 +131,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.quitApp
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScanHand
 18b69bad66a0d9c15d853f90bda0d839 Assembly-CSharp.dll:.pTab
-2fc5b4751f34d8303b18757c0a698daf Assembly-CSharp.dll:.Signing
+d34597cb202b90dca610024163b02331 Assembly-CSharp.dll:.Signing
 81c52bbf85589a3cf562457911370d07 Assembly-CSharp.dll:.openThirdParty
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.disableGameObject
 4390878f037361a83505b646d467afe7 Assembly-CSharp.dll:.ProfileLoader

@@ -210,6 +210,12 @@ public class authentication_Manager : NetworkManager {
 				signLocal.SignLiftupNetwork(nmsg.sender);
 			}
 			break;
+		case "deletepen":
+			if(nmsg.coor >= 0 && signLocal != null)
+			{
+				signLocal.DeleteWritten(nmsg.sender);
+			}
+			break;
 		default :
 			if(nmsg.coor >= 0 && signLocal != null && nmsg.sender != userName)
 			{
@@ -300,6 +306,14 @@ public class authentication_Manager : NetworkManager {
 	public void SendPenLiftup(){
 		var msg = new MasterMsgTypes.UCMsg ();
 		msg.msg = "signliftup";
+		msg.sender = userName;
+		msg.coor = 0;
+		thisClient.Send (MasterMsgTypes.ucMsg, msg);
+	}
+
+	public void SendPenDelete(){
+		var msg = new MasterMsgTypes.UCMsg ();
+		msg.msg = "deletepen";
 		msg.sender = userName;
 		msg.coor = 0;
 		thisClient.Send (MasterMsgTypes.ucMsg, msg);

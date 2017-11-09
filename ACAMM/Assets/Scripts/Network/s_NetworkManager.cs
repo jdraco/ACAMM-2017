@@ -134,7 +134,21 @@ public class s_NetworkManager : NetworkManager {
 	void OnServerMessage(NetworkMessage netMsg)
 	{
 		var nmsg = netMsg.ReadMessage<MasterMsgTypes.UCMsg> ();
-		sysMessage (nmsg.sender + " : " + nmsg.msg);
+		switch (nmsg.msg) {
+		case "palm":
+		case "palml":
+		case "palmul":
+		case "sign":
+		case "close":
+		case "signlocal":
+		case "signliftup":
+		case "deletepen":
+			sysMessage (nmsg.sender + " : " + nmsg.msg);
+			break;
+		default :
+			break;
+		}
+
 	}
 
 	public virtual void OnServerEvent(MasterMsgTypes.NetworkMasterServerEvent evt)
@@ -207,6 +221,14 @@ public class s_NetworkManager : NetworkManager {
 		var msg = new MasterMsgTypes.UCMsg ();
 		msg.msg = command;
 		msg.sender = "Server Command";
+		thisClient.Send (MasterMsgTypes.ucMsg, msg);
+	}
+
+	public void SendCountryDelete(string country){
+		var msg = new MasterMsgTypes.UCMsg ();
+		msg.msg = "deletepen";
+		msg.sender = country;
+		msg.coor = 0;
 		thisClient.Send (MasterMsgTypes.ucMsg, msg);
 	}
 
