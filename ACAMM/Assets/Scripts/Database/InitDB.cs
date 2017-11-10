@@ -71,7 +71,7 @@ public class InitDB : MonoBehaviour {
 			initSchedule ();
 			break;
 		case dbToLoad.Presentation:
-			initPresentation ();
+			//initPresentation ();
 			break;
 		default:
 			initProfile ();
@@ -122,8 +122,8 @@ public class InitDB : MonoBehaviour {
 
 	}
 
-	void initPresentation(){
-		switch (GlobalValues.cp) {
+	public void initPresentation(){
+		switch (GlobalValues.cp2) {
 		case GlobalValues.CP.SG:
 			presentationToLoad = cq.SGP;
 			break;
@@ -378,8 +378,12 @@ public class InitDB : MonoBehaviour {
 				for (int i = 0; i < Pages; i++) {
 					Debug.Log (reader2.GetString (i));
 					pageImage.Add ((i + 1), reader2.GetString (0));
-					pageImageList.Add (pageImage);
+					
 				}
+				pageImageList.Add (pageImage);
+				dbTypes.Presentation tPresentation = new dbTypes.Presentation();
+				tPresentation = returnPresentation (Title, Pages, country, pageImageList);
+				loadToDBPresentation (tPresentation);
 			}
 			reader2.Close();//clear connection
 			reader2 = null;
@@ -394,9 +398,7 @@ public class InitDB : MonoBehaviour {
 		dbconn.Close();
 		dbconn = null;
 
-		dbTypes.Presentation tPresentation = new dbTypes.Presentation();
-		tPresentation = returnPresentation (Title, Pages, country, pageImageList);
-		loadToDBPresentation (tPresentation);
+
 
 	}
 
@@ -536,6 +538,11 @@ public class InitDB : MonoBehaviour {
 	void loadToDBSchedule(dbTypes.Schedule data)//add schedule to list
 	{
 		scheduleList.Add (data);
+	}
+
+	public void resetDBPresentation()//reset schedule list so that another one can be loaded cleanly
+	{
+		presentationList.Clear ();
 	}
 
 	public void resetDBSchedule()//reset schedule list so that another one can be loaded cleanly

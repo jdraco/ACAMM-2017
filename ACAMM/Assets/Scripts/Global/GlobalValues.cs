@@ -14,6 +14,7 @@ public static class GlobalValues {
 		PH
 	}
 	public static CP cp = CP.SG;
+	public static CP cp2 = CP.SG;
 
 	public enum SS{
 		ACAMM,

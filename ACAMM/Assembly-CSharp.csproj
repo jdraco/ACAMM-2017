@@ -78,6 +78,7 @@
      <Compile Include="Assets\Scripts\Network\s_NetworkManager.cs" />
      <Compile Include="Assets\Scripts\openThirdParty.cs" />
      <Compile Include="Assets\Scripts\PDF\pdfManager.cs" />
+     <Compile Include="Assets\Scripts\PDF\pdfTab.cs" />
      <Compile Include="Assets\Scripts\PhoneCall.cs" />
      <Compile Include="Assets\Scripts\PlacesOfInterest\poiManager.cs" />
      <Compile Include="Assets\Scripts\ProfileLoader\ProfileLoader.cs" />
@@ -121,10 +122,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.Sqlite">
- <HintPath>D:/Work/GitHub/ACAMM/ACAMM/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+ <HintPath>C:/Users/demounit/Documents/GitHub/ACAMM-2017/ACAMM/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>D:/Work/GitHub/ACAMM/ACAMM/Assets/Plugins/System.Data.dll</HintPath>
+ <HintPath>C:/Users/demounit/Documents/GitHub/ACAMM-2017/ACAMM/Assets/Plugins/System.Data.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
