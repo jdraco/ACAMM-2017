@@ -9,10 +9,13 @@ using System.IO;
 public class InitDB : MonoBehaviour {
 
 	public List<dbTypes.Profile> profileList;
+	public List<dbTypes.Presentation> presentationList;
 	public List<dbTypes.Schedule> scheduleList;
 	public string url;
+	public string pdfurl;
 	public string profileToLoad;
 	public string scheduleToLoad;
+	public string presentationToLoad;
 
 	//series of queries that can be called from database
 	[System.Serializable]
@@ -32,13 +35,25 @@ public class InitDB : MonoBehaviour {
 		public string ACAMM = "ACAMM_SCHEDULE";
 		public string ASMAM = "ASMAM_SCHEDULE";
 		public string ACAMMSP = "ACAMMSP_SCHEDULE";
+
+		public string SGP = "SG";
+		public string THP = "TH";
+		public string VNP = "VN";
+		public string BNP = "BN";
+		public string CMP = "CM";
+		public string IDP = "ID";
+		public string LSP = "LS";
+		public string MYP = "MY";
+		public string MYRP = "MYR";
+		public string PHP = "PH";
 	}
 
 	//what type of data to load
 	[System.Serializable]
 	public enum dbToLoad{
 		Profile,
-		Schedule
+		Schedule,
+		Presentation
 	};
 
 	public dbToLoad dbLoaded = dbToLoad.Profile;
@@ -54,6 +69,9 @@ public class InitDB : MonoBehaviour {
 			break;
 		case dbToLoad.Schedule:
 			initSchedule ();
+			break;
+		case dbToLoad.Presentation:
+			initPresentation ();
 			break;
 		default:
 			initProfile ();
@@ -101,6 +119,47 @@ public class InitDB : MonoBehaviour {
 		}
 		profileList = new List<dbTypes.Profile> ();
 		loadDB ();
+
+	}
+
+	void initPresentation(){
+		switch (GlobalValues.cp) {
+		case GlobalValues.CP.SG:
+			presentationToLoad = cq.SGP;
+			break;
+		case GlobalValues.CP.TH:
+			presentationToLoad = cq.THP;
+			break;
+		case GlobalValues.CP.VN:
+			presentationToLoad = cq.VNP;
+			break;
+		case GlobalValues.CP.BN:
+			presentationToLoad = cq.BNP;
+			break;
+		case GlobalValues.CP.CM:
+			presentationToLoad = cq.CMP;
+			break;
+		case GlobalValues.CP.ID:
+			presentationToLoad = cq.IDP;
+			break;
+		case GlobalValues.CP.LS:
+			presentationToLoad = cq.LSP;
+			break;
+		case GlobalValues.CP.MY:
+			presentationToLoad = cq.MYP;
+			break;
+		case GlobalValues.CP.MYR:
+			presentationToLoad = cq.MYRP;
+			break;
+		case GlobalValues.CP.PH:
+			presentationToLoad = cq.PHP;
+			break;
+		default:
+			presentationToLoad = cq.SGP;
+			break;
+		}
+		presentationList = new List<dbTypes.Presentation> ();
+		loadDBPresentation ();
 
 	}
 
@@ -197,19 +256,19 @@ public class InitDB : MonoBehaviour {
 		IDataReader reader = dbcmd.ExecuteReader();
 		while (reader.Read())//read and load query
 		{
-			int value = reader.GetInt32(0);
-			string role = reader.GetString(1);
-			string name = reader.GetString(2);
-			string dob = reader.GetString(3);
-			string country = reader.GetString(4);;
-			string rank = reader.GetString(5);
-			string comment = reader.GetString(6);
-			string picture = reader.GetString(7);
+		int value = reader.GetInt32(0);
+		string role = reader.GetString(1);
+		string name = reader.GetString(2);
+		string dob = reader.GetString(3);
+		string country = reader.GetString(4);;
+		string rank = reader.GetString(5);
+		string comment = reader.GetString(6);
+		string picture = reader.GetString(7);
 
-			dbTypes.Profile tProfile = new dbTypes.Profile();
-			tProfile = returnProfile (value,role, name, dob, country, rank, comment, picture);
-			loadToDB (tProfile);
-			Debug.Log( "value= "+value+"  name ="+name+"  dob="+dob+"  country="+country+"  rank="+rank+"  comment="+comment+"  picture="+picture );
+		dbTypes.Profile tProfile = new dbTypes.Profile();
+		tProfile = returnProfile (value,role, name, dob, country, rank, comment, picture);
+		loadToDB (tProfile);
+		Debug.Log( "value= "+value+"  name ="+name+"  dob="+dob+"  country="+country+"  rank="+rank+"  comment="+comment+"  picture="+picture );
 		}
 		reader.Close();//clear connection
 		reader = null;
@@ -217,6 +276,128 @@ public class InitDB : MonoBehaviour {
 		dbcmd = null;
 		dbconn.Close();
 		dbconn = null;
+	}
+
+	public void loadDBPresentation()
+	{
+		#if UNITY_EDITOR
+//		WWW loadDB = new WWW(pdfurl);
+//		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
+//		while(!loadDB.isDone) {
+//		Debug.Log("trying to load database");
+//		}
+//		if(loadDB.size != 0)
+//		{
+//		File.WriteAllBytes(Application.dataPath + "/PDF_Database.db", loadDB.bytes);
+//		Debug.Log("wrote file to database from server");
+//		}
+		string conn = "URI=file:" + Application.dataPath + "/PDF_Database.db"; //Path to database.
+		Debug.Log("reading database windows");
+		#elif UNITY_ANDROID
+		WWW loadDB = new WWW(url);
+		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
+		while(!loadDB.isDone) {
+		Debug.Log("trying to load database");
+		}
+		if(loadDB.size != 0)
+		{
+		File.WriteAllBytes(Application.persistentDataPath + "/PDF_Database.db", loadDB.bytes);
+		Debug.Log("wrote file to database from server");
+		}
+		else //if(!File.Exists(Application.persistentDataPath + "/PDF_Database.db"))
+		{
+		Debug.Log("loading from back up");
+		//WWW loadDB = new WWW(url);
+		loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
+
+		while(!loadDB.isDone) {
+		Debug.Log("trying to load database");
+		}
+		File.WriteAllBytes(Application.persistentDataPath + "/PDF_Database.db", loadDB.bytes);
+		Debug.Log("wrote file to database");
+		}
+		string conn = "URI=file:" + Application.persistentDataPath + "/PDF_Database.db"; //Path to database.
+
+		#else
+		if(!dbInitDone)
+		{
+		WWW loadDB = new WWW(url);
+		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
+		while(!loadDB.isDone) {
+		Debug.Log("trying to load database");
+		}
+		if(loadDB.size != 0)
+		{
+		File.WriteAllBytes(Application.dataPath + "/PDF_Database.db", loadDB.bytes);
+		Debug.Log("wrote file to database from server");
+		}
+		dbInitDone = true;
+		}
+		string conn = "URI=file:" + Application.dataPath + "/PDF_Database.db"; //Path to database.
+		Debug.Log("reading database windows");
+		#endif
+		IDbConnection dbconn;
+		dbconn = (IDbConnection) new SqliteConnection(conn);
+		dbconn.Open(); //Open connection to the database.
+		IDbCommand dbcmd = dbconn.CreateCommand();
+		string sqlQuery = "SELECT Title,PAGES " + "FROM " + presentationToLoad;//query to load
+//		for(int i = 1; i < 50; i++)
+//		{
+//			sqlQuery = sqlQuery + "," + (i + 1);
+//		}
+//		sqlQuery = sqlQuery + " FROM " + presentationToLoad;//query to load
+		Debug.Log (sqlQuery);
+		dbcmd.CommandText = sqlQuery;
+		IDataReader reader = dbcmd.ExecuteReader();
+		string Title = "";
+		int Pages = 0;
+		string country = "";
+		List<Dictionary<int, string>> pageImageList = new List<Dictionary<int, string>>();
+		while (reader.Read())//read and load query
+		{
+			Title = reader.GetString(0);
+			Pages = reader.GetInt32(1);
+			//Debug.Log(reader.GetString(2));
+			country = profileToLoad;
+			//List<Dictionary<int, string>> pageImage = new List<Dictionary<int, string>>();
+			IDbConnection dbconn2;
+			dbconn2 = (IDbConnection) new SqliteConnection(conn);
+			dbconn2.Open();
+			IDbCommand dbcmd2 = dbconn2.CreateCommand();
+			string sqlQuery2 = "SELECT P1";//Title,Pages " + "FROM " + profileToLoad;//query to load
+			for(int i = 2; i <= Pages; i++)
+			{
+				sqlQuery2 = sqlQuery2 + ",P" + (i);
+			}
+			sqlQuery2 = sqlQuery2 + " FROM " + presentationToLoad + " WHERE Title = '" + Title + "'";
+			dbcmd2.CommandText = sqlQuery2;
+			Debug.Log (sqlQuery2);
+			IDataReader reader2 = dbcmd2.ExecuteReader();
+			while (reader2.Read ()) {//read and load query
+				Dictionary<int, string> pageImage = new Dictionary<int, string>();
+				for (int i = 0; i < Pages; i++) {
+					Debug.Log (reader2.GetString (i));
+					pageImage.Add ((i + 1), reader2.GetString (0));
+					pageImageList.Add (pageImage);
+				}
+			}
+			reader2.Close();//clear connection
+			reader2 = null;
+			dbcmd2.Dispose();
+			dbconn2.Close();
+			dbconn2 = null;
+		}
+		reader.Close();//clear connection
+		reader = null;
+		dbcmd.Dispose();
+		dbcmd = null;
+		dbconn.Close();
+		dbconn = null;
+
+		dbTypes.Presentation tPresentation = new dbTypes.Presentation();
+		tPresentation = returnPresentation (Title, Pages, country, pageImageList);
+		loadToDBPresentation (tPresentation);
+
 	}
 
 	public void loadDBSchedule()
@@ -317,6 +498,18 @@ public class InitDB : MonoBehaviour {
 		return tProfile;
 	}
 
+	public dbTypes.Presentation returnPresentation(string title,int pages,string country, List<Dictionary<int, string>> pageImageList)//return requested presentation to be loaded
+	{
+		dbTypes.Presentation tPresentation = new dbTypes.Presentation ();
+		tPresentation.title = title;
+		tPresentation.pages = pages;
+		tPresentation.country = country;
+		tPresentation.pageImageList = pageImageList;
+
+
+		return tPresentation;
+	}
+
 	public dbTypes.Schedule returnSchedule(int value,int day,string date,string time,string event_,string location)//return requested schedule to be loaded
 	{
 		dbTypes.Schedule tSchedule = new dbTypes.Schedule ();
@@ -333,6 +526,11 @@ public class InitDB : MonoBehaviour {
 	void loadToDB(dbTypes.Profile data)//add profile to list
 	{
 		profileList.Add (data);
+	}
+
+	void loadToDBPresentation(dbTypes.Presentation data)//add schedule to list
+	{
+		presentationList.Add (data);
 	}
 
 	void loadToDBSchedule(dbTypes.Schedule data)//add schedule to list

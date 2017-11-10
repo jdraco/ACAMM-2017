@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class dbTypes {
 
@@ -13,6 +15,16 @@ public class dbTypes {
 		public string rank = "";
 		public string comment = "";
 		public string picture = "";
+	}
+
+	[System.Serializable]
+	public class Presentation
+	{
+		public int value = 0;
+		public string country = "";
+		public string title = "";
+		public int pages = 0;
+		public List<Dictionary<int, string>> pageImageList = new List<Dictionary<int, string>>();
 	}
 
 	[System.Serializable]

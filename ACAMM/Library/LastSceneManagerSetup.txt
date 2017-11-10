@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Allson/Scene/NewScanner.unity
+- path: Assets/Scenes/PDFReader.unity
   isLoaded: 1
   isActive: 1
