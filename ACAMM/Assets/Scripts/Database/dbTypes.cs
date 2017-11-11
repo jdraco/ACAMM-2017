@@ -24,7 +24,7 @@ public class dbTypes {
 		public string country = "";
 		public string title = "";
 		public int pages = 0;
-		public List<Dictionary<int, string>> pageImageList = new List<Dictionary<int, string>>();
+		public List<string> pageImageList = new List<string>();
 	}
 
 	[System.Serializable]

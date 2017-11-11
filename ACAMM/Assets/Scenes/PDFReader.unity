@@ -2128,7 +2128,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1108060505}
-  - {fileID: 2030531219}
   m_Father: {fileID: 196707119}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2814,11 +2813,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 986001177}
---- !u!1 &1016693968 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1708514195074198, guid: a08cb53c618212a499549f52aac99518,
-    type: 2}
-  m_PrefabInternal: {fileID: 1144809186}
 --- !u!1 &1044471380
 GameObject:
   m_ObjectHideFlags: 0
@@ -3015,110 +3009,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1.0557861}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &1144809186
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 627728525}
-    m_Modifications:
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1708514195074198, guid: a08cb53c618212a499549f52aac99518, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a08cb53c618212a499549f52aac99518, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1164734242
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,7 +3554,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 815589342}
   m_HandleRect: {fileID: 815589341}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5373,11 +5263,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!224 &2030531219 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224113569673441942, guid: a08cb53c618212a499549f52aac99518,
-    type: 2}
-  m_PrefabInternal: {fileID: 1144809186}
 --- !u!1 &2083838505
 GameObject:
   m_ObjectHideFlags: 0
@@ -5834,9 +5719,7 @@ MonoBehaviour:
   - {fileID: 1551642984}
   - {fileID: 713138095}
   - {fileID: 979140890}
-  pdf_LIST:
-  - {fileID: 1094324611}
-  - {fileID: 1016693968}
+  pdf_LIST: []
   pdfSEL_HLIST:
   - Singapore Notes
   - Malaysia Notes
@@ -5856,9 +5739,14 @@ MonoBehaviour:
   header: {fileID: 594542494}
   ccsf: {fileID: 627728526}
   DB: {fileID: 2113078037}
+  presentationPrefab: {fileID: 1305365690456622, guid: 863ba46426f45914a8ee7df5e9e78196,
+    type: 2}
+  pagePrefab: {fileID: 1049011056277408, guid: 78107a0b2bfebce48928f3a1b3abef33, type: 2}
   pTabPrefab: {fileID: 1624862683841696, guid: cfe66d22037f07d4ca8dc9d865c5a07a, type: 2}
   presentationList: []
   distBetweenPresentationTabs: 17
+  distBetweenPages: -900
+  reference: {fileID: 1108060505}
   tabPosOffset: {x: -1, y: -10, z: 0}
 --- !u!114 &2113078037
 MonoBehaviour:

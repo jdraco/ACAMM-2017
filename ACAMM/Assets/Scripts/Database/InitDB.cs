@@ -281,16 +281,16 @@ public class InitDB : MonoBehaviour {
 	public void loadDBPresentation()
 	{
 		#if UNITY_EDITOR
-//		WWW loadDB = new WWW(pdfurl);
-//		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
-//		while(!loadDB.isDone) {
-//		Debug.Log("trying to load database");
-//		}
-//		if(loadDB.size != 0)
-//		{
-//		File.WriteAllBytes(Application.dataPath + "/PDF_Database.db", loadDB.bytes);
-//		Debug.Log("wrote file to database from server");
-//		}
+		WWW loadDB = new WWW(pdfurl);
+		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
+		while(!loadDB.isDone) {
+		Debug.Log("trying to load database");
+		}
+		if(loadDB.size != 0)
+		{
+		File.WriteAllBytes(Application.dataPath + "/PDF_Database.db", loadDB.bytes);
+		Debug.Log("wrote file to database from server");
+		}
 		string conn = "URI=file:" + Application.dataPath + "/PDF_Database.db"; //Path to database.
 		Debug.Log("reading database windows");
 		#elif UNITY_ANDROID
@@ -352,14 +352,14 @@ public class InitDB : MonoBehaviour {
 		string Title = "";
 		int Pages = 0;
 		string country = "";
-		List<Dictionary<int, string>> pageImageList = new List<Dictionary<int, string>>();
+		//List<string> pageImageList = new List<string>();
 		while (reader.Read())//read and load query
 		{
 			Title = reader.GetString(0);
 			Pages = reader.GetInt32(1);
 			//Debug.Log(reader.GetString(2));
-			country = profileToLoad;
-			//List<Dictionary<int, string>> pageImage = new List<Dictionary<int, string>>();
+			country = presentationToLoad;
+			//List<string> pageImage = new List<string>();
 			IDbConnection dbconn2;
 			dbconn2 = (IDbConnection) new SqliteConnection(conn);
 			dbconn2.Open();
@@ -374,13 +374,12 @@ public class InitDB : MonoBehaviour {
 			Debug.Log (sqlQuery2);
 			IDataReader reader2 = dbcmd2.ExecuteReader();
 			while (reader2.Read ()) {//read and load query
-				Dictionary<int, string> pageImage = new Dictionary<int, string>();
+				List<string> pageImageList = new List<string>();
 				for (int i = 0; i < Pages; i++) {
 					Debug.Log (reader2.GetString (i));
-					pageImage.Add ((i + 1), reader2.GetString (0));
+					pageImageList.Add (reader2.GetString (i));
 					
 				}
-				pageImageList.Add (pageImage);
 				dbTypes.Presentation tPresentation = new dbTypes.Presentation();
 				tPresentation = returnPresentation (Title, Pages, country, pageImageList);
 				loadToDBPresentation (tPresentation);
@@ -500,7 +499,7 @@ public class InitDB : MonoBehaviour {
 		return tProfile;
 	}
 
-	public dbTypes.Presentation returnPresentation(string title,int pages,string country, List<Dictionary<int, string>> pageImageList)//return requested presentation to be loaded
+	public dbTypes.Presentation returnPresentation(string title,int pages,string country, List<string> pageImageList)//return requested presentation to be loaded
 	{
 		dbTypes.Presentation tPresentation = new dbTypes.Presentation ();
 		tPresentation.title = title;

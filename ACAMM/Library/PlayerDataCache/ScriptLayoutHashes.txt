@@ -103,7 +103,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 c24a21b131bfa67be1162db2cba4b52b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 0fad5b17aae9ad3a26d7bc533b1ceb76 Assembly-CSharp.dll:.testjd
 de8ff77305b1b0c5567b893b119a88cf Assembly-CSharp.dll:.ChildContentSizeFitter
-e5f46b8a3204a812c51a5f3e80f28c05 Assembly-CSharp.dll:.InitDB
+bbd262ee387bb586f27b2c211fe948bf Assembly-CSharp.dll:.InitDB
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -156,6 +156,7 @@ f3a3e4f644f4c5bf440a913d5e499d1b Assembly-CSharp.dll:.sTab
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 5f2ad81aa8994e8fbe25d1e57afe6773 UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
+859f272224c1c1b349f359ff5d28a6ea Assembly-CSharp.dll:.pdfTab
 85efeb9e01dce753dd538d0e10de8873 Assembly-CSharp.dll:.ScaleToScreen
 407ec457956861a8ee4ebf169268c179 Assembly-CSharp.dll:.pStat
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Round
@@ -171,5 +172,5 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 7909d211002924478daa0bf10ec3d826 Assembly-CSharp.dll:.menuDebug
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.FingerPrint
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Rotate
-c81c360f982df4db0dc67c5f81cc896e Assembly-CSharp.dll:.pdfManager
+a13a8a1ed4ac19860e58a5ead9a6e294 Assembly-CSharp.dll:.pdfManager
 0c41843f08a71b870f92ecdeea8f4e76 Assembly-CSharp.dll:.TextScript
