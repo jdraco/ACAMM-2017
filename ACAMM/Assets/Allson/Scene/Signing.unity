@@ -582,7 +582,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 272, y: -524}
+  m_AnchoredPosition: {x: 105.9, y: -524}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &268509924
@@ -932,7 +932,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -524}
+  m_AnchoredPosition: {x: 272.3, y: -524}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429149674
@@ -2367,8 +2367,8 @@ MonoBehaviour:
   SSCamOne: {fileID: 1686547097}
   SSCamTwo: {fileID: 294653045}
   ThingsToSet:
-  - {fileID: 268509922}
   - {fileID: 205642919}
+  SSButton: {fileID: 268509922}
 --- !u!4 &2101865303
 Transform:
   m_ObjectHideFlags: 0

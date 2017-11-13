@@ -34,6 +34,8 @@ public class Signing : MonoBehaviour
 
     public List<GameObject> ThingsToSet = new List<GameObject>();
 
+    public GameObject SSButton;
+
     void Start()
 	{
 		mPosMaxOffset = mPosMaxOffset * (Screen.height / defHeight);
@@ -56,6 +58,16 @@ public class Signing : MonoBehaviour
 			DictionaryOfCountryLastKnownOffset.Add(Countries.name, 0);
 			i++;
         }
+
+        if (country == "Screenshot")
+        {
+
+        }
+        else
+        {
+           SSButton.SetActive(false);
+        }
+
     }
 
     // Update is called once per frame
