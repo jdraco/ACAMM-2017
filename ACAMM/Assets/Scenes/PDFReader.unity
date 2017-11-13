@@ -577,8 +577,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -5}
-  m_SizeDelta: {x: 700, y: 840}
+  m_AnchoredPosition: {x: 5, y: -19.8}
+  m_SizeDelta: {x: 700, y: 869.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &231667096
 MonoBehaviour:
@@ -677,7 +677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -327, y: 842.0001}
+  m_AnchoredPosition: {x: -327, y: 347.7363}
   m_SizeDelta: {x: 669, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &241436391
@@ -808,7 +808,7 @@ RectTransform:
   - {fileID: 328645639}
   - {fileID: 1797534992}
   m_Father: {fileID: 1831881312}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -860,7 +860,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: SGZOO
           m_BoolArgument: 0
@@ -1276,7 +1276,7 @@ RectTransform:
   - {fileID: 986001178}
   - {fileID: 1540084181}
   m_Father: {fileID: 1831881312}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1328,7 +1328,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: SGZOO
           m_BoolArgument: 0
@@ -1394,7 +1394,7 @@ RectTransform:
   m_LocalScale: {x: 1.0000145, y: 1.0000145, z: 1.0000145}
   m_Children: []
   m_Father: {fileID: 1619317736}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1427,7 +1427,7 @@ RectTransform:
   m_LocalScale: {x: 1.0000145, y: 1.0000145, z: 1.0000145}
   m_Children: []
   m_Father: {fileID: 1619317736}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1537,8 +1537,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -103}
-  m_SizeDelta: {x: 700, y: 842}
+  m_AnchoredPosition: {x: 5, y: -117.6}
+  m_SizeDelta: {x: 700, y: 871.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &469175269
 MonoBehaviour:
@@ -2185,7 +2185,7 @@ RectTransform:
   m_LocalScale: {x: 1.0000145, y: 1.0000145, z: 1.0000145}
   m_Children: []
   m_Father: {fileID: 1619317736}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2732,7 +2732,7 @@ RectTransform:
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 1619317736}
-  m_RootOrder: 9
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2844,7 +2844,7 @@ RectTransform:
   - {fileID: 263296446}
   - {fileID: 117429924}
   m_Father: {fileID: 1831881312}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -2896,7 +2896,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: SGZOO
           m_BoolArgument: 0
@@ -2962,7 +2962,7 @@ RectTransform:
   m_LocalScale: {x: 1.0000145, y: 1.0000145, z: 1.0000145}
   m_Children: []
   m_Father: {fileID: 1619317736}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3117,7 +3117,7 @@ RectTransform:
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 1619317736}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3155,7 +3155,7 @@ RectTransform:
   - {fileID: 1850230221}
   - {fileID: 613318688}
   m_Father: {fileID: 1831881312}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -3207,7 +3207,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: SGZOO
           m_BoolArgument: 0
@@ -3278,7 +3278,7 @@ RectTransform:
   - {fileID: 291970940}
   - {fileID: 851077807}
   m_Father: {fileID: 1831881312}
-  m_RootOrder: 9
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -3330,7 +3330,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 9
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: SGZOO
           m_BoolArgument: 0
@@ -3554,8 +3554,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 815589342}
   m_HandleRect: {fileID: 815589341}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.00000007006676
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3626,7 +3626,7 @@ RectTransform:
   - {fileID: 1739052623}
   - {fileID: 819099024}
   m_Father: {fileID: 1831881312}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -3678,7 +3678,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: SGZOO
           m_BoolArgument: 0
@@ -3744,7 +3744,7 @@ RectTransform:
   m_LocalScale: {x: 1.0000145, y: 1.0000145, z: 1.0000145}
   m_Children: []
   m_Father: {fileID: 1619317736}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4195,7 +4195,7 @@ RectTransform:
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 1619317736}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4263,15 +4263,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1947018395}
+  - {fileID: 1551642985}
+  - {fileID: 979140891}
   - {fileID: 1184657750}
   - {fileID: 348187237}
   - {fileID: 1046696007}
   - {fileID: 406439946}
   - {fileID: 1429264626}
   - {fileID: 1898669147}
-  - {fileID: 1551642985}
   - {fileID: 713138096}
-  - {fileID: 979140891}
   m_Father: {fileID: 2087757150}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4535,7 +4535,7 @@ RectTransform:
   - {fileID: 2090445589}
   - {fileID: 2174150}
   m_Father: {fileID: 1831881312}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -4587,7 +4587,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: SGZOO
           m_BoolArgument: 0
@@ -4796,15 +4796,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 282400650}
+  - {fileID: 334521342}
+  - {fileID: 1219215040}
   - {fileID: 1360547180}
   - {fileID: 1209578128}
   - {fileID: 269078453}
   - {fileID: 1044471381}
   - {fileID: 1679172816}
   - {fileID: 2145631500}
-  - {fileID: 334521342}
   - {fileID: 1927396226}
-  - {fileID: 1219215040}
   m_Father: {fileID: 241436390}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4924,7 +4924,7 @@ RectTransform:
   m_LocalScale: {x: 1.0000145, y: 1.0000145, z: 1.0000145}
   m_Children: []
   m_Father: {fileID: 1619317736}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4962,7 +4962,7 @@ RectTransform:
   - {fileID: 599127784}
   - {fileID: 508449393}
   m_Father: {fileID: 1831881312}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -5014,7 +5014,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 8
+          m_IntArgument: 9
           m_FloatArgument: 0
           m_StringArgument: SGZOO
           m_BoolArgument: 0
@@ -5187,7 +5187,7 @@ RectTransform:
   m_GameObject: {fileID: 1983973656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1.0000118, y: 1.0000118, z: 1.0000118}
+  m_LocalScale: {x: 1.0000037, y: 1.0000037, z: 1.0000037}
   m_Children:
   - {fileID: 1659682365}
   - {fileID: 915750540}
@@ -5196,8 +5196,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -102}
-  m_SizeDelta: {x: 700, y: 840}
+  m_AnchoredPosition: {x: 5, y: -117.6}
+  m_SizeDelta: {x: 700, y: 871.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1983973658
 MonoBehaviour:
@@ -5710,15 +5710,15 @@ MonoBehaviour:
   Country_Select: {fileID: 469175267}
   pdfSEL_LIST:
   - {fileID: 1947018394}
+  - {fileID: 1551642984}
+  - {fileID: 979140890}
   - {fileID: 1184657749}
   - {fileID: 348187236}
   - {fileID: 1046696006}
   - {fileID: 406439945}
   - {fileID: 1429264625}
   - {fileID: 1898669146}
-  - {fileID: 1551642984}
   - {fileID: 713138095}
-  - {fileID: 979140890}
   pdf_LIST: []
   pdfSEL_HLIST:
   - Singapore Notes
@@ -5748,6 +5748,7 @@ MonoBehaviour:
   distBetweenPages: -900
   reference: {fileID: 1108060505}
   tabPosOffset: {x: -1, y: -10, z: 0}
+  csOffset: 1
 --- !u!114 &2113078037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5788,6 +5789,7 @@ MonoBehaviour:
     BNP: BN
     CMP: CM
     IDP: ID
+    INP: IN
     LSP: LS
     MYP: MY
     MYRP: MYR
@@ -5823,7 +5825,7 @@ RectTransform:
   - {fileID: 1936555856}
   - {fileID: 534541079}
   m_Father: {fileID: 1831881312}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -5875,7 +5877,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: SGZOO
           m_BoolArgument: 0

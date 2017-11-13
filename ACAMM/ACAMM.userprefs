@@ -7,22 +7,26 @@
       <File FileName="Assets\Allson\Scripts\Signing.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Network\c_NetworkManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Network\Master.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Database\InitDB.cs" Line="322" Column="30" />
-      <File FileName="Assets\Scripts\PDF\pdfManager.cs" Line="91" Column="3" />
-      <File FileName="Assets\Scripts\ProfileLoader\ProfileLoader.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Global\GlobalValues.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Database\InitDB.cs" Line="44" Column="28" />
+      <File FileName="Assets\Scripts\PDF\pdfManager.cs" Line="87" Column="23" />
       <File FileName="Assets\Scripts\PDF\pdfTab.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ProfileLoader\pTab.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Database\dbTypes.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ChildContentSizeFitter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ChildContentSizeFitter.cs" Line="27" Column="1" />
+      <File FileName="Assets\Scripts\Global\GlobalValues.cs" Line="25" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Assets\Scripts\Network\authentication_Manager.cs" line="129" column="1" />
       <Breakpoint file="C:\Users\demounit\Documents\GitHub\ACAMM-2017\ACAMM\Assets\Scripts\PDF\pdfManager.cs" line="121" column="1" />
-      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\PDF\pdfManager.cs" line="80" column="1" />
-      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\PDF\pdfManager.cs" line="66" column="28" />
+      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\PDF\pdfManager.cs" line="84" column="1" />
+      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\PDF\pdfManager.cs" line="177" column="23" />
+      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\ChildContentSizeFitter.cs" line="27" column="1" />
+      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\Database\InitDB.cs" line="126" column="1" />
+      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\Database\InitDB.cs" line="127" column="1" />
+      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\Database\InitDB.cs" line="162" column="1" />
+      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\Database\InitDB.cs" line="336" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

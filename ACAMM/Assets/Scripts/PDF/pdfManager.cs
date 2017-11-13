@@ -108,7 +108,7 @@ public class pdfManager : MonoBehaviour {
 	//enter a places of interest selection screen based on which country is chosen
 	public void enterpdfSel(int v)
 	{
-		GlobalValues.cp2 = (GlobalValues.CP)v;
+		GlobalValues.cp2 = (GlobalValues.CPre)v;
 		DB.initPresentation ();
 //		foreach (dbTypes.Presentation presentation in DB.presentationList) {
 //			for(int i = 0; i < presentation.pages; i++)
@@ -172,7 +172,7 @@ public class pdfManager : MonoBehaviour {
 		pdf_Select.SetActive (true);
 		Country_Select.SetActive (false);
 		header.text = pdfSEL_HLIST [v];
-		ccsf.grandChildParent = v;
+		ccsf.grandChildParent = 0;
 		ccsf.reSize ();
 		selectedCountry = v;
 		pState = pdfState.pdfSelect;
