@@ -67,7 +67,11 @@ public class Signing : MonoBehaviour
         }
         else
         {
-           //SSButton.SetActive(false);
+            //SSButton.SetActive(false);
+            if (authManager != null)
+            {
+                ThingsToSet.Add(authManager.gameObject);
+            }
         }
 
     }
