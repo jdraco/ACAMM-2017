@@ -65,7 +65,7 @@ public class Signing : MonoBehaviour
         }
         else
         {
-           SSButton.SetActive(false);
+           //SSButton.SetActive(false);
         }
 
     }
@@ -73,26 +73,33 @@ public class Signing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		//mousepos = Input.mousePosition;
-		//Debug.Log(Input.mousePosition);
-		if (Input.GetMouseButtonDown(0)){
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
-			if (PlaneCollider.Raycast (ray, out hit, Mathf.Infinity))
-				SigningBool = true;
-			else
-				SigningBool = false;
-		}
-		if (SigningBool && Input.GetMouseButton (0)) {
-			Vector3 VecOffset;
-			SigningUpdate (Input.mousePosition, out VecOffset);
-		} else if (Input.GetMouseButtonUp (0)) {
-			if (authManager != null)
-				authManager.SendPenLiftup ();
-		}
-        else
+        if (country == "Screenshot")
         {
-            PenID = -1;
+            //mousepos = Input.mousePosition;
+            //Debug.Log(Input.mousePosition);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (PlaneCollider.Raycast(ray, out hit, Mathf.Infinity))
+                    SigningBool = true;
+                else
+                    SigningBool = false;
+            }
+            if (SigningBool && Input.GetMouseButton(0))
+            {
+                Vector3 VecOffset;
+                SigningUpdate(Input.mousePosition, out VecOffset);
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                if (authManager != null)
+                    authManager.SendPenLiftup();
+            }
+            else
+            {
+                PenID = -1;
+            }
         }
     }
 
