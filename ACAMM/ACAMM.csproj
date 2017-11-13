@@ -117,6 +117,7 @@
     <Compile Include="Assets\Scripts\Network\s_NetworkManager.cs" />
     <Compile Include="Assets\Scripts\openThirdParty.cs" />
     <Compile Include="Assets\Scripts\PDF\pdfManager.cs" />
+    <Compile Include="Assets\Scripts\PDF\pdfTab.cs" />
     <Compile Include="Assets\Scripts\PhoneCall.cs" />
     <Compile Include="Assets\Scripts\PlacesOfInterest\poiManager.cs" />
     <Compile Include="Assets\Scripts\ProfileLoader\ProfileLoader.cs" />
