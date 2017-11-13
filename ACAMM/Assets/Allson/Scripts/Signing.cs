@@ -46,8 +46,10 @@ public class Signing : MonoBehaviour
 			country = authManager.userName;
 		}
 		if (country == "Brunei" || country == "Cambodia" || country == "Indonesia" || country == "Laos") {
+			JDScrollBar.value = 0.25f;
+			ScrollPage (JDScrollBar);
 		} else {
-			JDScrollBar.value = 1;
+			JDScrollBar.value = 0.50f;
 			ScrollPage (JDScrollBar);
 		}
 		int i = 0;
@@ -73,7 +75,7 @@ public class Signing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (country == "Screenshot")
+        if (country != "Screenshot")
         {
             //mousepos = Input.mousePosition;
             //Debug.Log(Input.mousePosition);

@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Start.unity
-=======
 - path: Assets/Allson/Scene/Signing.unity
->>>>>>> b3ea5e8a5a197000b4fe9cb4819eadb7d9625aa6
   isLoaded: 1
   isActive: 1
