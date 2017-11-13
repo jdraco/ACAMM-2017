@@ -2369,7 +2369,6 @@ MonoBehaviour:
   ThingsToSet:
   - {fileID: 268509922}
   - {fileID: 205642919}
-  - {fileID: 0}
 --- !u!4 &2101865303
 Transform:
   m_ObjectHideFlags: 0
