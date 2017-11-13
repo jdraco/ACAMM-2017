@@ -83,7 +83,7 @@ public class pdfManager : MonoBehaviour {
 		pdf_Content.SetActive (true);
 		pdfSEL_LIST [selectedCountry].SetActive (false);
 		pdf_Select.SetActive (false);
-		header.text = pdf_HLIST [v];
+		header.text = DB.presentationList [v].title;
 		pState = pdfState.inpdf;
 		selectedpdf = v;
 		ccsf.grandChildParent = v+csOffset;

@@ -317,11 +317,9 @@ public class InitDB : MonoBehaviour {
 		Debug.Log("wrote file to database");
 		}
 		string conn = "URI=file:" + Application.persistentDataPath + "/PDF_Database.db"; //Path to database.
-
 		#else
-		if(!dbInitDone)
-		{
-		WWW loadDB = new WWW(url);
+
+		WWW loadDB = new WWW(pdfurl);
 		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
 		while(!loadDB.isDone) {
 		Debug.Log("trying to load database");
@@ -331,8 +329,7 @@ public class InitDB : MonoBehaviour {
 		File.WriteAllBytes(Application.dataPath + "/PDF_Database.db", loadDB.bytes);
 		Debug.Log("wrote file to database from server");
 		}
-		dbInitDone = true;
-		}
+
 		string conn = "URI=file:" + Application.dataPath + "/PDF_Database.db"; //Path to database.
 		Debug.Log("reading database windows");
 		#endif
