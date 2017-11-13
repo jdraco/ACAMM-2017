@@ -251,7 +251,7 @@ public class InitDB : MonoBehaviour {
 		dbconn = (IDbConnection) new SqliteConnection(conn);
 		dbconn.Open(); //Open connection to the database.
 		IDbCommand dbcmd = dbconn.CreateCommand();
-		string sqlQuery = "SELECT VALUE,ROLE,NAME,DOB,COUNTRY,RANK,COMMENT,PICTURE " + "FROM " + profileToLoad;//query to load
+		string sqlQuery = "SELECT VALUE,ROLE,NAME,DOB,COUNTRY,RANK,COMMENT,PICTURE " + "FROM " + profileToLoad + " ORDER BY VALUE";//query to load
 		dbcmd.CommandText = sqlQuery;
 		IDataReader reader = dbcmd.ExecuteReader();
 		while (reader.Read())//read and load query
