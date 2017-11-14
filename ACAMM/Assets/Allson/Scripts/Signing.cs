@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Signing : MonoBehaviour
 {
 
-    public Collider PlaneCollider;
+    //public Collider PlaneCollider;
     public GameObject SignaturePrefab;
     LineRenderer CurrentLine;
 	//LineRenderer NetworkLine;
@@ -29,6 +29,8 @@ public class Signing : MonoBehaviour
 	public Scrollbar JDScrollBar;
 	public float mPosMaxOffset = 423;
 	public float defHeight = 2736;
+	public Collider[] planeCollider;
+	int intOfThisCountry = 0;
 
     public GameObject MC, SSCamOne, SSCamTwo;
 
@@ -61,6 +63,8 @@ public class Signing : MonoBehaviour
 			i++;
         }
 
+		intOfThisCountry = DictionaryOfCountryInt [country];
+
         if (country == "Screenshot")
         {
 
@@ -87,7 +91,7 @@ public class Signing : MonoBehaviour
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                if (PlaneCollider.Raycast(ray, out hit, Mathf.Infinity))
+				if (planeCollider[intOfThisCountry].Raycast(ray, out hit, Mathf.Infinity))
                     SigningBool = true;
                 else
                     SigningBool = false;
@@ -139,7 +143,7 @@ public class Signing : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (PlaneCollider.Raycast(ray, out hit, Mathf.Infinity))
+			if (planeCollider[intOfThisCountry].Raycast(ray, out hit, Mathf.Infinity))
             {
                 CurrentLine = Instantiate(SignaturePrefab).GetComponent<LineRenderer>();
                 CurrentLine.positionCount = 2;
@@ -158,7 +162,7 @@ public class Signing : MonoBehaviour
         }
         else if (Input.GetMouseButton(0))
         {
-	        if (PlaneCollider.Raycast(ray, out hit, Mathf.Infinity))
+			if (planeCollider[intOfThisCountry].Raycast(ray, out hit, Mathf.Infinity))
 	        {
 				//Debug.Log ("jdscrollbar val " + JDScrollBar.value);
 				if (authManager != null) {
@@ -188,7 +192,7 @@ public class Signing : MonoBehaviour
 	        }
         }
 
-		Offset = PlaneCollider.transform.position - hit.point;
+		Offset = planeCollider[intOfThisCountry].transform.position - hit.point;
 //        else if (Input.GetMouseButtonUp(0))
 //        {
 //            //this is usless tbh
@@ -221,7 +225,7 @@ public class Signing : MonoBehaviour
 		RaycastHit hit;
 		if(DictionaryOfCountryInt[name] != null)
 		{
-			if (PlaneCollider.Raycast(ray, out hit, Mathf.Infinity))
+			if (planeCollider[intOfThisCountry].Raycast(ray, out hit, Mathf.Infinity))
 			{
 				if (NetworkLine[DictionaryOfCountryInt[name]] != null)// && DictionaryOfCountryLastKnownOffset[name] == offset && DictionaryOfCountryLastKnownOffset [country] == JDScrollBar.value)
 				{
@@ -293,7 +297,7 @@ public class Signing : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(UsedTouch.position);
             RaycastHit hit;
-            if (PlaneCollider.Raycast(ray, out hit, Mathf.Infinity))
+			if (planeCollider[intOfThisCountry].Raycast(ray, out hit, Mathf.Infinity))
             {
                 CurrentLine = Instantiate(SignaturePrefab).GetComponent<LineRenderer>();
                 CurrentLine.positionCount = 2;
@@ -328,7 +332,7 @@ public class Signing : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(UsedTouch.position);
             RaycastHit hit;
-            if (PlaneCollider.Raycast(ray, out hit, Mathf.Infinity))
+			if (planeCollider[intOfThisCountry].Raycast(ray, out hit, Mathf.Infinity))
             {
                 if (CurrentLine != null)
                 {
