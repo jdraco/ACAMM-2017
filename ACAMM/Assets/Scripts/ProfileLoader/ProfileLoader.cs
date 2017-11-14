@@ -16,6 +16,7 @@ public class ProfileLoader : MonoBehaviour {
 	public float defScreenWidth = 1280;
 	public float widthRatio = 1;
 	public Sprite unknownSprite;
+	public GameObject[] commentBox;
 
 	//show list of personnel or stats of specific personnel
 	public enum state{
@@ -119,7 +120,16 @@ public class ProfileLoader : MonoBehaviour {
 		statContainer.dob.text = profile.dob;
 		statContainer.country.text = profile.country;
 		statContainer.rank.text = profile.rank;
-		statContainer.comment.text = profile.comment;
+		if (profile.comment != "NIL") {
+			statContainer.comment.text = profile.comment;
+			foreach (GameObject cbox in commentBox) {
+				cbox.SetActive (true);
+			}
+		} else {
+			foreach (GameObject cbox in commentBox) {
+				cbox.SetActive (false);
+			}
+		}
 		//statContainer.picture.text = profile.picture;
 		switch (profile.country) {
 		case "SINGAPORE":

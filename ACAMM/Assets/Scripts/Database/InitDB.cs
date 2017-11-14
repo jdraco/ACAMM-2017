@@ -124,34 +124,34 @@ public class InitDB : MonoBehaviour {
 
 	public void initPresentation(){
 		switch (GlobalValues.cp2) {
-		case GlobalValues.CP.SG:
+		case GlobalValues.CPre.SG:
 			presentationToLoad = cq.SGP;
 			break;
-		case GlobalValues.CP.TH:
+		case GlobalValues.CPre.TH:
 			presentationToLoad = cq.THP;
 			break;
-		case GlobalValues.CP.VN:
+		case GlobalValues.CPre.VN:
 			presentationToLoad = cq.VNP;
 			break;
-		case GlobalValues.CP.BN:
+		case GlobalValues.CPre.BN:
 			presentationToLoad = cq.BNP;
 			break;
-		case GlobalValues.CP.CM:
+		case GlobalValues.CPre.CM:
 			presentationToLoad = cq.CMP;
 			break;
-		case GlobalValues.CP.ID:
+		case GlobalValues.CPre.ID:
 			presentationToLoad = cq.IDP;
 			break;
-		case GlobalValues.CP.LS:
+		case GlobalValues.CPre.LS:
 			presentationToLoad = cq.LSP;
 			break;
-		case GlobalValues.CP.MY:
+		case GlobalValues.CPre.MY:
 			presentationToLoad = cq.MYP;
 			break;
-		case GlobalValues.CP.MYR:
+		case GlobalValues.CPre.MYR:
 			presentationToLoad = cq.MYRP;
 			break;
-		case GlobalValues.CP.PH:
+		case GlobalValues.CPre.PH:
 			presentationToLoad = cq.PHP;
 			break;
 		default:
@@ -251,7 +251,7 @@ public class InitDB : MonoBehaviour {
 		dbconn = (IDbConnection) new SqliteConnection(conn);
 		dbconn.Open(); //Open connection to the database.
 		IDbCommand dbcmd = dbconn.CreateCommand();
-		string sqlQuery = "SELECT VALUE,ROLE,NAME,DOB,COUNTRY,RANK,COMMENT,PICTURE " + "FROM " + profileToLoad;//query to load
+		string sqlQuery = "SELECT VALUE,ROLE,NAME,DOB,COUNTRY,RANK,COMMENT,PICTURE " + "FROM " + profileToLoad + " ORDER BY VALUE";//query to load
 		dbcmd.CommandText = sqlQuery;
 		IDataReader reader = dbcmd.ExecuteReader();
 		while (reader.Read())//read and load query
