@@ -17,10 +17,11 @@ public class poiManager : MonoBehaviour {
 	public int selectedPOI = -1;
 	public Text header;
 	public ChildContentSizeFitter ccsf;
-	//daySelect = selection of which day
-	//poiSelect = selection of which places of interest data to view
-	//inPoi = currently viewing a place of interest
-	enum poiState{
+    public ChildContentSizeFitter ccsf2;
+    //daySelect = selection of which day
+    //poiSelect = selection of which places of interest data to view
+    //inPoi = currently viewing a place of interest
+    enum poiState{
 		daySelect,
 		poiSelect,
 		inPoi
@@ -73,8 +74,8 @@ public class poiManager : MonoBehaviour {
 		POI_Select.SetActive (true);
 		Day_Select.SetActive (false);
 		header.text = POISEL_HLIST [v];
-		ccsf.grandChildParent = v;
-		ccsf.reSize ();
+		ccsf2.grandChildParent = v;
+		ccsf2.reSize ();
 		selectedDay = v;
 		pState = poiState.poiSelect;
 	}

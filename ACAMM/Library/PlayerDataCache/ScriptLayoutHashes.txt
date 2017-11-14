@@ -160,7 +160,7 @@ f3a3e4f644f4c5bf440a913d5e499d1b Assembly-CSharp.dll:.sTab
 85efeb9e01dce753dd538d0e10de8873 Assembly-CSharp.dll:.ScaleToScreen
 407ec457956861a8ee4ebf169268c179 Assembly-CSharp.dll:.pStat
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Round
-d9eb336fc327e0baa01f73716b185218 Assembly-CSharp.dll:.poiManager
+48e397b6c7d21774788d9b83c0e891d7 Assembly-CSharp.dll:.poiManager
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
