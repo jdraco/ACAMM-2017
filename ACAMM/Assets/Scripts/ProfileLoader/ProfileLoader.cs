@@ -12,11 +12,16 @@ public class ProfileLoader : MonoBehaviour {
 	public Texture2D loading;
 	public bool viewProfile = false;
 	public l_sceneManager lsm;
-	public float distBetweenProfileTabs = 0;
 	public float defScreenWidth = 1280;
 	public float widthRatio = 1;
 	public Sprite unknownSprite;
 	public GameObject[] commentBox;
+
+    public float SpacingBetweenTabs = 10.0f;
+    public Canvas ThisCanvas;
+
+    bool SetEverything = false;
+    int FrameChecker = 0;
 
 	//show list of personnel or stats of specific personnel
 	public enum state{
@@ -57,16 +62,22 @@ public class ProfileLoader : MonoBehaviour {
 	// init list of personnel based on country selected
 	void Start () {
 		int i = 0;
-		widthRatio = Screen.width / defScreenWidth;
-		foreach(dbTypes.Profile tProfile in DB.profileList)
+		//widthRatio = Screen.width / defScreenWidth;
+        foreach (dbTypes.Profile tProfile in DB.profileList)
 		{
-			Vector3 tabPos = pTabContainer.transform.position;
-			tabPos.y += i * (-distBetweenProfileTabs	);
-			GameObject newObj = Instantiate(pTabPrefab, tabPos, Quaternion.identity);
-			//newObj.transform.Rotate (0, 0, -90);
-			newObj.GetComponent<pTab> ().profile = tProfile;
-			newObj.GetComponent<pTab> ().pLoader = this;
-			switch (tProfile.country) {
+            //Vector3 tabPos = pTabContainer.transform.position;
+            //tabPos.y += i * (-distBetweenProfileTabs	);
+            //GameObject newObj = Instantiate(pTabPrefab, tabPos, Quaternion.identity);
+
+            GameObject newObj = Instantiate(pTabPrefab);
+
+            pTab ThisPTab = newObj.GetComponent<pTab>();
+
+            ThisPTab.profile = tProfile;
+            ThisPTab.pLoader = this;
+            ThisPTab.LoadInfo();
+
+            switch (tProfile.country) {
 			case "SINGAPORE":
 				newObj.GetComponent<pTab> ().cPicture.sprite = ap.SG;
 				break;
@@ -100,9 +111,8 @@ public class ProfileLoader : MonoBehaviour {
 			default:
 				break;
 			}
-			newObj.transform.parent = pTabContainer.transform;
 
-			profileList.Add (newObj);
+            profileList.Add (newObj);
 			i++;
 		}
 	}
@@ -110,10 +120,105 @@ public class ProfileLoader : MonoBehaviour {
 	void Update() {
 		if (Input.GetKeyUp ("escape"))
 			back ();
-	}
 
-	//load a specific personnel profile
-	public void loadProfile(dbTypes.Profile profile)
+       
+
+        //foreach (GameObject ThisTab in profileList)
+        //{
+
+        //    RectTransform ThisRectTransform = ThisTab.GetComponent<RectTransform>();
+
+        //    //newObj.transform.Rotate (0, 0, -90);
+        //    pTab ThisPTab = ThisTab.GetComponent<pTab>();
+
+        //    //PreviousBaseHeight = 
+
+        //    float TopOfTab = ThisTab.transform.position.y + ((ThisRectTransform.lossyScale.y * ThisRectTransform.sizeDelta.y) * 0.5f);
+        //    float BottomOfTab = ThisPTab.Value.GetComponent<RectTransform>().position.y - ((ThisPTab.Value.GetComponent<RectTransform>().lossyScale.y * ThisPTab.Value.GetComponent<RectTransform>().sizeDelta.y) * 0.5f);
+
+        //    //ThisRectTransform.
+        //    float SizeOfNewTab = TopOfTab - BottomOfTab;
+
+        //    ThisRectTransform.sizeDelta = new Vector2(ThisRectTransform.sizeDelta.x, (SizeOfNewTab/ ThisRectTransform.lossyScale.y)); 
+
+        //    Debug.Log(ThisPTab.profile.name + " " + SizeOfNewTab);
+        //}
+    }
+
+    void LateUpdate()
+    {
+
+        if (FrameChecker <= 2)
+        {
+            FrameChecker++;
+        }
+
+        if (FrameChecker == 2)
+        {
+            int i = 0;
+            Vector3 TopOfProfileList = pTabContainer.transform.position;// + new Vector3(0, (pTabContainer.transform.lossyScale.y * pTabContainer.GetComponent<RectTransform>().sizeDelta.y) , 0);
+            foreach (GameObject ThisTab in profileList)
+            {
+
+                ThisTab.transform.SetParent(pTabContainer.transform);
+
+                RectTransform ThisRectTransform = ThisTab.GetComponent<RectTransform>();
+
+                float PreviousBaseHeight, PreviousBasePosY;
+
+                pTab ThisPTab = ThisTab.GetComponent<pTab>();
+
+                float BottomOfName = ThisPTab.Name.GetComponent<RectTransform>().position.y - ((ThisPTab.Name.GetComponent<RectTransform>().lossyScale.y * ThisPTab.Name.GetComponent<RectTransform>().sizeDelta.y));
+                ThisPTab.Value.GetComponent<RectTransform>().position = new Vector3(ThisPTab.Name.GetComponent<RectTransform>().position.x, BottomOfName - 1, ThisPTab.Name.GetComponent<RectTransform>().position.z);
+
+                float TopOfTab = ThisTab.transform.position.y + ((ThisRectTransform.lossyScale.y * ThisRectTransform.sizeDelta.y) * 0.5f);
+                float BottomOfTab = ThisPTab.Value.GetComponent<RectTransform>().position.y - ((ThisPTab.Value.GetComponent<RectTransform>().lossyScale.y * ThisPTab.Value.GetComponent<RectTransform>().sizeDelta.y));
+
+                //ThisRectTransform. 
+                float SizeOfNewTab = TopOfTab - BottomOfTab;
+
+                ThisRectTransform.sizeDelta = new Vector2(ThisRectTransform.sizeDelta.x, ((SizeOfNewTab + 2) / ThisRectTransform.lossyScale.y));
+
+                Debug.Log(ThisPTab.profile.name + SizeOfNewTab);
+
+
+                //Set Tab/Box Position
+                float SizeOfTab = ThisRectTransform.lossyScale.y * ThisRectTransform.sizeDelta.y;
+                if (i == 0)
+                {
+
+                    ThisTab.transform.position = TopOfProfileList;
+                    ThisTab.transform.position -= new Vector3(0, SizeOfTab * 0.5f, 0);
+                }
+                else
+                {
+                    float SizeOfPreviousTab = profileList[i - 1].transform.lossyScale.y * profileList[i - 1].GetComponent<RectTransform>().sizeDelta.y;
+
+                    ThisTab.transform.position = profileList[i - 1].transform.position - new Vector3(0, SizeOfPreviousTab * 0.5f, 0);
+                    ThisTab.transform.position -= new Vector3(0, SizeOfTab * 0.5f, 0);
+                    ThisTab.transform.position -= new Vector3(0, SpacingBetweenTabs, 0);
+                }
+
+                //ThisRectTransform.anchorMin = new Vector2(0.5f, 1f);
+                //ThisRectTransform.anchorMax = new Vector2(0.5f, 1f);
+                //ThisRectTransform.pivot = new Vector2(0.5f, 1.0f);
+
+                if (profileList.Count - 1 == i)
+                {
+                    float TopOfProfile = pTabContainer.transform.position.y;// + ((ThisRectTransform.transform.lossyScale.y * pTabContainer.GetComponent<RectTransform>().sizeDelta.y) * 0.5f);
+                    float BottomOfProfile = ThisRectTransform.position.y - (ThisRectTransform.transform.lossyScale.y * ThisRectTransform.sizeDelta.y * 0.5f);
+                    float SizeOfNewProfile = TopOfProfile - BottomOfProfile;
+
+                    pTabContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(pTabContainer.GetComponent<RectTransform>().sizeDelta.x, (SizeOfNewProfile/pTabContainer.transform.lossyScale.y)); ;
+                }
+
+                i++;
+            }
+        }
+    }
+
+    //load a specific personnel profile
+    public void loadProfile(dbTypes.Profile profile)
 	{
 		statContainer.value.text = profile.role;//.ToString();
 		statContainer.name.text = profile.name;
