@@ -97,7 +97,9 @@
      <Compile Include="Assets\Unity-Logs-Viewer\Reporter\ReporterMessageReceiver.cs" />
      <Compile Include="Assets\Unity-Logs-Viewer\Reporter\Test\Rotate.cs" />
      <Compile Include="Assets\Unity-Logs-Viewer\Reporter\Test\TestReporter.cs" />
+     <None Include="Assets\Resources\Images\PDF\SG\p1\Version.txt" />
      <None Include="Assets\StreamingAssets\build_info.txt" />
+     <None Include="Assets\Resources\Images\PDF\SG\p2\Version.txt" />
      <None Include="Assets\ASDADAD\sadsadsadasdsad.txt" />
      <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
  <Reference Include="UnityEngine.UI">

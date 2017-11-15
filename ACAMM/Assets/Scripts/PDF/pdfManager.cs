@@ -57,6 +57,7 @@ public class pdfManager : MonoBehaviour {
 	public void enterpdf(int v)
 	{
 		//int j = 0;
+		int ccPos = 0;
 		if (pdf_LIST [v] == null) {
 			Vector3 tabPos = reference.transform.position;
 			GameObject preObj = Instantiate (presentationPrefab, tabPos, Quaternion.identity);
@@ -79,6 +80,19 @@ public class pdfManager : MonoBehaviour {
 			//}
 
 			pdf_LIST [v] = preObj;
+
+
+		}
+		int j = 0;
+		for (int k = 0; k < pdf_LIST.Length; k++) {
+			
+			if (pdf_LIST [k] != null) {
+				if (pdf_LIST [v] == pdf_LIST [k]) {
+					ccPos = j + csOffset;
+				}
+				pdf_LIST[k].gameObject.transform.SetSiblingIndex (j + csOffset);
+				j++;
+			}
 		}
 		pdf_LIST [v].SetActive (true);
 		pdf_Content.SetActive (true);
@@ -87,7 +101,7 @@ public class pdfManager : MonoBehaviour {
 		header.text = DB.presentationList [v].title;
 		pState = pdfState.inpdf;
 		selectedpdf = v;
-		ccsf.grandChildParent = v+csOffset;
+		ccsf.grandChildParent = ccPos;
 		ccsf.reSize ();
 
 	}
@@ -178,13 +192,13 @@ public class pdfManager : MonoBehaviour {
 		}
 		foreach (dbTypes.Presentation presentation in DB.presentationList) {
             string directoryPath = Application.dataPath + "/Resources/Images/PDF/" + presentation.country + "/" + presentation.title;
-            if (presentation.version > loadVersion(directoryPath + "/Version.txt"))
+			if (presentation.version > loadVersion(directoryPath + "/Version.txt"))// || !File.Exists(directoryPath + "/Page" + (i + 1) + ".png"))
             {
                 for (int i = 0; i < presentation.pages; i++)
                 {
                     
-                    if (!File.Exists(directoryPath + "/Page" + (i + 1) + ".png"))
-                    {
+                   // if (!File.Exists(directoryPath + "/Page" + (i + 1) + ".png"))
+                   // {
                         string dlLink = presentation.link + "-" + (i) + ".png";
                         WWW loadIMG = new WWW(dlLink);
                         //WWW loadIMG = new WWW (presentation.pageImageList [i]);
@@ -206,9 +220,9 @@ public class pdfManager : MonoBehaviour {
                             File.WriteAllBytes(directoryPath + "/Page" + (i + 1) + ".png", loadIMG.bytes);
                             Debug.Log("wrote file to local from server");
                         }
-                    }
-                    else
-                        Debug.Log("skip downloading " + presentation.title + " Page" + (i + 1) + " as file already exist");
+                   // }
+                   // else
+                        //Debug.Log("skip downloading " + presentation.title + " Page" + (i + 1) + " as file already exist");
                 }
                 setVersion(directoryPath + "/Version.txt", presentation.version.ToString());
                 //File.WriteAllBytes(directoryPath + "/Version" + (i + 1) + ".png", loadIMG.bytes);
