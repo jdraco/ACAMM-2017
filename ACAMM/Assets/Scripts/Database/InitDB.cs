@@ -286,7 +286,7 @@ public class InitDB : MonoBehaviour {
 		dbconn = (IDbConnection) new SqliteConnection(conn);
 		dbconn.Open(); //Open connection to the database.
 		IDbCommand dbcmd = dbconn.CreateCommand();
-		string sqlQuery = "SELECT VALUE,ROLE,NAME,DOB,COUNTRY,RANK,COMMENT,PICTURE,CVLINK " + "FROM " + profileToLoad + " ORDER BY VALUE";//query to load
+		string sqlQuery = "SELECT VALUE,ROLE,NAME,DOB,COUNTRY,RANK,COMMENT,PICTURE,CVLINK,PAGES " + "FROM " + profileToLoad + " ORDER BY VALUE";//query to load
 		dbcmd.CommandText = sqlQuery;
 		IDataReader reader = dbcmd.ExecuteReader();
 		while (reader.Read())//read and load query
@@ -300,9 +300,10 @@ public class InitDB : MonoBehaviour {
 		string comment = reader.GetString(6);
 		string picture = reader.GetString(7);
         string CVLink = reader.GetString(8);
+            int pages = reader.GetInt32(9);
 
 		dbTypes.Profile tProfile = new dbTypes.Profile();
-		tProfile = returnProfile (value,role, name, dob, country, rank, comment, picture, CVLink);
+		tProfile = returnProfile (value,role, name, dob, country, rank, comment, picture, CVLink, pages);
 		loadToDB (tProfile);
 		Debug.Log( "value= "+value+"  name ="+name+"  dob="+dob+"  country="+country+"  rank="+rank+"  comment="+comment+"  picture="+picture+  " CVLink " + CVLink);
 		}
@@ -524,7 +525,7 @@ public class InitDB : MonoBehaviour {
 		dbconn = null;
 	}
 
-	public dbTypes.Profile returnProfile(int value,string role,string name,string dob,string country,string rank,string comment, string picture, string Cvlink)//return requested profile to be loaded
+	public dbTypes.Profile returnProfile(int value,string role,string name,string dob,string country,string rank,string comment, string picture, string Cvlink, int pages)//return requested profile to be loaded
 	{
 		dbTypes.Profile tProfile = new dbTypes.Profile ();
 		tProfile.value = value;
@@ -536,6 +537,7 @@ public class InitDB : MonoBehaviour {
 		tProfile.comment = comment;
 		tProfile.picture = picture;
         tProfile.cvlink = Cvlink;
+        tProfile.pages = pages;
 
 		return tProfile;
 	}

@@ -8,9 +8,11 @@ public class ProfileLoader : MonoBehaviour {
 	public GameObject pTabPrefab;
 	public List<GameObject> profileList = new List<GameObject>();
 	public GameObject pTabContainer;
+    public GameObject EmptyPaperPrefab;
 	public pStat statContainer;
 	public Texture2D loading;
-	public bool viewProfile = false;
+    public Texture2D PDFloading;
+    public bool viewProfile = false;
 	public l_sceneManager lsm;
 	public float defScreenWidth = 1280;
 	public float widthRatio = 1;
@@ -164,8 +166,6 @@ public class ProfileLoader : MonoBehaviour {
 
                 RectTransform ThisRectTransform = ThisTab.GetComponent<RectTransform>();
 
-                float PreviousBaseHeight, PreviousBasePosY;
-
                 pTab ThisPTab = ThisTab.GetComponent<pTab>();
 
                 float BottomOfName = ThisPTab.Name.GetComponent<RectTransform>().position.y - ((ThisPTab.Name.GetComponent<RectTransform>().lossyScale.y * ThisPTab.Name.GetComponent<RectTransform>().sizeDelta.y));
@@ -225,16 +225,59 @@ public class ProfileLoader : MonoBehaviour {
         statContainer.dob.text = profile.dob;
         statContainer.country.text = profile.country;
         statContainer.rank.text = profile.rank;
-        if (profile.comment != "NIL") {
-            statContainer.comment.text = profile.comment;
-            foreach (GameObject cbox in commentBox) {
-                cbox.SetActive(true);
-            }
-        } else {
-            foreach (GameObject cbox in commentBox) {
-                cbox.SetActive(false);
+        //profile.pages = 2;
+        if (profile.pages != 0)
+        {
+            for (int i = 0; i < profile.pages; i++)
+            {
+                GameObject newPage = Instantiate(EmptyPaperPrefab);
+                
+
+                RectTransform ThisRectTransform = newPage.GetComponent<RectTransform>();
+                float SizeOfPaper = ThisRectTransform.lossyScale.y * ThisRectTransform.sizeDelta.y;
+                if (i == 0)
+                {
+                    Vector3 TopOfPDFReader = statContainer.ParentOfPDF.transform.position;
+                    ThisRectTransform.transform.position = TopOfPDFReader;
+                    ThisRectTransform.transform.position -= new Vector3(0, SizeOfPaper * 0.5f, 0);
+                }
+                else
+                {
+                    Vector3 PreviousPosition = statContainer.ListOfPDF[i - 1].transform.position;
+                    ThisRectTransform.transform.position = PreviousPosition;
+                    ThisRectTransform.transform.position -= new Vector3(0, SizeOfPaper, 0);
+                }
+
+                if (i == profile.pages - 1)
+                {
+                    RectTransform ParentRectTransform = statContainer.ParentOfPDF.GetComponent<RectTransform>();
+                    float SizeOfWholeDocument = statContainer.ParentOfPDF.transform.position.y - (ThisRectTransform.transform.position.y - (SizeOfPaper*0.5f));
+
+                    ParentRectTransform.sizeDelta = new Vector2(ParentRectTransform.sizeDelta.x, SizeOfWholeDocument/ParentRectTransform.lossyScale.y);
+
+                }
+
+                newPage.transform.SetParent(statContainer.ParentOfPDF.transform);
+                statContainer.ListOfPDF.Add(newPage);
+
+                if(profile.cvlink != "NIL")
+                    StartCoroutine(loadPDF(profile.cvlink, i+1));
             }
         }
+        else
+        {
+            Debug.Log("All of us have no pages");
+        }
+        //if (profile.comment != "NIL") {
+        //    statContainer.comment.text = profile.comment;
+        //    foreach (GameObject cbox in commentBox) {
+        //        cbox.SetActive(true);
+        //    }
+        //} else {
+        //    foreach (GameObject cbox in commentBox) {
+        //        cbox.SetActive(false);
+        //    }
+        //}
         //statContainer.picture.text = profile.picture;
         switch (profile.country) {
             case "SINGAPORE":
@@ -299,10 +342,25 @@ public class ProfileLoader : MonoBehaviour {
         statContainer.picture.rectTransform.sizeDelta = new Vector2(RatioForX, statContainer.picture.rectTransform.sizeDelta.y) ;
 	}
 
+    public IEnumerator loadPDF(string url, int PageNo)
+    {
+        WWW www = new WWW(url + PageNo.ToString()+".png");
+
+        // Wait for download to complete
+        yield return www ;
+
+        statContainer.ListOfPDF[PageNo-1].GetComponent<Image>().sprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0));
+    }
+
 	//exit viewing specific personnel profile
 	public void exitProfile()
 	{
-		statContainer.gameObject.SetActive (false);
+        foreach (Transform PDFChild in statContainer.ParentOfPDF.transform)
+        {
+            Destroy(PDFChild.gameObject);
+        }
+        statContainer.ListOfPDF = new List<GameObject>();
+        statContainer.gameObject.SetActive (false);
         pTabContainer.transform.parent.parent.gameObject.SetActive (true);
 		viewProfile = false;
 	}

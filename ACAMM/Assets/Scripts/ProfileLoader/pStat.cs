@@ -8,5 +8,6 @@ public class pStat : MonoBehaviour {
 
 	public Text value, name, dob, country, rank, comment;	
 	public Image picture,cPicture;
-
+    public GameObject ParentOfPDF;
+    public List<GameObject> ListOfPDF = new List<GameObject>(); 
 }

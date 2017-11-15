@@ -16,6 +16,7 @@ public class dbTypes {
 		public string comment = "";
 		public string picture = "";
         public string cvlink = "";
+        public int pages = 0;
     }
 
 	[System.Serializable]
