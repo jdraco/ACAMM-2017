@@ -47,6 +47,7 @@ public class InitDB : MonoBehaviour {
 		public string MYP = "MY";
 		public string MYRP = "MYR";
 		public string PHP = "PH";
+		public string AARM = "AARM";
 	}
 
 	//what type of data to load
@@ -184,6 +185,9 @@ public class InitDB : MonoBehaviour {
 			break;
 		case GlobalValues.CPre.PH:
 			presentationToLoad = cq.PHP;
+			break;
+		case GlobalValues.CPre.AARM:
+			presentationToLoad = cq.AARM;
 			break;
 		default:
 			presentationToLoad = cq.SGP;

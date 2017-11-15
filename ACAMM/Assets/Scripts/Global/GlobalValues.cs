@@ -24,7 +24,8 @@ public static class GlobalValues {
 		CM,
 		ID,
 		LS,
-		MYR
+		MYR,
+		AARM
 	}
 	public static CP cp = CP.SG;
 	public static CPre cp2 = CPre.SG;
