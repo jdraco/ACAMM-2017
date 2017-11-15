@@ -1,16 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/profile.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/PDFReader.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/profile.unity
-=======
-- path: Assets/Scenes/Start.unity
->>>>>>> 71003f71755d158f8fff21ac066969b0547c7cad
->>>>>>> b3dcb3ce311b7a6117fd7469e03fdd04e20213d3
->>>>>>> 373467c087aeee27b764af078088cc84c06bf038
   isLoaded: 1
   isActive: 1

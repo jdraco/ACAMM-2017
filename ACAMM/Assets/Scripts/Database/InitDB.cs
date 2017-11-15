@@ -282,7 +282,7 @@ public class InitDB : MonoBehaviour {
 		dbconn = (IDbConnection) new SqliteConnection(conn);
 		dbconn.Open(); //Open connection to the database.
 		IDbCommand dbcmd = dbconn.CreateCommand();
-		string sqlQuery = "SELECT VALUE,ROLE,NAME,DOB,COUNTRY,RANK,COMMENT,PICTURE " + "FROM " + profileToLoad + " ORDER BY VALUE";//query to load
+		string sqlQuery = "SELECT VALUE,ROLE,NAME,DOB,COUNTRY,RANK,COMMENT,PICTURE,CVLINK " + "FROM " + profileToLoad + " ORDER BY VALUE";//query to load
 		dbcmd.CommandText = sqlQuery;
 		IDataReader reader = dbcmd.ExecuteReader();
 		while (reader.Read())//read and load query
@@ -295,11 +295,12 @@ public class InitDB : MonoBehaviour {
 		string rank = reader.GetString(5);
 		string comment = reader.GetString(6);
 		string picture = reader.GetString(7);
+        string CVLink = reader.GetString(8);
 
 		dbTypes.Profile tProfile = new dbTypes.Profile();
-		tProfile = returnProfile (value,role, name, dob, country, rank, comment, picture);
+		tProfile = returnProfile (value,role, name, dob, country, rank, comment, picture, CVLink);
 		loadToDB (tProfile);
-		Debug.Log( "value= "+value+"  name ="+name+"  dob="+dob+"  country="+country+"  rank="+rank+"  comment="+comment+"  picture="+picture );
+		Debug.Log( "value= "+value+"  name ="+name+"  dob="+dob+"  country="+country+"  rank="+rank+"  comment="+comment+"  picture="+picture+  " CVLink " + CVLink);
 		}
 		reader.Close();//clear connection
 		reader = null;
@@ -519,7 +520,7 @@ public class InitDB : MonoBehaviour {
 		dbconn = null;
 	}
 
-	public dbTypes.Profile returnProfile(int value,string role,string name,string dob,string country,string rank,string comment, string picture)//return requested profile to be loaded
+	public dbTypes.Profile returnProfile(int value,string role,string name,string dob,string country,string rank,string comment, string picture, string Cvlink)//return requested profile to be loaded
 	{
 		dbTypes.Profile tProfile = new dbTypes.Profile ();
 		tProfile.value = value;
@@ -530,6 +531,7 @@ public class InitDB : MonoBehaviour {
 		tProfile.rank = rank;
 		tProfile.comment = comment;
 		tProfile.picture = picture;
+        tProfile.cvlink = Cvlink;
 
 		return tProfile;
 	}

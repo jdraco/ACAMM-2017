@@ -219,63 +219,66 @@ public class ProfileLoader : MonoBehaviour {
 
     //load a specific personnel profile
     public void loadProfile(dbTypes.Profile profile)
-	{
-		statContainer.value.text = profile.role;//.ToString();
-		statContainer.name.text = profile.name;
-		statContainer.dob.text = profile.dob;
-		statContainer.country.text = profile.country;
-		statContainer.rank.text = profile.rank;
-		if (profile.comment != "NIL") {
-			statContainer.comment.text = profile.comment;
-			foreach (GameObject cbox in commentBox) {
-				cbox.SetActive (true);
-			}
-		} else {
-			foreach (GameObject cbox in commentBox) {
-				cbox.SetActive (false);
-			}
-		}
-		//statContainer.picture.text = profile.picture;
-		switch (profile.country) {
-		case "SINGAPORE":
-			statContainer.cPicture.sprite = ap.SG;
-			break;
-		case "THAILAND":
-			statContainer.cPicture.sprite = ap.TH;
-			break;
-		case "VIETNAM":
-			statContainer.cPicture.sprite = ap.VN;
-			break;
-		case "BRUNEI":
-			statContainer.cPicture.sprite = ap.BN;
-			break;
-		case "CAMBODIA":
-			statContainer.cPicture.sprite = ap.CM;
-			break;
-		case "INDONESIA":
-			statContainer.cPicture.sprite = ap.ID;
-			break;
-		case "LAOS":
-			statContainer.cPicture.sprite = ap.LS;
-			break;
-		case "MALAYSIA":
-			statContainer.cPicture.sprite = ap.MY;
-			break;
-		case "MYANMAR":
-			statContainer.cPicture.sprite = ap.MYR;
-			break;
-		case "PHILIPPINES":
-			statContainer.cPicture.sprite = ap.PH;
-			break;
-		default:
-			break;
-		}
-		if (profile.picture != "NIL")
-			StartCoroutine ("loadImage", profile.picture);
-		else
-			statContainer.picture.sprite = unknownSprite;
+    {
+        statContainer.value.text = profile.role;//.ToString();
+        statContainer.name.text = profile.name;
+        statContainer.dob.text = profile.dob;
+        statContainer.country.text = profile.country;
+        statContainer.rank.text = profile.rank;
+        if (profile.comment != "NIL") {
+            statContainer.comment.text = profile.comment;
+            foreach (GameObject cbox in commentBox) {
+                cbox.SetActive(true);
+            }
+        } else {
+            foreach (GameObject cbox in commentBox) {
+                cbox.SetActive(false);
+            }
+        }
+        //statContainer.picture.text = profile.picture;
+        switch (profile.country) {
+            case "SINGAPORE":
+                statContainer.cPicture.sprite = ap.SG;
+                break;
+            case "THAILAND":
+                statContainer.cPicture.sprite = ap.TH;
+                break;
+            case "VIETNAM":
+                statContainer.cPicture.sprite = ap.VN;
+                break;
+            case "BRUNEI":
+                statContainer.cPicture.sprite = ap.BN;
+                break;
+            case "CAMBODIA":
+                statContainer.cPicture.sprite = ap.CM;
+                break;
+            case "INDONESIA":
+                statContainer.cPicture.sprite = ap.ID;
+                break;
+            case "LAOS":
+                statContainer.cPicture.sprite = ap.LS;
+                break;
+            case "MALAYSIA":
+                statContainer.cPicture.sprite = ap.MY;
+                break;
+            case "MYANMAR":
+                statContainer.cPicture.sprite = ap.MYR;
+                break;
+            case "PHILIPPINES":
+                statContainer.cPicture.sprite = ap.PH;
+                break;
+            default:
+                break;
+        }
+        if (profile.picture != "NIL")
+            StartCoroutine("loadImage", profile.picture);
+        else
+        { 
+            statContainer.picture.sprite = unknownSprite;
+            statContainer.picture.rectTransform.sizeDelta = new Vector2(350,350);
+        }
 		statContainer.gameObject.SetActive (true);
-		pTabContainer.gameObject.SetActive (false);
+		pTabContainer.transform.parent.parent.gameObject.SetActive (false);
 		viewProfile = true;
 	}
 
@@ -291,15 +294,16 @@ public class ProfileLoader : MonoBehaviour {
 		// assign texture
 		statContainer.picture.sprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0));
 
+        float RatioForX = (350.0f / www.texture.height) * (www.texture.width);
 
-        statContainer.picture.rectTransform.sizeDelta = new Vector2() ;
+        statContainer.picture.rectTransform.sizeDelta = new Vector2(RatioForX, statContainer.picture.rectTransform.sizeDelta.y) ;
 	}
 
 	//exit viewing specific personnel profile
 	public void exitProfile()
 	{
 		statContainer.gameObject.SetActive (false);
-		pTabContainer.gameObject.SetActive (true);
+        pTabContainer.transform.parent.parent.gameObject.SetActive (true);
 		viewProfile = false;
 	}
 

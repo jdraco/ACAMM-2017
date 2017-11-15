@@ -139,6 +139,7 @@
     <None Include="Assets\ASDADAD\sadsadsadasdsad.txt" />
     <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
     <None Include="Assets\Resources\Images\PDF\SG\p1\Version.txt" />
+    <None Include="Assets\Resources\Images\PDF\SG\p2\Version.txt" />
     <None Include="Assets\StreamingAssets\build_info.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

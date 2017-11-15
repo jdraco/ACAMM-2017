@@ -15,7 +15,8 @@ public class dbTypes {
 		public string rank = "";
 		public string comment = "";
 		public string picture = "";
-	}
+        public string cvlink = "";
+    }
 
 	[System.Serializable]
 	public class Presentation
