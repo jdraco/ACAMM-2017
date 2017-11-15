@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: 
     guid: c84ddf59972f3694a84e65a1c33fa294
   - enabled: 0
-    path: Assets/Scenes/aarm.unity
-    guid: 226dea883db2315408139a0d504d41b8
-  - enabled: 0
     path: Assets/Scenes/client test.unity
     guid: 74a410429b4893b4db57e673f2d03473
   - enabled: 0
@@ -35,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/profile.unity
     guid: c683f621c2438e84e8565580758c7066
+  - enabled: 1
+    path: Assets/Scenes/aarm.unity
+    guid: 226dea883db2315408139a0d504d41b8
   - enabled: 1
     path: Assets/Scenes/placesofinterest.unity
     guid: 084c46c7c2b58b44ba86f507f3530438
