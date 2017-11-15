@@ -169,7 +169,7 @@ public class ProfileLoader : MonoBehaviour {
                 pTab ThisPTab = ThisTab.GetComponent<pTab>();
 
                 float BottomOfName = ThisPTab.Name.GetComponent<RectTransform>().position.y - ((ThisPTab.Name.GetComponent<RectTransform>().lossyScale.y * ThisPTab.Name.GetComponent<RectTransform>().sizeDelta.y));
-                ThisPTab.Value.GetComponent<RectTransform>().position = new Vector3(ThisPTab.Name.GetComponent<RectTransform>().position.x, BottomOfName - 1, ThisPTab.Name.GetComponent<RectTransform>().position.z);
+                ThisPTab.Value.GetComponent<RectTransform>().position = new Vector3(ThisPTab.Name.GetComponent<RectTransform>().position.x, BottomOfName - 0.5f, ThisPTab.Name.GetComponent<RectTransform>().position.z);
 
                 float TopOfTab = ThisTab.transform.position.y + ((ThisRectTransform.lossyScale.y * ThisRectTransform.sizeDelta.y) * 0.5f);
                 float BottomOfTab = ThisPTab.Value.GetComponent<RectTransform>().position.y - ((ThisPTab.Value.GetComponent<RectTransform>().lossyScale.y * ThisPTab.Value.GetComponent<RectTransform>().sizeDelta.y));
@@ -206,7 +206,7 @@ public class ProfileLoader : MonoBehaviour {
                 if (profileList.Count - 1 == i)
                 {
                     float TopOfProfile = pTabContainer.transform.position.y;// + ((ThisRectTransform.transform.lossyScale.y * pTabContainer.GetComponent<RectTransform>().sizeDelta.y) * 0.5f);
-                    float BottomOfProfile = ThisRectTransform.position.y - (ThisRectTransform.transform.lossyScale.y * ThisRectTransform.sizeDelta.y * 0.5f);
+                    float BottomOfProfile = ThisRectTransform.position.y - (ThisRectTransform.transform.lossyScale.y * ThisRectTransform.sizeDelta.y * 0.5f) - 1.5f;
                     float SizeOfNewProfile = TopOfProfile - BottomOfProfile;
 
                     pTabContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(pTabContainer.GetComponent<RectTransform>().sizeDelta.x, (SizeOfNewProfile/pTabContainer.transform.lossyScale.y)); ;
@@ -290,6 +290,9 @@ public class ProfileLoader : MonoBehaviour {
 
 		// assign texture
 		statContainer.picture.sprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0));
+
+
+        statContainer.picture.rectTransform.sizeDelta = new Vector2() ;
 	}
 
 	//exit viewing specific personnel profile
