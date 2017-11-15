@@ -24,7 +24,9 @@ public class dbTypes {
 		public string country = "";
 		public string title = "";
 		public int pages = 0;
-		public List<string> pageImageList = new List<string>();
+        public string link = "";
+        public int version = 0;
+		//public List<string> pageImageList = new List<string>();
 	}
 
 	[System.Serializable]
