@@ -4,16 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class pTab : MonoBehaviour {
-	public Text Rank,Name,Value;
+	public Text Name,Value;
 	public Image cPicture;
 	public dbTypes.Profile profile;
 	public ProfileLoader pLoader;
 
 	//init profile data
 	void Start () {
-		Rank.text = profile.rank;
-		Name.text = profile.name;
-		Value.text = profile.role;
+		//Name.text = profile.rank +" "+ profile.name;
+		//Value.text = profile.role;
 
 	}
 
@@ -21,4 +20,10 @@ public class pTab : MonoBehaviour {
 	{
 		pLoader.loadProfile (profile);
 	}
+
+    public void LoadInfo()
+    {
+       Name.text = profile.rank +" "+ profile.name;
+       Value.text = profile.role;
+    }
 }
