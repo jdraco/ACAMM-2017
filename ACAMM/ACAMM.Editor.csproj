@@ -138,6 +138,10 @@
   <ItemGroup>
     <None Include="Assets\ASDADAD\sadsadsadasdsad.txt" />
     <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
+    <None Include="Assets\Resources\Images\PDF\AARM\Day1\Version.txt" />
+    <None Include="Assets\Resources\Images\PDF\AARM\Day2\Version.txt" />
+    <None Include="Assets\Resources\Images\PDF\AARM\Day3\Version.txt" />
+    <None Include="Assets\Resources\Images\PDF\AARM\Day4\Version.txt" />
     <None Include="Assets\Resources\Images\PDF\SG\p1\Version.txt" />
     <None Include="Assets\Resources\Images\PDF\SG\p2\Version.txt" />
     <None Include="Assets\StreamingAssets\build_info.txt" />
