@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data; 
 using System;
 using System.IO;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -105,8 +106,40 @@ public class pdfManager : MonoBehaviour {
 		pdf_PageRect.anchoredPosition = ctPos;
 	}
 
-	//enter a places of interest selection screen based on which country is chosen
-	public void enterpdfSel(int v)
+    private int loadVersion(string fileName)
+    {
+        if (!File.Exists(fileName))
+            return 0;
+        string line;
+
+        StreamReader theReader = new StreamReader(fileName, Encoding.Default);
+
+        using (theReader)
+        {
+            // While there's lines left in the text file, do this:
+            do
+            {
+                line = theReader.ReadLine();
+                if (line != null)
+                {
+                    theReader.Close();
+                    return int.Parse(line);
+                }
+            }
+            while (line != null);
+
+            theReader.Close();
+            return int.Parse(line);
+        }
+    }
+
+    private void setVersion(string fileName, string version)
+    {
+        File.WriteAllText(@fileName, version);
+    }
+
+    //enter a places of interest selection screen based on which country is chosen
+    public void enterpdfSel(int v)
 	{
 		GlobalValues.cp2 = (GlobalValues.CPre)v;
 		DB.initPresentation ();
@@ -144,29 +177,43 @@ public class pdfManager : MonoBehaviour {
 			j++;
 		}
 		foreach (dbTypes.Presentation presentation in DB.presentationList) {
-			for (int i = 0; i < presentation.pages; i++) {
-				string directoryPath = Application.dataPath + "/Resources/Images/PDF/" + presentation.country + "/" + presentation.title;
-				if (!File.Exists (directoryPath + "/Page" + (i + 1) + ".png")) {
-					WWW loadIMG = new WWW (presentation.pageImageList [i]);
-					//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
-					while (!loadIMG.isDone) {
-						Debug.Log ("trying to load image");
-					}
-					
+            string directoryPath = Application.dataPath + "/Resources/Images/PDF/" + presentation.country + "/" + presentation.title;
+            if (presentation.version > loadVersion(directoryPath + "/Version.txt"))
+            {
+                for (int i = 0; i < presentation.pages; i++)
+                {
+                    
+                    if (!File.Exists(directoryPath + "/Page" + (i + 1) + ".png"))
+                    {
+                        string dlLink = presentation.link + "-" + (i) + ".png";
+                        WWW loadIMG = new WWW(dlLink);
+                        //WWW loadIMG = new WWW (presentation.pageImageList [i]);
+                        //WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
+                        while (!loadIMG.isDone)
+                        {
+                            Debug.Log("trying to load image");
+                        }
 
-					if (loadIMG.size != 0) {
-						if (!Directory.Exists (directoryPath)) {    
-							//if it doesn't, create it
-							Directory.CreateDirectory (directoryPath);
 
-						}
-						File.WriteAllBytes (directoryPath + "/Page" + (i + 1) + ".png", loadIMG.bytes);
-						Debug.Log ("wrote file to local from server");
-					}
-				} else
-					Debug.Log ("skip downloading " + presentation.title + " Page" + (i + 1) + " as file already exist");
-			}
-		}
+                        if (loadIMG.size != 0)
+                        {
+                            if (!Directory.Exists(directoryPath))
+                            {
+                                //if it doesn't, create it
+                                Directory.CreateDirectory(directoryPath);
+
+                            }
+                            File.WriteAllBytes(directoryPath + "/Page" + (i + 1) + ".png", loadIMG.bytes);
+                            Debug.Log("wrote file to local from server");
+                        }
+                    }
+                    else
+                        Debug.Log("skip downloading " + presentation.title + " Page" + (i + 1) + " as file already exist");
+                }
+                setVersion(directoryPath + "/Version.txt", presentation.version.ToString());
+                //File.WriteAllBytes(directoryPath + "/Version" + (i + 1) + ".png", loadIMG.bytes);
+            }
+        }
 		pdf_LIST = new GameObject[DB.presentationList.Count];
 		pdfSEL_LIST [v].SetActive (true);
 		pdf_Select.SetActive (true);

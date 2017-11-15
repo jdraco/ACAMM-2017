@@ -5,6 +5,7 @@ using Mono.Data.Sqlite;
 using System.Data; 
 using System;
 using System.IO;
+using System.Text;
 
 public class InitDB : MonoBehaviour {
 
@@ -63,7 +64,9 @@ public class InitDB : MonoBehaviour {
 	bool dbInitDone = false;
 	//start by loading either initprofile or initschedule
 	void Start () {
-		switch (dbLoaded) {
+        url = LoadLinkFromFile(Application.dataPath + "/dblink.cfg");
+        pdfurl = LoadLinkFromFile(Application.dataPath + "/dbpdflink.cfg");
+        switch (dbLoaded) {
 		case dbToLoad.Profile:
 			initProfile ();
 			break;
@@ -80,8 +83,36 @@ public class InitDB : MonoBehaviour {
 		//loadDBGoogle (https://s3-ap-southeast-1.amazonaws.com/acamm/Database.db);
 	}
 
-	//init profile based on country selected
-	void initProfile(){
+    private string LoadLinkFromFile(string fileName)
+    {
+
+        string line;
+
+        StreamReader theReader = new StreamReader(fileName, Encoding.Default);
+
+        using (theReader)
+        {
+            // While there's lines left in the text file, do this:
+            do
+            {
+                line = theReader.ReadLine();
+
+                if (line != null)
+                {
+                    theReader.Close();
+                    return line;
+                }
+            }
+            while (line != null);
+
+            theReader.Close();
+            return line;
+        }
+    }
+
+
+    //init profile based on country selected
+    void initProfile(){
 		switch (GlobalValues.cp) {
 		case GlobalValues.CP.SG:
 			profileToLoad = cq.SG;
@@ -337,7 +368,7 @@ public class InitDB : MonoBehaviour {
 		dbconn = (IDbConnection) new SqliteConnection(conn);
 		dbconn.Open(); //Open connection to the database.
 		IDbCommand dbcmd = dbconn.CreateCommand();
-		string sqlQuery = "SELECT Title,PAGES " + "FROM " + presentationToLoad;//query to load
+		string sqlQuery = "SELECT Title,PAGES,LINK,VERSION " + "FROM " + presentationToLoad;//query to load
 //		for(int i = 1; i < 50; i++)
 //		{
 //			sqlQuery = sqlQuery + "," + (i + 1);
@@ -349,45 +380,52 @@ public class InitDB : MonoBehaviour {
 		string Title = "";
 		int Pages = 0;
 		string country = "";
+        string Link = "";
+        int Version = 0;
 		//List<string> pageImageList = new List<string>();
 		while (reader.Read())//read and load query
 		{
 			Title = reader.GetString(0);
 			Pages = reader.GetInt32(1);
-			//Debug.Log(reader.GetString(2));
-			country = presentationToLoad;
-			//List<string> pageImage = new List<string>();
-			IDbConnection dbconn2;
-			dbconn2 = (IDbConnection) new SqliteConnection(conn);
-			dbconn2.Open();
-			IDbCommand dbcmd2 = dbconn2.CreateCommand();
-			string sqlQuery2 = "SELECT P1";//Title,Pages " + "FROM " + profileToLoad;//query to load
-			for(int i = 2; i <= Pages; i++)
-			{
-				sqlQuery2 = sqlQuery2 + ",P" + (i);
-			}
-			sqlQuery2 = sqlQuery2 + " FROM " + presentationToLoad + " WHERE Title = '" + Title + "'";
-			dbcmd2.CommandText = sqlQuery2;
-			Debug.Log (sqlQuery2);
-			IDataReader reader2 = dbcmd2.ExecuteReader();
-			while (reader2.Read ()) {//read and load query
-				List<string> pageImageList = new List<string>();
-				for (int i = 0; i < Pages; i++) {
-					Debug.Log (reader2.GetString (i));
-					pageImageList.Add (reader2.GetString (i));
-					
-				}
-				dbTypes.Presentation tPresentation = new dbTypes.Presentation();
-				tPresentation = returnPresentation (Title, Pages, country, pageImageList);
-				loadToDBPresentation (tPresentation);
-			}
-			reader2.Close();//clear connection
-			reader2 = null;
-			dbcmd2.Dispose();
-			dbconn2.Close();
-			dbconn2 = null;
-		}
-		reader.Close();//clear connection
+            Link = reader.GetString(2);
+            Version = reader.GetInt32(3);
+            //Debug.Log(reader.GetString(2));
+            country = presentationToLoad;
+            //List<string> pageImage = new List<string>();
+            //	IDbConnection dbconn2;
+            //	dbconn2 = (IDbConnection) new SqliteConnection(conn);
+            //	dbconn2.Open();
+            //	IDbCommand dbcmd2 = dbconn2.CreateCommand();
+            //	string sqlQuery2 = "SELECT P1";//Title,Pages " + "FROM " + profileToLoad;//query to load
+            //	for(int i = 2; i <= Pages; i++)
+            //	{
+            //		sqlQuery2 = sqlQuery2 + ",P" + (i);
+            //	}
+            //	sqlQuery2 = sqlQuery2 + " FROM " + presentationToLoad + " WHERE Title = '" + Title + "'";
+            //	dbcmd2.CommandText = sqlQuery2;
+            //	Debug.Log (sqlQuery2);
+            //	IDataReader reader2 = dbcmd2.ExecuteReader();
+            //	while (reader2.Read ()) {//read and load query
+            //		List<string> pageImageList = new List<string>();
+            //		for (int i = 0; i < Pages; i++) {
+            //			Debug.Log (reader2.GetString (i));
+            //			pageImageList.Add (reader2.GetString (i));
+
+            //		}
+            //		dbTypes.Presentation tPresentation = new dbTypes.Presentation();
+            //		tPresentation = returnPresentation (Title, Pages, country, pageImageList);
+            //		loadToDBPresentation (tPresentation);
+            //	}
+            //	reader2.Close();//clear connection
+            //	reader2 = null;
+            //	dbcmd2.Dispose();
+            //	dbconn2.Close();
+            //	dbconn2 = null;
+            dbTypes.Presentation tPresentation = new dbTypes.Presentation();
+            tPresentation = returnPresentation (Title, Pages, country, Link, Version);
+            loadToDBPresentation (tPresentation);
+        }
+        reader.Close();//clear connection
 		reader = null;
 		dbcmd.Dispose();
 		dbcmd = null;
@@ -496,19 +534,33 @@ public class InitDB : MonoBehaviour {
 		return tProfile;
 	}
 
-	public dbTypes.Presentation returnPresentation(string title,int pages,string country, List<string> pageImageList)//return requested presentation to be loaded
-	{
-		dbTypes.Presentation tPresentation = new dbTypes.Presentation ();
-		tPresentation.title = title;
-		tPresentation.pages = pages;
-		tPresentation.country = country;
-		tPresentation.pageImageList = pageImageList;
+    //public dbTypes.Presentation returnPresentation(string title,int pages,string country, List<string> pageImageList)//return requested presentation to be loaded
+    //{
+    //	dbTypes.Presentation tPresentation = new dbTypes.Presentation ();
+    //	tPresentation.title = title;
+    //	tPresentation.pages = pages;
+    //	tPresentation.country = country;
+    //	tPresentation.pageImageList = pageImageList;
 
 
-		return tPresentation;
-	}
+    //	return tPresentation;
+    //}
 
-	public dbTypes.Schedule returnSchedule(int value,int day,string date,string time,string event_,string location)//return requested schedule to be loaded
+    public dbTypes.Presentation returnPresentation(string title, int pages, string country, string link, int version)//return requested presentation to be loaded
+    {
+        dbTypes.Presentation tPresentation = new dbTypes.Presentation();
+        tPresentation.title = title;
+        tPresentation.pages = pages;
+        tPresentation.country = country;
+        tPresentation.link = link;
+        tPresentation.version = version;
+        //tPresentation.pageImageList = pageImageList;
+
+
+        return tPresentation;
+    }
+
+    public dbTypes.Schedule returnSchedule(int value,int day,string date,string time,string event_,string location)//return requested schedule to be loaded
 	{
 		dbTypes.Schedule tSchedule = new dbTypes.Schedule ();
 		tSchedule.value = value;
