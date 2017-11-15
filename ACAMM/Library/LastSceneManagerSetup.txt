@@ -1,4 +1,24 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/profile.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/aarm.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/profile.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/PDFReader.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/profile.unity
+=======
+- path: Assets/Scenes/Start.unity
+>>>>>>> 71003f71755d158f8fff21ac066969b0547c7cad
+>>>>>>> b3dcb3ce311b7a6117fd7469e03fdd04e20213d3
+>>>>>>> 373467c087aeee27b764af078088cc84c06bf038
+>>>>>>> cc284ce4585cd15316d701e08fb7bbb629fa5b4c
+>>>>>>> 098eb4d732fcc90442c61e97b628f24cb12370eb
   isLoaded: 1
   isActive: 1

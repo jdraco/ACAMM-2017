@@ -60,6 +60,7 @@
      <Compile Include="Assets\Allson\Scripts\ScanHand.cs" />
      <Compile Include="Assets\Allson\Scripts\ScanManager.cs" />
      <Compile Include="Assets\Allson\Scripts\Signing.cs" />
+     <Compile Include="Assets\Scripts\AARM\AARM_Manager.cs" />
      <Compile Include="Assets\Scripts\AspectRatio.cs" />
      <Compile Include="Assets\Scripts\back.cs" />
      <Compile Include="Assets\Scripts\ChildContentSizeFitter.cs" />
@@ -97,11 +98,15 @@
      <Compile Include="Assets\Unity-Logs-Viewer\Reporter\ReporterMessageReceiver.cs" />
      <Compile Include="Assets\Unity-Logs-Viewer\Reporter\Test\Rotate.cs" />
      <Compile Include="Assets\Unity-Logs-Viewer\Reporter\Test\TestReporter.cs" />
+     <None Include="Assets\Resources\Images\PDF\AARM\Day3\Version.txt" />
      <None Include="Assets\Resources\Images\PDF\SG\p1\Version.txt" />
      <None Include="Assets\StreamingAssets\build_info.txt" />
      <None Include="Assets\Resources\Images\PDF\SG\p2\Version.txt" />
      <None Include="Assets\ASDADAD\sadsadsadasdsad.txt" />
+     <None Include="Assets\Resources\Images\PDF\AARM\Day4\Version.txt" />
      <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\Resources\Images\PDF\AARM\Day1\Version.txt" />
+     <None Include="Assets\Resources\Images\PDF\AARM\Day2\Version.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
