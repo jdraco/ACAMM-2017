@@ -143,22 +143,26 @@ public class Signing : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-			if (planeCollider[intOfThisCountry].Raycast(ray, out hit, Mathf.Infinity))
+            if (planeCollider[intOfThisCountry].Raycast(ray, out hit, Mathf.Infinity))
             {
                 CurrentLine = Instantiate(SignaturePrefab).GetComponent<LineRenderer>();
                 CurrentLine.positionCount = 2;
-				CurrentLine.gameObject.transform.SetParent (DictionaryOfEmptyCountries [country].gameObject.transform);
+                CurrentLine.gameObject.transform.SetParent(DictionaryOfEmptyCountries[country].gameObject.transform);
                 CurrentLine.SetPosition(0, hit.point + new Vector3(0, 0, -0.01f));
                 CurrentLine.SetPosition(1, hit.point + new Vector3(0, 0, -0.01f));
-				if (authManager != null) {
-					Vector3 networkPosition = Input.mousePosition;
-					networkPosition.x = networkPosition.x;// + (mPosMaxOffset * JDScrollBar.value);
-					//authManager.SendSigningCoordinates (networkPosition);
-					authManager.SendSigningCoordinates(networkPosition ,JDScrollBar.value);
+                if (authManager != null)
+                {
+                    Vector3 networkPosition = Input.mousePosition;
+                    networkPosition.x = networkPosition.x;// + (mPosMaxOffset * JDScrollBar.value);
+                                                          //authManager.SendSigningCoordinates (networkPosition);
+                                                          //authManager.SendSigningCoordinates(networkPosition ,JDScrollBar.value);
 
-				}
-				//DictionaryOfCountryLastKnownOffset [country] = JDScrollBar.value;
-			}
+                    authManager.SendSigningCoordinates(hit.point, 0.0f);
+
+
+                }
+                //DictionaryOfCountryLastKnownOffset [country] = JDScrollBar.value;
+            }
         }
         else if (Input.GetMouseButton(0))
         {
@@ -168,9 +172,10 @@ public class Signing : MonoBehaviour
 				if (authManager != null) {
 					Vector3 networkPosition = Input.mousePosition;
 					networkPosition.x = networkPosition.x;// + (mPosMaxOffset * JDScrollBar.value);
-					//authManager.SendSigningCoordinates (networkPosition);
-					authManager.SendSigningCoordinates(networkPosition ,JDScrollBar.value);
-				}
+                                                          //authManager.SendSigningCoordinates (networkPosition);
+                                                          //authManager.SendSigningCoordinates(networkPosition ,JDScrollBar.value);
+                    authManager.SendSigningCoordinates(hit.point, 0.0f);
+                }
 				if (CurrentLine != null)// && JDScrollBar.value == DictionaryOfCountryLastKnownOffset [country])
 	            {
 					CurrentLine.positionCount++;
@@ -189,7 +194,8 @@ public class Signing : MonoBehaviour
 	        else
 	        {
 	            CurrentLine = null;
-	        }
+                authManager.SendPenLiftup();
+            }
         }
 
 		Offset = planeCollider[intOfThisCountry].transform.position - hit.point;
@@ -220,33 +226,40 @@ public class Signing : MonoBehaviour
 	{
 		//Debug.Log (offset + " " + JDScrollBar.value);
 		//Debug.Log (DictionaryOfCountryInt [name]);
-		position.x = position.x +(mPosMaxOffset * (offset-JDScrollBar.value));
+		//position.x = position.x +(mPosMaxOffset * (offset-JDScrollBar.value));
 		Ray ray = Camera.main.ScreenPointToRay(position);
 		RaycastHit hit;
 		if(DictionaryOfCountryInt[name] != null)
 		{
-			if (planeCollider[intOfThisCountry].Raycast(ray, out hit, Mathf.Infinity))
+			//if (planeCollider[DictionaryOfCountryInt[name]].Raycast(ray, out hit, Mathf.Infinity))
 			{
 				if (NetworkLine[DictionaryOfCountryInt[name]] != null)// && DictionaryOfCountryLastKnownOffset[name] == offset && DictionaryOfCountryLastKnownOffset [country] == JDScrollBar.value)
 				{
-					NetworkLine[DictionaryOfCountryInt[name]].positionCount++;
-					NetworkLine[DictionaryOfCountryInt[name]].SetPosition(NetworkLine[DictionaryOfCountryInt[name]].positionCount - 1, hit.point + new Vector3(0, 0, -0.01f));
-				}
+                    NetworkLine[DictionaryOfCountryInt[name]].gameObject.transform.SetParent(transform.root);
+
+                    NetworkLine[DictionaryOfCountryInt[name]].positionCount++;
+					NetworkLine[DictionaryOfCountryInt[name]].SetPosition(NetworkLine[DictionaryOfCountryInt[name]].positionCount - 1, position + new Vector3(0, 0, -0.01f));
+
+                    NetworkLine[DictionaryOfCountryInt[name]].gameObject.transform.SetParent(DictionaryOfEmptyCountries[name].gameObject.transform);
+                }
 				else
 				{
 					NetworkLine[DictionaryOfCountryInt[name]] = Instantiate(SignaturePrefab).GetComponent<LineRenderer>();
 					NetworkLine[DictionaryOfCountryInt[name]].gameObject.name = name;
-					NetworkLine[DictionaryOfCountryInt[name]].gameObject.transform.SetParent (DictionaryOfEmptyCountries [name].gameObject.transform);
-					NetworkLine[DictionaryOfCountryInt[name]].positionCount = 2;
-					NetworkLine[DictionaryOfCountryInt[name]].SetPosition(0, hit.point + new Vector3(0, 0, -0.01f));
-					NetworkLine[DictionaryOfCountryInt[name]].SetPosition(1, hit.point + new Vector3(0, 0, -0.01f));
-					//DictionaryOfCountryLastKnownOffset [name] = offset;
-					//DictionaryOfCountryLastKnownOffset [country] = JDScrollBar.value;
-				}
+                    NetworkLine[DictionaryOfCountryInt[name]].gameObject.transform.SetParent(transform.root);
+
+                    NetworkLine[DictionaryOfCountryInt[name]].positionCount = 2;
+					NetworkLine[DictionaryOfCountryInt[name]].SetPosition(0, position + new Vector3(0, 0, -0.01f));
+					NetworkLine[DictionaryOfCountryInt[name]].SetPosition(1, position + new Vector3(0, 0, -0.01f));
+
+                    NetworkLine[DictionaryOfCountryInt[name]].gameObject.transform.SetParent(DictionaryOfEmptyCountries[name].gameObject.transform);
+                    //DictionaryOfCountryLastKnownOffset [name] = offset;
+                    //DictionaryOfCountryLastKnownOffset [country] = JDScrollBar.value;
+                }
 			}
-			else
+			//else
 			{
-				NetworkLine[DictionaryOfCountryInt[name]] = null;
+				//NetworkLine[DictionaryOfCountryInt[name]] = null;
 			}
 		}
 
