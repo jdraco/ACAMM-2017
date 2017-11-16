@@ -221,10 +221,10 @@ public class ProfileLoader : MonoBehaviour {
     public void loadProfile(dbTypes.Profile profile)
     {
         statContainer.value.text = profile.role;//.ToString();
-        statContainer.name.text = profile.name;
+        statContainer.name.text = SetEveryFirstToUpperRestLower(profile.name);
         statContainer.dob.text = profile.dob;
-        statContainer.country.text = profile.country;
-        statContainer.rank.text = profile.rank;
+        statContainer.country.text = SetEveryFirstToUpperRestLower(profile.country);
+        statContainer.rank.text = SetEveryFirstToUpperRestLower(profile.rank);
         //profile.pages = 2;
         if (profile.pages != 0)
         {
@@ -324,6 +324,27 @@ public class ProfileLoader : MonoBehaviour {
 		pTabContainer.transform.parent.parent.gameObject.SetActive (false);
 		viewProfile = true;
 	}
+
+    string SetEveryFirstToUpperRestLower(string StringToChange)
+    {
+        string ReturningString = "";
+
+        string[] TempCoutrol = StringToChange.Split(' ');
+
+        foreach (string SplitUpString in TempCoutrol)
+        {
+            if (SplitUpString == "")
+                break;
+
+            char FirstLetter = SplitUpString[0];
+            string TempString = SplitUpString.Remove(0,1);
+            ReturningString += FirstLetter + TempString.ToLower() + " ";
+            //SplitUpString;
+        }
+
+        ReturningString = ReturningString.Remove(ReturningString.Length - 1);
+        return ReturningString;
+    }
 
 	//corutine to load an image, note that all www loading needs to be ienumerator or else will hang for abit/not work
 	public IEnumerator loadImage(string url)
