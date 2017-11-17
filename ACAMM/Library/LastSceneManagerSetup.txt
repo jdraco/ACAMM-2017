@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Allson/Scene/Signing.unity
+=======
+- path: Assets/Scenes/aarm.unity
+>>>>>>> 91f605e7705b8055bf99054652ce679dca179f7e
   isLoaded: 1
   isActive: 1

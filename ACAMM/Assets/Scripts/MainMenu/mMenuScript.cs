@@ -58,14 +58,42 @@ public class mMenuScript : MonoBehaviour {
 
 	//connect to chat server when app init
 	void Start () {
-		updateIpCfgfromWeb(url);
+        url = LoadLinkFromFile(Application.dataPath + "/iplink.cfg");
+        updateIpCfgfromWeb(url);
 		LoadIPfromFile(Application.dataPath + "/serverip.cfg");
 		cManager.UpdateJoinAddress (chatIPaddr);
 //		//cManager.InitNetworkTransport ();
 		cManager.JoinLocalGame ();
 	}
 
-	private void updateIpCfgfromWeb(string url)
+    private string LoadLinkFromFile(string fileName)
+    {
+
+        string line;
+
+        StreamReader theReader = new StreamReader(fileName, Encoding.Default);
+
+        using (theReader)
+        {
+            // While there's lines left in the text file, do this:
+            do
+            {
+                line = theReader.ReadLine();
+
+                if (line != null)
+                {
+                    theReader.Close();
+                    return line;
+                }
+            }
+            while (line != null);
+
+            theReader.Close();
+            return line;
+        }
+    }
+
+    private void updateIpCfgfromWeb(string url)
 	{
 		WWW loadIP = new WWW(url);
 		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 

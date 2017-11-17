@@ -120,16 +120,17 @@ public class AARM_Manager : MonoBehaviour {
 			Vector3 tabPos = reference.transform.position;
 			GameObject preObj = Instantiate (presentationPrefab, tabPos, Quaternion.identity);
 			preObj.name = DB.presentationList [v].title;
-			//foreach (dbTypes.Presentation presentation in DB.presentationList) {
-			for (int i = 0; i < DB.presentationList [v].pages; i++) {
+            //foreach (dbTypes.Presentation presentation in DB.presentationList) {
+            preObj.GetComponent<loadPdfImage>().ImageLocation = new string[DB.presentationList[v].pages];
+            preObj.GetComponent<loadPdfImage>().Pages = new GameObject[DB.presentationList[v].pages];
+            for (int i = 0; i < DB.presentationList [v].pages; i++) {
 				Vector3 tabPos2 = reference.transform.position;
 				tabPos2.y = tabPos2.y + (distBetweenPages * i) + (distBetweenPages * 0.5f);
 				GameObject pageObj = Instantiate (pagePrefab, tabPos2, Quaternion.identity);
-				string resLoadPath = "Images/PDF/" + DB.presentationList [v].country + "/" + DB.presentationList [v].title + "/Page" + (i + 1);// + ".png";
-				var loadedImg = Resources.Load<Sprite> (resLoadPath);
-				Image pageImg = pageObj.GetComponent<Image> ();
-				pageImg.sprite = loadedImg;
-				pageObj.name = "Page " + (i + 1);
+				//string resLoadPath = "Images/PDF/" + DB.presentationList [v].country + "/" + DB.presentationList [v].title + "/Page" + (i + 1);// + ".png";
+                string resLoadPath = Application.dataPath + "/Resources/Images/PDF/" + DB.presentationList[v].country + "/" + DB.presentationList[v].title + "/Page" + (i + 1) + ".png";
+                preObj.GetComponent<loadPdfImage>().ImageLocation[i] = resLoadPath;
+                pageObj.name = "Page " + (i + 1);
 				pageObj.transform.parent = preObj.transform;
 			}
 			preObj.transform.parent = pdf_PageRect.transform;
