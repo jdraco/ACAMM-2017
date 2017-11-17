@@ -37,6 +37,8 @@ public class Signing : MonoBehaviour
     public List<GameObject> ThingsToSet = new List<GameObject>();
 
     public GameObject SSButton;
+    public GameObject DeleteInputButton;
+    public GameObject ProjectionCamera;
 
     void Start()
 	{
@@ -67,16 +69,30 @@ public class Signing : MonoBehaviour
 
         if (country == "Screenshot")
         {
+           
+        }
+        else if (country == "Projection")
+        {
+            SSButton.SetActive(false);
+            DeleteInputButton.SetActive(false);
+            JDScrollBar.value = 0.375f;
+            ScrollPage(JDScrollBar);
+            JDScrollBar.gameObject.SetActive(false);
 
+            ProjectionCamera.transform.position = new Vector3(Camera.main.transform.position.x, ProjectionCamera.transform.position.y, ProjectionCamera.transform.position.z);
+            Camera.main.enabled = false;
+            ProjectionCamera.SetActive(true);
         }
         else
         {
-            //SSButton.SetActive(false);
+            SSButton.SetActive(false);
             if (authManager != null)
             {
                 ThingsToSet.Add(authManager.gameObject);
             }
         }
+
+
 
     }
 
