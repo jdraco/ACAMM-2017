@@ -210,6 +210,7 @@ public class Signing : MonoBehaviour
 	        else
 	        {
 	            CurrentLine = null;
+				if(authManager != null)
                 authManager.SendPenLiftup();
             }
         }

@@ -129,7 +129,8 @@ public class AARM_Manager : MonoBehaviour {
 				GameObject pageObj = Instantiate (pagePrefab, tabPos2, Quaternion.identity);
 				//string resLoadPath = "Images/PDF/" + DB.presentationList [v].country + "/" + DB.presentationList [v].title + "/Page" + (i + 1);// + ".png";
                 string resLoadPath = Application.dataPath + "/Resources/Images/PDF/" + DB.presentationList[v].country + "/" + DB.presentationList[v].title + "/Page" + (i + 1) + ".png";
-                preObj.GetComponent<loadPdfImage>().ImageLocation[i] = resLoadPath;
+               // preObj.GetComponent<loadPdfImage>().ImageLocation[i] = resLoadPath;
+				preObj.GetComponent<loadPdfImage>().SetImage(resLoadPath, pageObj, i);
                 pageObj.name = "Page " + (i + 1);
 				pageObj.transform.parent = preObj.transform;
 			}

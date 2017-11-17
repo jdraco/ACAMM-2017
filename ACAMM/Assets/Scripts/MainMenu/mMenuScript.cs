@@ -11,6 +11,7 @@ public class mMenuScript : MonoBehaviour {
 	public GameObject serverButton;
 	public bool serverButtonActive = false;
 	public string url;
+	float timeOut = 2.5f;
 //	public RectTransform chatBox;
 //	public float chatEnterSpeed = 1;
 //	public Vector3 dChatPos = new Vector3(144,0,0), eChatPos = new Vector3(-127,0,0);
@@ -96,14 +97,25 @@ public class mMenuScript : MonoBehaviour {
     private void updateIpCfgfromWeb(string url)
 	{
 		WWW loadIP = new WWW(url);
-		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
+		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db");
+		float timer = 0;
+		timeOut = 2.5f;
+		bool failed = false;
 		while(!loadIP.isDone) {
 			//Debug.Log("trying to loadIP");
+			if (timer > timeOut) {
+				failed = true;
+				break;
+			}
+			timer += Time.deltaTime;
 		}
-		if(loadIP.size != 0)
-		{
-			File.WriteAllBytes(Application.dataPath + "/serverip.cfg", loadIP.bytes);
-			//Debug.Log("wrote file to loadIP from server");
+		if (failed)
+			loadIP.Dispose ();
+		else if (!failed) {
+			if (loadIP.size != 0) {
+				File.WriteAllBytes (Application.dataPath + "/serverip.cfg", loadIP.bytes);
+				//Debug.Log("wrote file to loadIP from server");
+			}
 		}
 	}
 	private bool LoadIPfromFile(string fileName)
