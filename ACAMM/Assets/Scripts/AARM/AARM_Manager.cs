@@ -78,7 +78,7 @@ public class AARM_Manager : MonoBehaviour {
 		DB.initPresentation ();
 
 		foreach (dbTypes.Presentation presentation in DB.presentationList) {
-			string directoryPath = Application.dataPath + "/Resources/Images/PDF/" + presentation.country + "/" + presentation.title;
+			string directoryPath = Application.dataPath + "/Resource/Images/PDF/" + presentation.country + "/" + presentation.title;
 			if (presentation.version > loadVersion(directoryPath + "/Version.txt"))// || !File.Exists(directoryPath + "/Page" + (i + 1) + ".png"))
 			{
 				for (int i = 0; i < presentation.pages; i++)
@@ -128,8 +128,9 @@ public class AARM_Manager : MonoBehaviour {
 				tabPos2.y = tabPos2.y + (distBetweenPages * i) + (distBetweenPages * 0.5f);
 				GameObject pageObj = Instantiate (pagePrefab, tabPos2, Quaternion.identity);
 				//string resLoadPath = "Images/PDF/" + DB.presentationList [v].country + "/" + DB.presentationList [v].title + "/Page" + (i + 1);// + ".png";
-                string resLoadPath = Application.dataPath + "/Resources/Images/PDF/" + DB.presentationList[v].country + "/" + DB.presentationList[v].title + "/Page" + (i + 1) + ".png";
-                preObj.GetComponent<loadPdfImage>().ImageLocation[i] = resLoadPath;
+                string resLoadPath = Application.dataPath + "/Resource/Images/PDF/" + DB.presentationList[v].country + "/" + DB.presentationList[v].title + "/Page" + (i + 1) + ".png";
+               // preObj.GetComponent<loadPdfImage>().ImageLocation[i] = resLoadPath;
+				preObj.GetComponent<loadPdfImage>().SetImage(resLoadPath, pageObj, i);
                 pageObj.name = "Page " + (i + 1);
 				pageObj.transform.parent = preObj.transform;
 			}

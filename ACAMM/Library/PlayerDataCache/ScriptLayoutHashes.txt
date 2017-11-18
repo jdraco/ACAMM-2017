@@ -131,7 +131,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.quitApp
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScanHand
 aeafe328762b8064366e417605c3dc66 Assembly-CSharp.dll:.pTab
-b4d7d2c779b9f4c0dc5d65e674d6fa08 Assembly-CSharp.dll:.Signing
+ea2ae688fc36cdd4f7d461052b0aa21c Assembly-CSharp.dll:.Signing
 81c52bbf85589a3cf562457911370d07 Assembly-CSharp.dll:.openThirdParty
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.disableGameObject
 b59c052b3580db19c670e4ea00caa76d Assembly-CSharp.dll:.ProfileLoader

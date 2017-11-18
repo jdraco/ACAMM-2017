@@ -78,6 +78,7 @@
      <Compile Include="Assets\Scripts\Network\Master.cs" />
      <Compile Include="Assets\Scripts\Network\s_NetworkManager.cs" />
      <Compile Include="Assets\Scripts\openThirdParty.cs" />
+     <Compile Include="Assets\Scripts\PDF\loadPdfImage.cs" />
      <Compile Include="Assets\Scripts\PDF\pdfManager.cs" />
      <Compile Include="Assets\Scripts\PDF\pdfTab.cs" />
      <Compile Include="Assets\Scripts\PhoneCall.cs" />
@@ -98,15 +99,10 @@
      <Compile Include="Assets\Unity-Logs-Viewer\Reporter\ReporterMessageReceiver.cs" />
      <Compile Include="Assets\Unity-Logs-Viewer\Reporter\Test\Rotate.cs" />
      <Compile Include="Assets\Unity-Logs-Viewer\Reporter\Test\TestReporter.cs" />
-     <None Include="Assets\Resources\Images\PDF\AARM\Day3\Version.txt" />
-     <None Include="Assets\Resources\Images\PDF\SG\p1\Version.txt" />
      <None Include="Assets\StreamingAssets\build_info.txt" />
-     <None Include="Assets\Resources\Images\PDF\SG\p2\Version.txt" />
      <None Include="Assets\ASDADAD\sadsadsadasdsad.txt" />
-     <None Include="Assets\Resources\Images\PDF\AARM\Day4\Version.txt" />
      <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
-     <None Include="Assets\Resources\Images\PDF\AARM\Day1\Version.txt" />
-     <None Include="Assets\Resources\Images\PDF\AARM\Day2\Version.txt" />
+     <None Include="Assets\Resource\Images\PDF\AARM\AARM\Version.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

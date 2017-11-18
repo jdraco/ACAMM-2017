@@ -62,6 +62,7 @@ public class InitDB : MonoBehaviour {
 
 	public cQuery cq = new cQuery ();
 
+	float timeOut = 5f;
 	bool dbInitDone = false;
 	//start by loading either initprofile or initschedule
 	void Start () {
@@ -227,46 +228,30 @@ public class InitDB : MonoBehaviour {
 	void loadDB()
 	{
 		#if UNITY_EDITOR
-		WWW loadDB = new WWW(url);
+		WWW loadDB = new WWW (url);
 		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
-		while(!loadDB.isDone) {
-			Debug.Log("trying to load database");
-		}
-		if(loadDB.size != 0)
-		{
-			File.WriteAllBytes(Application.dataPath + "/Database.db", loadDB.bytes);
-			Debug.Log("wrote file to database from server");
-		}
-		string conn = "URI=file:" + Application.dataPath + "/Database.db"; //Path to database.
-		Debug.Log("reading database windows");
-		#elif UNITY_ANDROID
-		WWW loadDB = new WWW(url);
-		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
-		while(!loadDB.isDone) {
-		Debug.Log("trying to load database");
-		}
-		if(loadDB.size != 0)
-		{
-			File.WriteAllBytes(Application.persistentDataPath + "/Database.db", loadDB.bytes);
-			Debug.Log("wrote file to database from server");
-		}
-		else //if(!File.Exists(Application.persistentDataPath + "/Database.db"))
-		{
-			Debug.Log("loading from back up");
-			//WWW loadDB = new WWW(url);
-			loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
-
-			while(!loadDB.isDone) {
-				Debug.Log("trying to load database");
+		float timer = 0;
+		bool failed = false;
+		while (!loadDB.isDone) {
+			//Debug.Log("trying to load database");
+			if (timer > timeOut && loadDB.size == 0) {
+				failed = true;
+				break;
 			}
-			File.WriteAllBytes(Application.persistentDataPath + "/Database.db", loadDB.bytes);
-			Debug.Log("wrote file to database");
+			timer += Time.deltaTime;
 		}
-		string conn = "URI=file:" + Application.persistentDataPath + "/Database.db"; //Path to database.
-
-		#else
-		if(!dbInitDone)
+		if (failed)
+			loadDB.Dispose ();
+		else if(!failed)
 		{
+			if (loadDB.size != 0) {
+				File.WriteAllBytes (Application.dataPath + "/Database.db", loadDB.bytes);
+				Debug.Log ("wrote file to database from server");
+			}
+		}
+			string conn = "URI=file:" + Application.dataPath + "/Database.db"; //Path to database.
+			Debug.Log ("reading database windows");
+			#elif UNITY_ANDROID
 			WWW loadDB = new WWW(url);
 			//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
 			while(!loadDB.isDone) {
@@ -274,45 +259,85 @@ public class InitDB : MonoBehaviour {
 			}
 			if(loadDB.size != 0)
 			{
-			File.WriteAllBytes(Application.dataPath + "/Database.db", loadDB.bytes);
-			Debug.Log("wrote file to database from server");
+				File.WriteAllBytes(Application.persistentDataPath + "/Database.db", loadDB.bytes);
+				Debug.Log("wrote file to database from server");
 			}
-			dbInitDone = true;
-		}
-		string conn = "URI=file:" + Application.dataPath + "/Database.db"; //Path to database.
-		Debug.Log("reading database windows");
-		#endif
-		IDbConnection dbconn;
-		dbconn = (IDbConnection) new SqliteConnection(conn);
-		dbconn.Open(); //Open connection to the database.
-		IDbCommand dbcmd = dbconn.CreateCommand();
-		string sqlQuery = "SELECT VALUE,ROLE,NAME,DOB,COUNTRY,RANK,COMMENT,PICTURE,CVLINK,PAGES " + "FROM " + profileToLoad + " ORDER BY VALUE";//query to load
-		dbcmd.CommandText = sqlQuery;
-		IDataReader reader = dbcmd.ExecuteReader();
-		while (reader.Read())//read and load query
-		{
-		int value = reader.GetInt32(0);
-		string role = reader.GetString(1);
-		string name = reader.GetString(2);
-		string dob = reader.GetString(3);
-		string country = reader.GetString(4);;
-		string rank = reader.GetString(5);
-		string comment = reader.GetString(6);
-		string picture = reader.GetString(7);
-        string CVLink = reader.GetString(8);
-            int pages = reader.GetInt32(9);
+			else //if(!File.Exists(Application.persistentDataPath + "/Database.db"))
+			{
+				Debug.Log("loading from back up");
+				//WWW loadDB = new WWW(url);
+				loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
 
-		dbTypes.Profile tProfile = new dbTypes.Profile();
-		tProfile = returnProfile (value,role, name, dob, country, rank, comment, picture, CVLink, pages);
-		loadToDB (tProfile);
-		Debug.Log( "value= "+value+"  name ="+name+"  dob="+dob+"  country="+country+"  rank="+rank+"  comment="+comment+"  picture="+picture+  " CVLink " + CVLink);
-		}
-		reader.Close();//clear connection
-		reader = null;
-		dbcmd.Dispose();
-		dbcmd = null;
-		dbconn.Close();
-		dbconn = null;
+				while(!loadDB.isDone) {
+					Debug.Log("trying to load database");
+				}
+				File.WriteAllBytes(Application.persistentDataPath + "/Database.db", loadDB.bytes);
+				Debug.Log("wrote file to database");
+			}
+			string conn = "URI=file:" + Application.persistentDataPath + "/Database.db"; //Path to database.
+
+			#else
+			if(!dbInitDone)
+			{
+				WWW loadDB = new WWW(url);
+				//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
+				float timer = 0;
+				bool failed = false;
+				while (!loadDB.isDone) {
+				//Debug.Log("trying to load database");
+				if (timer > timeOut && loadDB.size == 0) {
+				failed = true;
+				break;
+				}
+				timer += Time.deltaTime;
+				}
+				if (failed)
+				loadDB.Dispose ();
+				else if(!failed)
+				{
+				if(loadDB.size != 0)
+				{
+				File.WriteAllBytes(Application.dataPath + "/Database.db", loadDB.bytes);
+				Debug.Log("wrote file to database from server");
+				}
+				}
+				dbInitDone = true;
+			}
+			string conn = "URI=file:" + Application.dataPath + "/Database.db"; //Path to database.
+			Debug.Log("reading database windows");
+			#endif
+			IDbConnection dbconn;
+			dbconn = (IDbConnection)new SqliteConnection (conn);
+			dbconn.Open (); //Open connection to the database.
+			IDbCommand dbcmd = dbconn.CreateCommand ();
+			string sqlQuery = "SELECT VALUE,ROLE,NAME,DOB,COUNTRY,RANK,COMMENT,PICTURE,CVLINK,PAGES " + "FROM " + profileToLoad + " ORDER BY VALUE";//query to load
+			dbcmd.CommandText = sqlQuery;
+			IDataReader reader = dbcmd.ExecuteReader ();
+			while (reader.Read ()) {//read and load query
+				int value = reader.GetInt32 (0);
+				string role = reader.GetString (1);
+				string name = reader.GetString (2);
+				string dob = reader.GetString (3);
+				string country = reader.GetString (4);
+				;
+				string rank = reader.GetString (5);
+				string comment = reader.GetString (6);
+				string picture = reader.GetString (7);
+				string CVLink = reader.GetString (8);
+				int pages = reader.GetInt32 (9);
+
+				dbTypes.Profile tProfile = new dbTypes.Profile ();
+				tProfile = returnProfile (value, role, name, dob, country, rank, comment, picture, CVLink, pages);
+				loadToDB (tProfile);
+				Debug.Log ("value= " + value + "  name =" + name + "  dob=" + dob + "  country=" + country + "  rank=" + rank + "  comment=" + comment + "  picture=" + picture + " CVLink " + CVLink);
+			}
+			reader.Close ();//clear connection
+			reader = null;
+			dbcmd.Dispose ();
+			dbcmd = null;
+			dbconn.Close ();
+			dbconn = null;
+
 	}
 
 	public void loadDBPresentation()
@@ -320,123 +345,144 @@ public class InitDB : MonoBehaviour {
 		#if UNITY_EDITOR
 		WWW loadDB = new WWW(pdfurl);
 		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
-		while(!loadDB.isDone) {
-		Debug.Log("trying to load database");
+		float timer = 0;
+		bool failed = false;
+		while (!loadDB.isDone) {
+		//Debug.Log("trying to load database");
+			if (timer > timeOut && loadDB.size == 0) {
+				failed = true;
+				break;
+			}
+			timer += Time.deltaTime;
+		Debug.Log(timer);
 		}
-		if(loadDB.size != 0)
-		{
-		File.WriteAllBytes(Application.dataPath + "/PDF_Database.db", loadDB.bytes);
-		Debug.Log("wrote file to database from server");
+		if (failed)
+			loadDB.Dispose ();
+		else if (!failed) {
+			if (loadDB.size != 0) {
+				File.WriteAllBytes (Application.dataPath + "/PDF_Database.db", loadDB.bytes);
+				Debug.Log ("wrote file to database from server");
+			}
 		}
-		string conn = "URI=file:" + Application.dataPath + "/PDF_Database.db"; //Path to database.
-		Debug.Log("reading database windows");
-		#elif UNITY_ANDROID
-		WWW loadDB = new WWW(url);
-		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
-		while(!loadDB.isDone) {
-		Debug.Log("trying to load database");
-		}
-		if(loadDB.size != 0)
-		{
-		File.WriteAllBytes(Application.persistentDataPath + "/PDF_Database.db", loadDB.bytes);
-		Debug.Log("wrote file to database from server");
-		}
-		else //if(!File.Exists(Application.persistentDataPath + "/PDF_Database.db"))
-		{
-		Debug.Log("loading from back up");
-		//WWW loadDB = new WWW(url);
-		loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
+			string conn = "URI=file:" + Application.dataPath + "/PDF_Database.db"; //Path to database.
+			Debug.Log ("reading database windows");
+			#elif UNITY_ANDROID
+			WWW loadDB = new WWW(url);
+			//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
+			while(!loadDB.isDone) {
+			Debug.Log("trying to load database");
+			}
+			if(loadDB.size != 0)
+			{
+			File.WriteAllBytes(Application.persistentDataPath + "/PDF_Database.db", loadDB.bytes);
+			Debug.Log("wrote file to database from server");
+			}
+			else //if(!File.Exists(Application.persistentDataPath + "/PDF_Database.db"))
+			{
+			Debug.Log("loading from back up");
+			//WWW loadDB = new WWW(url);
+			loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
 
-		while(!loadDB.isDone) {
-		Debug.Log("trying to load database");
-		}
-		File.WriteAllBytes(Application.persistentDataPath + "/PDF_Database.db", loadDB.bytes);
-		Debug.Log("wrote file to database");
-		}
-		string conn = "URI=file:" + Application.persistentDataPath + "/PDF_Database.db"; //Path to database.
-		#else
+			while(!loadDB.isDone) {
+			Debug.Log("trying to load database");
+			}
+			File.WriteAllBytes(Application.persistentDataPath + "/PDF_Database.db", loadDB.bytes);
+			Debug.Log("wrote file to database");
+			}
+			string conn = "URI=file:" + Application.persistentDataPath + "/PDF_Database.db"; //Path to database.
+			#else
 
-		WWW loadDB = new WWW(pdfurl);
-		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
-		while(!loadDB.isDone) {
-		Debug.Log("trying to load database");
-		}
-		if(loadDB.size != 0)
-		{
-		File.WriteAllBytes(Application.dataPath + "/PDF_Database.db", loadDB.bytes);
-		Debug.Log("wrote file to database from server");
-		}
+			WWW loadDB = new WWW(pdfurl);
+			//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
+			float timer = 0;
+			bool failed = false;
+			while (!loadDB.isDone) {
+			//Debug.Log("trying to load database");
+			if (timer > timeOut && loadDB.size == 0) {
+			failed = true;
+			break;
+			}
+			timer += Time.deltaTime;
+			}
+			if (failed)
+			loadDB.Dispose ();
+			else if(!failed)
+			{
+			if(loadDB.size != 0)
+			{
+			File.WriteAllBytes(Application.dataPath + "/PDF_Database.db", loadDB.bytes);
+			Debug.Log("wrote file to database from server");
+			}
+			}
+			string conn = "URI=file:" + Application.dataPath + "/PDF_Database.db"; //Path to database.
+			Debug.Log("reading database windows");
+			#endif
+			IDbConnection dbconn;
+			dbconn = (IDbConnection)new SqliteConnection (conn);
+			dbconn.Open (); //Open connection to the database.
+			IDbCommand dbcmd = dbconn.CreateCommand ();
+			string sqlQuery = "SELECT Title,PAGES,LINK,VERSION " + "FROM " + presentationToLoad;//query to load
+			//		for(int i = 1; i < 50; i++)
+			//		{
+			//			sqlQuery = sqlQuery + "," + (i + 1);
+			//		}
+			//		sqlQuery = sqlQuery + " FROM " + presentationToLoad;//query to load
+			Debug.Log (sqlQuery);
+			dbcmd.CommandText = sqlQuery;
+			IDataReader reader = dbcmd.ExecuteReader ();
+			string Title = "";
+			int Pages = 0;
+			string country = "";
+			string Link = "";
+			int Version = 0;
+			//List<string> pageImageList = new List<string>();
+			while (reader.Read ()) {//read and load query
+				Title = reader.GetString (0);
+				Pages = reader.GetInt32 (1);
+				Link = reader.GetString (2);
+				Version = reader.GetInt32 (3);
+				//Debug.Log(reader.GetString(2));
+				country = presentationToLoad;
+				//List<string> pageImage = new List<string>();
+				//	IDbConnection dbconn2;
+				//	dbconn2 = (IDbConnection) new SqliteConnection(conn);
+				//	dbconn2.Open();
+				//	IDbCommand dbcmd2 = dbconn2.CreateCommand();
+				//	string sqlQuery2 = "SELECT P1";//Title,Pages " + "FROM " + profileToLoad;//query to load
+				//	for(int i = 2; i <= Pages; i++)
+				//	{
+				//		sqlQuery2 = sqlQuery2 + ",P" + (i);
+				//	}
+				//	sqlQuery2 = sqlQuery2 + " FROM " + presentationToLoad + " WHERE Title = '" + Title + "'";
+				//	dbcmd2.CommandText = sqlQuery2;
+				//	Debug.Log (sqlQuery2);
+				//	IDataReader reader2 = dbcmd2.ExecuteReader();
+				//	while (reader2.Read ()) {//read and load query
+				//		List<string> pageImageList = new List<string>();
+				//		for (int i = 0; i < Pages; i++) {
+				//			Debug.Log (reader2.GetString (i));
+				//			pageImageList.Add (reader2.GetString (i));
 
-		string conn = "URI=file:" + Application.dataPath + "/PDF_Database.db"; //Path to database.
-		Debug.Log("reading database windows");
-		#endif
-		IDbConnection dbconn;
-		dbconn = (IDbConnection) new SqliteConnection(conn);
-		dbconn.Open(); //Open connection to the database.
-		IDbCommand dbcmd = dbconn.CreateCommand();
-		string sqlQuery = "SELECT Title,PAGES,LINK,VERSION " + "FROM " + presentationToLoad;//query to load
-//		for(int i = 1; i < 50; i++)
-//		{
-//			sqlQuery = sqlQuery + "," + (i + 1);
-//		}
-//		sqlQuery = sqlQuery + " FROM " + presentationToLoad;//query to load
-		Debug.Log (sqlQuery);
-		dbcmd.CommandText = sqlQuery;
-		IDataReader reader = dbcmd.ExecuteReader();
-		string Title = "";
-		int Pages = 0;
-		string country = "";
-        string Link = "";
-        int Version = 0;
-		//List<string> pageImageList = new List<string>();
-		while (reader.Read())//read and load query
-		{
-			Title = reader.GetString(0);
-			Pages = reader.GetInt32(1);
-            Link = reader.GetString(2);
-            Version = reader.GetInt32(3);
-            //Debug.Log(reader.GetString(2));
-            country = presentationToLoad;
-            //List<string> pageImage = new List<string>();
-            //	IDbConnection dbconn2;
-            //	dbconn2 = (IDbConnection) new SqliteConnection(conn);
-            //	dbconn2.Open();
-            //	IDbCommand dbcmd2 = dbconn2.CreateCommand();
-            //	string sqlQuery2 = "SELECT P1";//Title,Pages " + "FROM " + profileToLoad;//query to load
-            //	for(int i = 2; i <= Pages; i++)
-            //	{
-            //		sqlQuery2 = sqlQuery2 + ",P" + (i);
-            //	}
-            //	sqlQuery2 = sqlQuery2 + " FROM " + presentationToLoad + " WHERE Title = '" + Title + "'";
-            //	dbcmd2.CommandText = sqlQuery2;
-            //	Debug.Log (sqlQuery2);
-            //	IDataReader reader2 = dbcmd2.ExecuteReader();
-            //	while (reader2.Read ()) {//read and load query
-            //		List<string> pageImageList = new List<string>();
-            //		for (int i = 0; i < Pages; i++) {
-            //			Debug.Log (reader2.GetString (i));
-            //			pageImageList.Add (reader2.GetString (i));
-
-            //		}
-            //		dbTypes.Presentation tPresentation = new dbTypes.Presentation();
-            //		tPresentation = returnPresentation (Title, Pages, country, pageImageList);
-            //		loadToDBPresentation (tPresentation);
-            //	}
-            //	reader2.Close();//clear connection
-            //	reader2 = null;
-            //	dbcmd2.Dispose();
-            //	dbconn2.Close();
-            //	dbconn2 = null;
-            dbTypes.Presentation tPresentation = new dbTypes.Presentation();
-            tPresentation = returnPresentation (Title, Pages, country, Link, Version);
-            loadToDBPresentation (tPresentation);
-        }
-        reader.Close();//clear connection
-		reader = null;
-		dbcmd.Dispose();
-		dbcmd = null;
-		dbconn.Close();
-		dbconn = null;
+				//		}
+				//		dbTypes.Presentation tPresentation = new dbTypes.Presentation();
+				//		tPresentation = returnPresentation (Title, Pages, country, pageImageList);
+				//		loadToDBPresentation (tPresentation);
+				//	}
+				//	reader2.Close();//clear connection
+				//	reader2 = null;
+				//	dbcmd2.Dispose();
+				//	dbconn2.Close();
+				//	dbconn2 = null;
+				dbTypes.Presentation tPresentation = new dbTypes.Presentation ();
+				tPresentation = returnPresentation (Title, Pages, country, Link, Version);
+				loadToDBPresentation (tPresentation);
+			}
+			reader.Close ();//clear connection
+			reader = null;
+			dbcmd.Dispose ();
+			dbcmd = null;
+			dbconn.Close ();
+			dbconn = null;
 
 
 
@@ -445,16 +491,28 @@ public class InitDB : MonoBehaviour {
 	public void loadDBSchedule()
 	{
 		#if UNITY_EDITOR
-		//		WWW loadDB = new WWW(url);
-		//		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
-		//		while(!loadDB.isDone) {
-		//			Debug.Log("trying to load database");
-		//		}
-		//		if(loadDB.size != 0)
-		//		{
-		//			File.WriteAllBytes(Application.dataPath + "/Database.db", loadDB.bytes);
-		//			Debug.Log("wrote file to database from server");
-		//		}
+		WWW loadDB = new WWW(url);
+		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
+		float timer = 0;
+		bool failed = false;
+		while (!loadDB.isDone) {
+		//Debug.Log("trying to load database");
+		if (timer > timeOut && loadDB.size == 0) {
+		failed = true;
+		break;
+		}
+		timer += Time.deltaTime;
+		}
+		if (failed)
+		loadDB.Dispose ();
+		else if(!failed)
+		{
+		if(loadDB.size != 0)
+		{
+			File.WriteAllBytes(Application.dataPath + "/Database.db", loadDB.bytes);
+			Debug.Log("wrote file to database from server");
+		}
+		}
 		string conn = "URI=file:" + Application.dataPath + "/Database.db"; //Path to database.
 		Debug.Log("reading database windows");
 		#elif UNITY_ANDROID
@@ -485,44 +543,57 @@ public class InitDB : MonoBehaviour {
 		#else
 		WWW loadDB = new WWW(url);
 		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
-		while(!loadDB.isDone) {
-		Debug.Log("trying to load database");
+		float timer = 0;
+		bool failed = false;
+		while (!loadDB.isDone) {
+		//Debug.Log("trying to load database");
+			if (timer > timeOut && loadDB.size == 0) {
+				failed = true;
+				break;
+			}
+			timer += Time.deltaTime;
 		}
-		if(loadDB.size != 0)
+		if (failed)
+			loadDB.Dispose ();
+		else if(!failed)
 		{
-		File.WriteAllBytes(Application.dataPath + "/Database.db", loadDB.bytes);
-		Debug.Log("wrote file to database from server");
+			if(loadDB.size != 0)
+			{
+			File.WriteAllBytes(Application.dataPath + "/Database.db", loadDB.bytes);
+			Debug.Log("wrote file to database from server");
+			}
 		}
-		string conn = "URI=file:" + Application.dataPath + "/Database.db"; //Path to database.
-		Debug.Log("reading database windows");
-		#endif
-		IDbConnection dbconn;
-		dbconn = (IDbConnection) new SqliteConnection(conn);
-		dbconn.Open(); //Open connection to the database.
-		IDbCommand dbcmd = dbconn.CreateCommand();
-		string sqlQuery = "SELECT VALUE,DAY,DATE,TIME,EVENT,LOCATION " + "FROM " + scheduleToLoad;//query too load
-		dbcmd.CommandText = sqlQuery;
-		IDataReader reader = dbcmd.ExecuteReader();
-		while (reader.Read())//read and load query
-		{
-		int value = reader.GetInt32(0);
-		int day = reader.GetInt32(1);
-		string date = reader.GetString(2);
-		string time = reader.GetString(3);
-		string event_ = reader.GetString(4);;
-		string location = reader.GetString (5);
+			string conn = "URI=file:" + Application.dataPath + "/Database.db"; //Path to database.
+			Debug.Log("reading database windows");
+			#endif
+			IDbConnection dbconn;
+			dbconn = (IDbConnection) new SqliteConnection(conn);
+			dbconn.Open(); //Open connection to the database.
+			IDbCommand dbcmd = dbconn.CreateCommand();
+			string sqlQuery = "SELECT VALUE,DAY,DATE,TIME,EVENT,LOCATION " + "FROM " + scheduleToLoad;//query too load
+			dbcmd.CommandText = sqlQuery;
+			IDataReader reader = dbcmd.ExecuteReader();
+			while (reader.Read())//read and load query
+			{
+			int value = reader.GetInt32(0);
+			int day = reader.GetInt32(1);
+			string date = reader.GetString(2);
+			string time = reader.GetString(3);
+			string event_ = reader.GetString(4);;
+			string location = reader.GetString (5);
 
-		dbTypes.Schedule tSchedule = new dbTypes.Schedule();
-		tSchedule = returnSchedule (value,day,date,time,event_,location);
-		loadToDBSchedule(tSchedule);
+			dbTypes.Schedule tSchedule = new dbTypes.Schedule();
+			tSchedule = returnSchedule (value,day,date,time,event_,location);
+			loadToDBSchedule(tSchedule);
 
-		}
-		reader.Close();//clear query
-		reader = null;
-		dbcmd.Dispose();
-		dbcmd = null;
-		dbconn.Close();
-		dbconn = null;
+			}
+			reader.Close();//clear query
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			dbconn.Close();
+			dbconn = null;
+
 	}
 
 	public dbTypes.Profile returnProfile(int value,string role,string name,string dob,string country,string rank,string comment, string picture, string Cvlink, int pages)//return requested profile to be loaded
