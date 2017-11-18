@@ -1,21 +1,21 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AARM\AARM_Manager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MainMenu\mMenuScript.cs">
     <Files>
-      <File FileName="Assets\Scripts\Network\authentication_Manager.cs" Line="79" Column="14" />
-      <File FileName="Assets\Scripts\Network\s_NetworkManager.cs" Line="66" Column="14" />
+      <File FileName="Assets\Scripts\Network\authentication_Manager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Network\s_NetworkManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Allson\Scripts\Signing.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Network\c_NetworkManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Network\Master.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PDF\pdfManager.cs" Line="209" Column="69" />
+      <File FileName="Assets\Scripts\PDF\pdfManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PDF\pdfTab.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Global\GlobalValues.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\AARM\AARM_Manager.cs" Line="81" Column="1" />
       <File FileName="Assets\Scripts\PDF\loadPdfImage.cs" Line="37" Column="1" />
       <File FileName="Assets\Scripts\ProfileLoader\ProfileLoader.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Start\SetName.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Database\InitDB.cs" Line="357" Column="1" />
-      <File FileName="Assets\Scripts\MainMenu\mMenuScript.cs" Line="100" Column="5" />
+      <File FileName="Assets\Scripts\Database\InitDB.cs" Line="371" Column="4" />
+      <File FileName="Assets\Scripts\MainMenu\mMenuScript.cs" Line="13" Column="20" />
       <File FileName="Assets\Scripts\openThirdParty.cs" Line="25" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -23,14 +23,13 @@
     <BreakpointStore>
       <Breakpoint file="C:\Users\meow meow\Desktop\Work\Documents\ACAMM\Assets\Scripts\Network\authentication_Manager.cs" line="129" column="1" />
       <Breakpoint file="C:\Users\demounit\Documents\GitHub\ACAMM-2017\ACAMM\Assets\Scripts\PDF\pdfManager.cs" line="121" column="1" />
-      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\Database\InitDB.cs" line="129" column="1" />
-      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\Database\InitDB.cs" line="129" column="1" />
+      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\Database\InitDB.cs" line="128" column="1" />
+      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\Database\InitDB.cs" line="128" column="1" />
       <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\PDF\pdfManager.cs" line="104" column="1" />
       <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\PDF\pdfManager.cs" line="91" column="1" />
       <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\PDF\pdfManager.cs" line="94" column="1" />
       <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\AARM\AARM_Manager.cs" line="81" column="1" />
-      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\Database\InitDB.cs" line="244" column="1" />
-      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\Database\InitDB.cs" line="247" column="1" />
+      <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\Database\InitDB.cs" line="237" column="1" />
       <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\PDF\loadPdfImage.cs" line="37" column="1" />
       <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\AARM\AARM_Manager.cs" line="90" column="1" />
       <Breakpoint file="D:\Work\GitHub\ACAMM\ACAMM\Assets\Scripts\AARM\AARM_Manager.cs" line="95" column="1" />

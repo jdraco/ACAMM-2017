@@ -1,20 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Start.unity
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-- path: Assets/Scenes/Start.unity
-=======
-- path: Assets/Scenes/sgarmy.unity
->>>>>>> cbea10f925f53f97d4f05e35dc83a7e08e10605c
-=======
-- path: Assets/Scenes/sgarmy.unity
->>>>>>> cbea10f925f53f97d4f05e35dc83a7e08e10605c
-=======
-- path: Assets/Scenes/sgarmy.unity
->>>>>>> cbea10f925f53f97d4f05e35dc83a7e08e10605c
->>>>>>> c4440a88c4b9ae95ea2f3529cd399b6488dfd5d0
+- path: Assets/Scenes/mainmenu.unity
   isLoaded: 1
   isActive: 1

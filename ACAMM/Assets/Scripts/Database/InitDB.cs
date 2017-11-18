@@ -62,7 +62,6 @@ public class InitDB : MonoBehaviour {
 
 	public cQuery cq = new cQuery ();
 
-	float timeOut = 5f;
 	bool dbInitDone = false;
 	//start by loading either initprofile or initschedule
 	void Start () {
@@ -230,25 +229,16 @@ public class InitDB : MonoBehaviour {
 		#if UNITY_EDITOR
 		WWW loadDB = new WWW (url);
 		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
-		float timer = 0;
-		bool failed = false;
+
 		while (!loadDB.isDone) {
-			//Debug.Log("trying to load database");
-			if (timer > timeOut && loadDB.size == 0) {
-				failed = true;
-				break;
-			}
-			timer += Time.deltaTime;
+
 		}
-		if (failed)
-			loadDB.Dispose ();
-		else if(!failed)
-		{
+
 			if (loadDB.size != 0) {
 				File.WriteAllBytes (Application.dataPath + "/Database.db", loadDB.bytes);
 				Debug.Log ("wrote file to database from server");
 			}
-		}
+
 			string conn = "URI=file:" + Application.dataPath + "/Database.db"; //Path to database.
 			Debug.Log ("reading database windows");
 			#elif UNITY_ANDROID
@@ -334,25 +324,16 @@ public class InitDB : MonoBehaviour {
 		#if UNITY_EDITOR
 		WWW loadDB = new WWW(pdfurl);
 		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
-		float timer = 0;
-		bool failed = false;
+
 		while (!loadDB.isDone) {
-		//Debug.Log("trying to load database");
-			if (timer > timeOut && loadDB.size == 0) {
-				failed = true;
-				break;
-			}
-			timer += Time.deltaTime;
-		Debug.Log(timer);
+
 		}
-		if (failed)
-			loadDB.Dispose ();
-		else if (!failed) {
+
 			if (loadDB.size != 0) {
 				File.WriteAllBytes (Application.dataPath + "/PDF_Database.db", loadDB.bytes);
 				Debug.Log ("wrote file to database from server");
 			}
-		}
+
 			string conn = "URI=file:" + Application.dataPath + "/PDF_Database.db"; //Path to database.
 			Debug.Log ("reading database windows");
 			#elif UNITY_ANDROID
@@ -383,26 +364,18 @@ public class InitDB : MonoBehaviour {
 
 			WWW loadDB = new WWW(pdfurl);
 			//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/PDF_Database.db"); 
-			float timer = 0;
-			bool failed = false;
+
 			while (!loadDB.isDone) {
-			//Debug.Log("trying to load database");
-			if (timer > timeOut && loadDB.size == 0) {
-			failed = true;
-			break;
+
+			
 			}
-			timer += Time.deltaTime;
-			}
-			if (failed)
-			loadDB.Dispose ();
-			else if(!failed)
-			{
+
 			if(loadDB.size != 0)
 			{
 			File.WriteAllBytes(Application.dataPath + "/PDF_Database.db", loadDB.bytes);
 			Debug.Log("wrote file to database from server");
 			}
-			}
+			
 			string conn = "URI=file:" + Application.dataPath + "/PDF_Database.db"; //Path to database.
 			Debug.Log("reading database windows");
 			#endif
@@ -482,25 +455,17 @@ public class InitDB : MonoBehaviour {
 		#if UNITY_EDITOR
 		WWW loadDB = new WWW(url);
 		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
-		float timer = 0;
-		bool failed = false;
+
 		while (!loadDB.isDone) {
-		//Debug.Log("trying to load database");
-		if (timer > timeOut && loadDB.size == 0) {
-		failed = true;
-		break;
+
+
 		}
-		timer += Time.deltaTime;
-		}
-		if (failed)
-		loadDB.Dispose ();
-		else if(!failed)
-		{
+
 		if(loadDB.size != 0)
 		{
 			File.WriteAllBytes(Application.dataPath + "/Database.db", loadDB.bytes);
 			Debug.Log("wrote file to database from server");
-		}
+
 		}
 		string conn = "URI=file:" + Application.dataPath + "/Database.db"; //Path to database.
 		Debug.Log("reading database windows");
@@ -532,26 +497,17 @@ public class InitDB : MonoBehaviour {
 		#else
 		WWW loadDB = new WWW(url);
 		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
-		float timer = 0;
-		bool failed = false;
+
 		while (!loadDB.isDone) {
-		//Debug.Log("trying to load database");
-			if (timer > timeOut && loadDB.size == 0) {
-				failed = true;
-				break;
-			}
-			timer += Time.deltaTime;
+
 		}
-		if (failed)
-			loadDB.Dispose ();
-		else if(!failed)
-		{
+
 			if(loadDB.size != 0)
 			{
 			File.WriteAllBytes(Application.dataPath + "/Database.db", loadDB.bytes);
 			Debug.Log("wrote file to database from server");
 			}
-		}
+
 			string conn = "URI=file:" + Application.dataPath + "/Database.db"; //Path to database.
 			Debug.Log("reading database windows");
 			#endif
