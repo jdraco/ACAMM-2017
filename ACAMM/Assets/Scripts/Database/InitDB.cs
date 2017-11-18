@@ -281,26 +281,15 @@ public class InitDB : MonoBehaviour {
 			{
 				WWW loadDB = new WWW(url);
 				//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db"); 
-				float timer = 0;
-				bool failed = false;
 				while (!loadDB.isDone) {
 				//Debug.Log("trying to load database");
-				if (timer > timeOut && loadDB.size == 0) {
-				failed = true;
-				break;
 				}
-				timer += Time.deltaTime;
-				}
-				if (failed)
-				loadDB.Dispose ();
-				else if(!failed)
-				{
 				if(loadDB.size != 0)
 				{
 				File.WriteAllBytes(Application.dataPath + "/Database.db", loadDB.bytes);
 				Debug.Log("wrote file to database from server");
 				}
-				}
+				
 				dbInitDone = true;
 			}
 			string conn = "URI=file:" + Application.dataPath + "/Database.db"; //Path to database.
