@@ -69,7 +69,7 @@ public class pdfManager : MonoBehaviour {
 				Vector3 tabPos2 = reference.transform.position;
 				tabPos2.y = tabPos2.y + (distBetweenPages * i) + (distBetweenPages * 0.5f);
 				GameObject pageObj = Instantiate (pagePrefab, tabPos2, Quaternion.identity);
-				string resLoadPath = Application.dataPath + "/Resources/Images/PDF/" + DB.presentationList [v].country + "/" + DB.presentationList [v].title + "/Page" + (i + 1) + ".png";
+				string resLoadPath = Application.dataPath + "/Resource/Images/PDF/" + DB.presentationList [v].country + "/" + DB.presentationList [v].title + "/Page" + (i + 1) + ".png";
 
                 //Texture2D temp = new Texture2D(0, 0);
                 //WWW www = new WWW(resLoadPath);
@@ -81,7 +81,7 @@ public class pdfManager : MonoBehaviour {
                 //temp = www.texture;
                 //Sprite sprite = Sprite.Create(temp, new Rect(0, 0, temp.width, temp.height), new Vector2(0.5f, 0.5f));
 
-                //var loadedImg = Resources.Load<Sprite> (resLoadPath);
+                //var loadedImg = Resource.Load<Sprite> (resLoadPath);
                 //Image pageImg = pageObj.GetComponent<Image> ();
                 //pageImg.sprite = sprite;
                 //preObj.GetComponent<loadPdfImage>().ImageLocation[i] = resLoadPath;
@@ -206,7 +206,7 @@ public class pdfManager : MonoBehaviour {
 			j++;
 		}
 		foreach (dbTypes.Presentation presentation in DB.presentationList) {
-            string directoryPath = Application.dataPath + "/Resources/Images/PDF/" + presentation.country + "/" + presentation.title;
+            string directoryPath = Application.dataPath + "/Resource/Images/PDF/" + presentation.country + "/" + presentation.title;
 			if (presentation.version > loadVersion(directoryPath + "/Version.txt"))// || !File.Exists(directoryPath + "/Page" + (i + 1) + ".png"))
             {
                 for (int i = 0; i < presentation.pages; i++)

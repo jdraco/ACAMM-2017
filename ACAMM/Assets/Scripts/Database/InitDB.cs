@@ -62,7 +62,7 @@ public class InitDB : MonoBehaviour {
 
 	public cQuery cq = new cQuery ();
 
-	float timeOut = 2.5f;
+	float timeOut = 5f;
 	bool dbInitDone = false;
 	//start by loading either initprofile or initschedule
 	void Start () {
@@ -234,7 +234,7 @@ public class InitDB : MonoBehaviour {
 		bool failed = false;
 		while (!loadDB.isDone) {
 			//Debug.Log("trying to load database");
-			if (timer > timeOut) {
+			if (timer > timeOut && loadDB.size == 0) {
 				failed = true;
 				break;
 			}
@@ -285,7 +285,7 @@ public class InitDB : MonoBehaviour {
 				bool failed = false;
 				while (!loadDB.isDone) {
 				//Debug.Log("trying to load database");
-				if (timer > timeOut) {
+				if (timer > timeOut && loadDB.size == 0) {
 				failed = true;
 				break;
 				}
@@ -349,11 +349,12 @@ public class InitDB : MonoBehaviour {
 		bool failed = false;
 		while (!loadDB.isDone) {
 		//Debug.Log("trying to load database");
-			if (timer > timeOut) {
+			if (timer > timeOut && loadDB.size == 0) {
 				failed = true;
 				break;
 			}
 			timer += Time.deltaTime;
+		Debug.Log(timer);
 		}
 		if (failed)
 			loadDB.Dispose ();
@@ -397,7 +398,7 @@ public class InitDB : MonoBehaviour {
 			bool failed = false;
 			while (!loadDB.isDone) {
 			//Debug.Log("trying to load database");
-			if (timer > timeOut) {
+			if (timer > timeOut && loadDB.size == 0) {
 			failed = true;
 			break;
 			}
@@ -496,7 +497,7 @@ public class InitDB : MonoBehaviour {
 		bool failed = false;
 		while (!loadDB.isDone) {
 		//Debug.Log("trying to load database");
-		if (timer > timeOut) {
+		if (timer > timeOut && loadDB.size == 0) {
 		failed = true;
 		break;
 		}
@@ -546,7 +547,7 @@ public class InitDB : MonoBehaviour {
 		bool failed = false;
 		while (!loadDB.isDone) {
 		//Debug.Log("trying to load database");
-			if (timer > timeOut) {
+			if (timer > timeOut && loadDB.size == 0) {
 				failed = true;
 				break;
 			}

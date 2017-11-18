@@ -55,10 +55,7 @@
      <None Include="Assets\StreamingAssets\build_info.txt" />
      <None Include="Assets\ASDADAD\sadsadsadasdsad.txt" />
      <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
-     <None Include="Assets\Resources\Images\PDF\AARM\Day2\Version.txt" />
-     <None Include="Assets\Resources\Images\PDF\AARM\Day1\Version.txt" />
-     <None Include="Assets\Resources\Images\PDF\AARM\Day4\Version.txt" />
-     <None Include="Assets\Resources\Images\PDF\AARM\Day3\Version.txt" />
+     <None Include="Assets\Resource\Images\PDF\AARM\AARM\Version.txt" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>

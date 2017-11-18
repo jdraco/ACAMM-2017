@@ -99,11 +99,11 @@ public class mMenuScript : MonoBehaviour {
 		WWW loadIP = new WWW(url);
 		//WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/Database.db");
 		float timer = 0;
-		timeOut = 2.5f;
+		timeOut = 5f;
 		bool failed = false;
 		while(!loadIP.isDone) {
 			//Debug.Log("trying to loadIP");
-			if (timer > timeOut) {
+			if (timer > timeOut && loadIP.size == 0) {
 				failed = true;
 				break;
 			}
