@@ -1,16 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-- path: Assets/Scenes/Start.unity
-=======
-- path: Assets/Scenes/sgarmy.unity
->>>>>>> cbea10f925f53f97d4f05e35dc83a7e08e10605c
-=======
-- path: Assets/Scenes/sgarmy.unity
->>>>>>> cbea10f925f53f97d4f05e35dc83a7e08e10605c
-=======
-- path: Assets/Scenes/sgarmy.unity
->>>>>>> cbea10f925f53f97d4f05e35dc83a7e08e10605c
+- path: Assets/Scenes/profile.unity
   isLoaded: 1
   isActive: 1
