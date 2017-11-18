@@ -79,6 +79,16 @@ public class ProfileLoader : MonoBehaviour {
             ThisPTab.pLoader = this;
             ThisPTab.LoadInfo();
 
+            if (tProfile.value == 1)
+            {
+                newObj.GetComponent<Button>().enabled = true;
+            }
+            else
+            {
+                newObj.GetComponent<Button>().enabled = false;
+                newObj.GetComponent<Image>().color = new Color(0.8f, 0.8f, 0.8f, 1.0f);
+            }
+
             switch (tProfile.country) {
 			case "SINGAPORE":
 				newObj.GetComponent<pTab> ().cPicture.sprite = ap.SG;
@@ -225,6 +235,8 @@ public class ProfileLoader : MonoBehaviour {
         statContainer.dob.text = profile.dob;
         statContainer.country.text = SetEveryFirstToUpperRestLower(profile.country);
         statContainer.rank.text = SetEveryFirstToUpperRestLower(profile.rank);
+
+
         //profile.pages = 2;
         if (profile.pages != 0)
         {
