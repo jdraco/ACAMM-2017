@@ -272,7 +272,7 @@ public class pdfManager : MonoBehaviour {
 		pdf_Select.SetActive (false);
 		Country_Select.SetActive (true);
 		//Country_Select.SetActive (true);
-		header.text = "Speaker's Notes";
+		header.text = "Presentations";
 		selectedCountry = -1;
 		pState = pdfState.countrySelect;
 	}
