@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/mainmenu.unity
+=======
+- path: Assets/Scenes/placesofinterest.unity
+>>>>>>> 98c5b23cecc01f4a07e5d1520c607a36afcdcd64
   isLoaded: 1
   isActive: 1
