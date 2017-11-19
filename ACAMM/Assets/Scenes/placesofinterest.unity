@@ -439,8 +439,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 31
+    m_Font: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981, type: 3}
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -543,8 +543,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 31
+    m_Font: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981, type: 3}
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -797,7 +797,7 @@ Prefab:
     - target: {fileID: 224611478127350794, guid: a8bd63fa089e6b1438be2c4709c45dc4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 2558.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224116219285232258, guid: a8bd63fa089e6b1438be2c4709c45dc4,
         type: 2}
@@ -808,53 +808,51 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: "Orchard Road, a 2.2 kilometre-long boulevard, is the retail and entertainment
-        hub of Singapore.[3] Often known colloquially as Orchard, the area is a major
-        tourist attraction.[3] It is also known as Tang Leng Pa Sat Koi (Tanglin Market
-        Street) and Vaira Kimadam (Fakir's Place) by the Singaporean Chinese and Singaporean
-        Tamils respectively.\r\n\r\n\n\n\n\n\n\n\n\nThe Orchard Planning Area is a
-        planning area as specified by the Urban Redevelopment Authority. It is part
-        of the Central Area located within the Central Region. Orchard is bordered
-        by Newton in the east and north, Tanglin in the west, River Valley in the
-        south and Museum to the southeast.\r\n\r\n\n\n\n\n\n\n\n\n\n\nOrchard Road
-        got its name from the nutmeg, pepper and fruit orchards or the plantations
-        that the road once led to.[4] Such plantations were common in the area in
-        the 19th century.[5] Other sources attribute the name to Mr Orchard, a gardener
-        and the owner of plantations which were located at the corner of present-day
-        Scotts Road and Orchard Road.[5]\r\n\r\n\n\n\n\n\n\n\n\n\nThe Orchard Road
-        area was also known to Chinese Singaporeans as Tang Leng Pa Sat Koi or \"Tanglin
-        Market Street\".[6] The Tamil people in Singapore gave the area the name Vaira
-        Kimadam or \"Fakir's Place\".[4] They also called the area Muttu Than (High
-        Ground), in a reference to the area's hilly terrain.[4]\n\nAfter more than
-        a century as a two-way thoroughfare, Orchard Road became a one-way street
-        in 1974.[5] The ever-lively street starts at the junction with Orange Grove
-        Road which is the location of the Orchard Hotel. It then stretches southeast
-        across the Scotts Road\u2013Paterson Hill junction, Orchard MRT Station, Bideford
-        Road, Somerset MRT Station, Central Expressway, Dhoby Ghaut MRT Station, and
-        ends at the junction with Handy Road (just before Prinsep Street), where it
-        becomes Bras Basah Road. It has an extensive underground infrastructure, including
-        underground pedestrian walkways between the malls running underneath the street
-        and other streets in the vicinity. The numbers begin at Handy Road and end
-        at Orange Grove Road."
+        hub of Singapore. Often known colloquially as Orchard, the area is a major
+        tourist attraction.It is also known as Tang Leng Pa Sat Koi  and Vaira Kimadam
+        by the Singaporean Chinese and Singaporean Tamils respectively.\r\n\r\n\n\n\n\n\n\n\n\nThe
+        Orchard Planning Area is a planning area as specified by the Urban Redevelopment
+        Authority. It is part of the Central Area located within the Central Region.
+        Orchard is bordered by Newton in the east and north, Tanglin in the west,
+        River Valley in the south and Museum to the southeast.\r\n\r\n\n\n\n\n\n\n\n\n\n\nOrchard
+        Road got its name from the nutmeg, pepper and fruit orchards or the plantations
+        that the road once led to.Such plantations were common in the area in the
+        19th century. Other sources attribute the name to Mr Orchard, a gardener and
+        the owner of plantations which were located at the corner of present-day Scotts
+        Road and Orchard Road.\n\r\n\n\n\n\n\n\n\n\n\nThe Orchard Road area was also
+        known to Chinese Singaporeans as Tang Leng Pa Sat Koi or \"Tanglin Market
+        Street\". The Tamil people in Singapore gave the area the name Vaira Kimadam
+        or \"Fakir's Place\". They also called the area Muttu Than , in a reference
+        to the area's hilly terrain.\n\nAfter more than a century as a two-way thoroughfare,
+        Orchard Road became a one-way street in 1974. The ever-lively street starts
+        at the junction with Orange Grove Road which is the location of the Orchard
+        Hotel. It then stretches southeast across the Scotts Road\u2013Paterson Hill
+        junction, Orchard MRT Station, Bideford Road, Somerset MRT Station, Central
+        Expressway, Dhoby Ghaut MRT Station, and ends at the junction with Handy Road,
+        where it becomes Bras Basah Road. It has an extensive underground infrastructure,
+        including underground pedestrian walkways between the malls running underneath
+        the street and other streets in the vicinity. The numbers begin at Handy Road
+        and end at Orange Grove Road."
       objectReference: {fileID: 0}
     - target: {fileID: 224611478127350794, guid: a8bd63fa089e6b1438be2c4709c45dc4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -1450
+      value: -1369
       objectReference: {fileID: 0}
     - target: {fileID: 224329634871567516, guid: a8bd63fa089e6b1438be2c4709c45dc4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -1030
+      value: -995
       objectReference: {fileID: 0}
     - target: {fileID: 224416388897956316, guid: a8bd63fa089e6b1438be2c4709c45dc4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -1700
+      value: -1635
       objectReference: {fileID: 0}
     - target: {fileID: 224601759969907248, guid: a8bd63fa089e6b1438be2c4709c45dc4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -458
+      value: -401
       objectReference: {fileID: 0}
     - target: {fileID: 224611478127350794, guid: a8bd63fa089e6b1438be2c4709c45dc4,
         type: 2}
@@ -865,6 +863,47 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.x
       value: 675.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 114262786650637664, guid: a8bd63fa089e6b1438be2c4709c45dc4,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981,
+        type: 3}
+    - target: {fileID: 224416388897956316, guid: a8bd63fa089e6b1438be2c4709c45dc4,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224416388897956316, guid: a8bd63fa089e6b1438be2c4709c45dc4,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224329634871567516, guid: a8bd63fa089e6b1438be2c4709c45dc4,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224329634871567516, guid: a8bd63fa089e6b1438be2c4709c45dc4,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114262786650637664, guid: a8bd63fa089e6b1438be2c4709c45dc4,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 224601759969907248, guid: a8bd63fa089e6b1438be2c4709c45dc4,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224601759969907248, guid: a8bd63fa089e6b1438be2c4709c45dc4,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8bd63fa089e6b1438be2c4709c45dc4, type: 2}
@@ -942,8 +981,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 31
+    m_Font: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981, type: 3}
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1598,7 +1637,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -31}
+  m_AnchoredPosition: {x: 0, y: -52}
   m_SizeDelta: {x: 596, y: 337}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &224713656
@@ -1899,6 +1938,17 @@ Prefab:
       propertyPath: m_SizeDelta.x
       value: 675.19
       objectReference: {fileID: 0}
+    - target: {fileID: 114195804695116992, guid: f82ac0bca6763034db963938b26c0f16,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 114195804695116992, guid: f82ac0bca6763034db963938b26c0f16,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f82ac0bca6763034db963938b26c0f16, type: 2}
   m_IsPrefabParent: 0
@@ -2520,7 +2570,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -176, y: -1238.9998}
+  m_AnchoredPosition: {x: -176, y: -1278}
   m_SizeDelta: {x: 300, y: 225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &392806373
@@ -2673,12 +2723,12 @@ Prefab:
     - target: {fileID: 224729058947391454, guid: d83e644c68d5f4f49bab973048dcfcae,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -1272
+      value: -1229
       objectReference: {fileID: 0}
     - target: {fileID: 224948015973575130, guid: d83e644c68d5f4f49bab973048dcfcae,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -1272
+      value: -1229
       objectReference: {fileID: 0}
     - target: {fileID: 224320081444805242, guid: d83e644c68d5f4f49bab973048dcfcae,
         type: 2}
@@ -2700,6 +2750,17 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 4162.37
       objectReference: {fileID: 0}
+    - target: {fileID: 114266866151683364, guid: d83e644c68d5f4f49bab973048dcfcae,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 114266866151683364, guid: d83e644c68d5f4f49bab973048dcfcae,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d83e644c68d5f4f49bab973048dcfcae, type: 2}
   m_IsPrefabParent: 0
@@ -2919,8 +2980,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 31
+    m_Font: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981, type: 3}
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -4027,8 +4088,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 31
+    m_Font: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981, type: 3}
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -4260,7 +4321,7 @@ Prefab:
     - target: {fileID: 224414479809338526, guid: ccb2389cfc7034f4dbcbcf12a9cd585c,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 1871
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224838245626049954, guid: ccb2389cfc7034f4dbcbcf12a9cd585c,
         type: 2}
@@ -4275,7 +4336,7 @@ Prefab:
     - target: {fileID: 224414479809338526, guid: ccb2389cfc7034f4dbcbcf12a9cd585c,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -1067
+      value: -1042
       objectReference: {fileID: 0}
     - target: {fileID: 224035689359340080, guid: ccb2389cfc7034f4dbcbcf12a9cd585c,
         type: 2}
@@ -4291,6 +4352,43 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: 5.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114786670189785994, guid: ccb2389cfc7034f4dbcbcf12a9cd585c,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981,
+        type: 3}
+    - target: {fileID: 114786670189785994, guid: ccb2389cfc7034f4dbcbcf12a9cd585c,
+        type: 2}
+      propertyPath: m_Text
+      value: "Swiss\xF4tel The Stamford , formerly known as the Westin Stamford, is
+        a hotel in Singapore managed by Swiss\xF4tel Hotels & Resorts. Designed by
+        architect I.M. Pei, at a height of 226 metres it is one of Southeast Asia's
+        tallest hotels. It is part of the Raffles City complex comprising two hotels,
+        the Raffles City convention centre, Raffles City shopping centre, and an office
+        tower. Situated at 2 Stamford Road, the hotel sits above City Hall MRT Station.\r\n\r\nThe
+        5-star hotel has 1,261 rooms and suites, 16 restaurants and bars, Raffles
+        City Convention Centre, and one of Asia's largest spas.\n\n\n\n\n\n\n\n\n\n\nThe
+        hotel was designed by architect I.M. Pei as the Westin Stamford Singapore,
+        along with its adjacent smaller sister hotel, the Westin Plaza. When completed
+        by the South Korean firm SsangYong Group in 1986, the Westin Stamford was
+        the world's tallest hotel building, rising to a height of 226 metres (741
+        ft), and held that title until 1997 when the Baiyoke Tower II was completed
+        in Bangkok, Thailand.It is alleged that the Ryugyong Hotel in Pyongyang, North
+        Korea was intended as a Cold War response to the construction of this hotel.\n\r\nOn
+        1 January 2002 the two Westins were sold to Swiss\xF4tel/Raffles Hotels and
+        both hotels were renamed, The Westin Stamford becoming Swiss\xF4tel The Stamford
+        and The Westin Plaza becoming Raffles The Plaza. When Raffles Hotels was acquired
+        by Fairmont in 2006, the smaller hotel was again renamed, becoming the Fairmont
+        Singapore.\r\n\r\nSwiss\xF4tel The Stamford has 15 food and beverage outlets
+        including Equinox Complex, recreational facilities, and a 70,000 square feet
+        (6,500 m2) convention center.\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114786670189785994, guid: ccb2389cfc7034f4dbcbcf12a9cd585c,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ccb2389cfc7034f4dbcbcf12a9cd585c, type: 2}
@@ -4960,8 +5058,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 31
+    m_Font: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981, type: 3}
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -6264,8 +6362,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 31
+    m_Font: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981, type: 3}
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -6954,7 +7052,7 @@ MonoBehaviour:
   - Swissotel
   - Marina Bay Sands
   - Fullerton Hotel
-  - Orchard City Centre
+  - Orchard Road
   - Gardens By the Bay
   - Tong Le Dining
   - TWG Tea
@@ -8298,7 +8396,7 @@ Prefab:
     - target: {fileID: 224244153383555328, guid: d7dcb4903de28cd4684cb32edb705557,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 1841.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1377836815625588, guid: d7dcb4903de28cd4684cb32edb705557, type: 2}
       propertyPath: m_IsActive
@@ -8307,7 +8405,7 @@ Prefab:
     - target: {fileID: 224244153383555328, guid: d7dcb4903de28cd4684cb32edb705557,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -1100
+      value: -1037
       objectReference: {fileID: 0}
     - target: {fileID: 224163363092950546, guid: d7dcb4903de28cd4684cb32edb705557,
         type: 2}
@@ -8333,6 +8431,40 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: 6.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 114210067640622952, guid: d7dcb4903de28cd4684cb32edb705557,
+        type: 2}
+      propertyPath: m_Text
+      value: "The Fullerton Hotel Singapore has 400 rooms and suites which either
+        overlook the atrium courtyard, or face downtown Singapore's skyline, the Singapore
+        River promenade or the Marina Bay.\n\r\n\n\n\n\n\n\n\n\n\nThe hotel has a
+        25-metre outdoor infinity swimming pool, fitness centre and a luxury spa.
+        It also has five food and beverage outlets. For business travellers, the hotel
+        has a 24-hour financial centre with the Bloomberg Professional service that
+        provides financial reports and world news, and 15 meeting rooms equipped with
+        conference facilities.\nThe resort includes a 2,561-room hotel, a 120,000-square-metre
+        \ convention-exhibition centre, the 74,000 m2  The Shoppes at Marina Bay Sands
+        mall, a museum, two large theatres, \"celebrity chef\" restaurants, two floating
+        Crystal Pavilions, a skating rink, and the world's largest atrium casino with
+        500 tables and 1,600 slot machines.\r\n\n\n\n\n\n\n\n\n\n\n\r\nThe complex
+        is topped by a 340-metre-long SkyPark with a capacity of 3,900 people and
+        a 150 m infinity swimming pool, set on top of the world's largest public cantilevered
+        platform, which overhangs the north tower by 67 m .The 20-hectare resort was
+        designed by Moshe Safdie architects. The architect was Aedas, and they were
+        responsible for employing all consultants and for developing, co-ordinating
+        and implementing the design. Engineering was provided by Arup and Parsons
+        Brinkerhoff (MEP). The main contractor was Ssangyong Engineering and Construction."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114210067640622952, guid: d7dcb4903de28cd4684cb32edb705557,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981,
+        type: 3}
+    - target: {fileID: 114210067640622952, guid: d7dcb4903de28cd4684cb32edb705557,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7dcb4903de28cd4684cb32edb705557, type: 2}
@@ -8414,7 +8546,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Orchard City
+  m_Text: Orchard Road
 --- !u!222 &1039780128
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9357,6 +9489,17 @@ Prefab:
       propertyPath: m_AnchoredPosition.x
       value: 2.77
       objectReference: {fileID: 0}
+    - target: {fileID: 114222282850691494, guid: d1f88f6819d11724e84073bdc4a630fc,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222282850691494, guid: d1f88f6819d11724e84073bdc4a630fc,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1f88f6819d11724e84073bdc4a630fc, type: 2}
   m_IsPrefabParent: 0
@@ -10045,7 +10188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 633}
+  m_AnchoredPosition: {x: 0, y: 649}
   m_SizeDelta: {x: 660, y: 446}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1325819656
@@ -10640,8 +10783,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 6.26, y: -1540}
-  m_SizeDelta: {x: 668.51, y: 2555}
+  m_AnchoredPosition: {x: 6.26, y: -1491}
+  m_SizeDelta: {x: 668.51, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1429521744
 MonoBehaviour:
@@ -10678,8 +10821,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 31
+    m_Font: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981, type: 3}
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -10919,6 +11062,22 @@ Prefab:
       propertyPath: m_SizeDelta.x
       value: 675.19
       objectReference: {fileID: 0}
+    - target: {fileID: 114269981009919274, guid: bdd7f0ba3b091024cb82386ceac11211,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 114269981009919274, guid: bdd7f0ba3b091024cb82386ceac11211,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981,
+        type: 3}
+    - target: {fileID: 224664866102109430, guid: bdd7f0ba3b091024cb82386ceac11211,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -963
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bdd7f0ba3b091024cb82386ceac11211, type: 2}
   m_IsPrefabParent: 0
@@ -11002,8 +11161,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1087864452}
   m_HandleRect: {fileID: 1087864451}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11320,8 +11479,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 31
+    m_Font: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981, type: 3}
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -11986,7 +12145,7 @@ Prefab:
     - target: {fileID: 224543735626502120, guid: 02c2d9b691c82aa4586a7049c06f51ab,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -1063
+      value: -1090
       objectReference: {fileID: 0}
     - target: {fileID: 224114023789441314, guid: 02c2d9b691c82aa4586a7049c06f51ab,
         type: 2}
@@ -12048,6 +12207,17 @@ Prefab:
       propertyPath: m_SizeDelta.x
       value: 674.54
       objectReference: {fileID: 0}
+    - target: {fileID: 114178017942129650, guid: 02c2d9b691c82aa4586a7049c06f51ab,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 114178017942129650, guid: 02c2d9b691c82aa4586a7049c06f51ab,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 02c2d9b691c82aa4586a7049c06f51ab, type: 2}
   m_IsPrefabParent: 0
@@ -12803,7 +12973,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -327, y: 842}
+  m_AnchoredPosition: {x: -327, y: 421.66733}
   m_SizeDelta: {x: 669, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1804288255
@@ -12902,8 +13072,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 31
+    m_Font: {fileID: 12800000, guid: 2952b43fdfe4aac4fbd48b72ecb2a981, type: 3}
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -13111,7 +13281,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 161, y: -1239}
+  m_AnchoredPosition: {x: 161, y: -1278}
   m_SizeDelta: {x: 300, y: 225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1874912453
