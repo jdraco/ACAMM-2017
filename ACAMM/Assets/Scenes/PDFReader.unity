@@ -677,7 +677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -327, y: 871.1}
+  m_AnchoredPosition: {x: -327, y: 871.0999}
   m_SizeDelta: {x: 669, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &241436391
@@ -5721,16 +5721,16 @@ MonoBehaviour:
   - {fileID: 713138095}
   pdf_LIST: []
   pdfSEL_HLIST:
-  - Singapore Notes
-  - Malaysia Notes
-  - Philippines Notes
-  - Thailand Notes
-  - Vietnam Notes
-  - Brunei Notes
-  - Cambodia Notes
-  - Indonesia Notes
-  - Laos Notes
-  - Myanmar Notes
+  - Singapore
+  - Malaysia
+  - Philippines
+  - Thailand
+  - Vietnam
+  - Brunei
+  - Cambodia
+  - Indonesia
+  - Laos
+  - Myanmar
   pdf_HLIST:
   - Sample 1
   - Sample 2
