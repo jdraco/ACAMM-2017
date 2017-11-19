@@ -23,7 +23,11 @@ public class pTab : MonoBehaviour {
 
     public void LoadInfo()
     {
-       Name.text = profile.rank +" "+ profile.name;
-       Value.text = profile.role;
+       if(profile.rank != "")
+            Name.text = profile.rank +" "+ profile.name;
+       else
+            Name.text = profile.name;
+
+        Value.text = profile.role;
     }
 }
