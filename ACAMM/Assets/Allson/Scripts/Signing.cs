@@ -65,7 +65,8 @@ public class Signing : MonoBehaviour
 			i++;
         }
 
-		intOfThisCountry = DictionaryOfCountryInt [country];
+        if (country != "Screenshot" && country != "Projection")
+            intOfThisCountry = DictionaryOfCountryInt [country];
 
         if (country == "Screenshot")
         {
@@ -99,7 +100,7 @@ public class Signing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (country != "Screenshot")
+        if (country != "Screenshot" && country != "Projection")
         {
             //mousepos = Input.mousePosition;
             //Debug.Log(Input.mousePosition);
@@ -241,10 +242,13 @@ public class Signing : MonoBehaviour
 
 	public void SigningUpdateNetwork(Vector3 position, string name, float offset)
 	{
-		//Debug.Log (offset + " " + JDScrollBar.value);
-		//Debug.Log (DictionaryOfCountryInt [name]);
-		//position.x = position.x +(mPosMaxOffset * (offset-JDScrollBar.value));
-		Ray ray = Camera.main.ScreenPointToRay(position);
+        //Debug.Log (offset + " " + JDScrollBar.value);
+        //Debug.Log (DictionaryOfCountryInt [name]);
+        //position.x = position.x +(mPosMaxOffset * (offset-JDScrollBar.value));
+        if (country != "Projection")
+        {
+            Ray ray = Camera.main.ScreenPointToRay(position);
+        }
 		RaycastHit hit;
 		if(DictionaryOfCountryInt[name] != null)
 		{
