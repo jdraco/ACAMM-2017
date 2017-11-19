@@ -3991,7 +3991,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Profiles
+  m_Text: Delegates
 --- !u!222 &1606385148
 CanvasRenderer:
   m_ObjectHideFlags: 0

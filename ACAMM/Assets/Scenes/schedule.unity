@@ -27295,7 +27295,7 @@ MonoBehaviour:
   SPOUSEButton: {fileID: 1121348076}
   TopLeftLogo: {fileID: 636039690}
   ACAMMLogo: {fileID: 21300000, guid: a461ec495b1448643bfa8cd6aab025f8, type: 3}
-  ASMAMLogo: {fileID: 21300000, guid: 88069a30b440a1846af7b982d4fe42dd, type: 3}
+  ASMAMLogo: {fileID: 21300000, guid: 8c2fd767b2d336c438c57d755af20018, type: 3}
   SPOUSELogo: {fileID: 21300000, guid: b29a309ff346184419e89bf60f0d479c, type: 3}
 --- !u!1 &1672221180
 GameObject:
