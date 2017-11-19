@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/placesofinterest.unity
-=======
-- path: Assets/Scenes/Start.unity
->>>>>>> 88b0c7c2ff0009864690980ef06fda9fafd81ff2
   isLoaded: 1
   isActive: 1
